@@ -180,6 +180,12 @@ export function HomePage() {
                 >
                   Crates
                 </Link>
+                <Link
+                  href="/franchising"
+                  className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-3 py-2"
+                >
+                  Franchising
+                </Link>
                 <a
                   href="#locations"
                   className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-3 py-2"
@@ -327,40 +333,6 @@ export function HomePage() {
         </div>
       </HomeSection>
 
-      <HomeSection id="about">
-        <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-          <div className="rounded-[2rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_12px_0_0_#100800] sm:p-7">
-            <SectionIntro
-              eyebrow="How it works"
-              title="A ghost kitchen, on purpose."
-              body="We skipped the dining room and put the energy into speed, consistency, and packaging that travels like it has something to prove."
-            />
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <article className="rounded-[1.6rem] border-2 border-brand-ink bg-surface-strong p-5 shadow-[0_10px_0_0_#100800]">
-              <p className="font-display text-3xl uppercase leading-none">Hotter on arrival</p>
-              <p className="mt-3 text-sm leading-6 text-brand-ink/78">
-                Delivery-first flow means food is packed, staged, and dispatched for
-                the trip it is actually taking.
-              </p>
-            </article>
-            <article className="rounded-[1.6rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_10px_0_0_#100800]">
-              <p className="font-display text-3xl uppercase leading-none">Smarter footprint</p>
-              <p className="mt-3 text-sm leading-6 text-brand-ink/78">
-                More neighborhoods, less overhead, and fewer weirdly sticky booth tables.
-              </p>
-            </article>
-            <article className="rounded-[1.6rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_10px_0_0_#100800] sm:col-span-2">
-              <p className="font-display text-3xl uppercase leading-none">Better for repeat cravings</p>
-              <p className="mt-3 text-sm leading-6 text-brand-ink/78">
-                Fast ordering, reliable prep, and menu items built to show up crunchy,
-                saucy, and still worth fighting over.
-              </p>
-            </article>
-          </div>
-        </div>
-      </HomeSection>
-
       <HomeSection id="locations">
         <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
           <SectionIntro
@@ -395,7 +367,7 @@ export function HomePage() {
             <SectionIntro
               eyebrow="Franchising"
               title="Franchise With CHKN Shack"
-              body="Built for operators. Designed to scale."
+              body="Built for operators. Start lean, then grow into real locations."
               theme="dark"
             />
             <div className="rounded-[1.8rem] border-2 border-[#fff7ed] bg-[#fff7ed]/8 p-5">

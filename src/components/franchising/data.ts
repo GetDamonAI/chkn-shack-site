@@ -9,7 +9,7 @@ export const whyChknShack = [
   {
     title: "Delivery-first model",
     detail:
-      "Built around digital ordering, efficient footprints, and operations that move fast without dining-room drag.",
+      "Launch lean through ghost kitchens first, prove demand quickly, and build the operating base for broader expansion.",
   },
   {
     title: "Strong brand system",
@@ -24,7 +24,7 @@ export const whyChknShack = [
   {
     title: "Scalable growth potential",
     detail:
-      "A flexible model designed for operators who want a modern food concept with room to expand into new markets.",
+      "Designed for operators who want a modern food concept that can grow from early delivery-first units into real standalone locations.",
   },
 ];
 
@@ -72,4 +72,25 @@ export const idealPartnerPoints = [
   "Multi-unit mindset",
   "Experience in hospitality or operations (preferred, not required)",
   "Focused on growth, not passive ownership",
+];
+
+export const growthPathPhases = [
+  {
+    phase: "Phase 1",
+    title: "Launch Lean",
+    detail:
+      "We begin with a delivery-first model designed to validate demand, optimize operations, and build early momentum.",
+  },
+  {
+    phase: "Phase 2",
+    title: "Expand the System",
+    detail:
+      "As demand grows, we expand through additional locations and refined operating systems that increase reach and consistency.",
+  },
+  {
+    phase: "Phase 3",
+    title: "Build the Footprint",
+    detail:
+      "The model evolves into small-footprint, standalone locations designed for long-term growth and brand presence.",
+  },
 ];

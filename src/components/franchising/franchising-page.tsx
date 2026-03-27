@@ -3,6 +3,7 @@ import {
   credibilityStatements,
   franchiseSteps,
   franchiseSupport,
+  growthPathPhases,
   idealPartnerPoints,
   investmentRanges,
   whyChknShack,
@@ -208,7 +209,7 @@ export function FranchisingPage() {
             <SectionIntro
               eyebrow="Franchise with CHKN Shack"
               title="Franchise With CHKN Shack"
-              body="A delivery-first chicken brand built for operators who want scalable revenue — not complexity."
+              body="A delivery-first chicken brand launching through a ghost-kitchen-first model and built to grow into scalable small-footprint QSR locations."
               theme="dark"
               level="h1"
             />
@@ -241,8 +242,8 @@ export function FranchisingPage() {
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <SectionIntro
             eyebrow="For prospective franchisees"
-            title="Built for operators who want a concept that can move."
-            body="CHKN Shack is for growth-minded partners who understand execution, respect strong systems, and want a modern food brand built around digital demand instead of legacy baggage."
+            title="Built for operators who want to grow with the brand as it expands."
+            body="CHKN Shack starts with a ghost-kitchen-first rollout to launch lean, validate demand, and build density. The long-term path is broader: scalable small-footprint standalone locations for operators who want a real physical growth story, not just a delivery-only concept."
           />
           <div className="grid gap-4 sm:grid-cols-2">
             <InfoCard
@@ -261,6 +262,35 @@ export function FranchisingPage() {
               title="Focused execution"
               detail="Tight menu, loud brand, repeatable operations, and a concept that is easier to protect as it grows."
             />
+          </div>
+        </div>
+      </PageSection>
+
+      <PageSection id="growth-path">
+        <div className="rounded-[2.3rem] border-2 border-brand-ink bg-brand-ink p-5 text-[#fff7ed] shadow-[0_14px_0_0_#ffd54a] sm:p-7">
+          <SectionIntro
+            eyebrow="Growth Path"
+            title="Growth Path"
+            body="We start lean, prove demand, then scale into real locations."
+            theme="dark"
+          />
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+            {growthPathPhases.map((phase) => (
+              <article
+                key={phase.phase}
+                className="rounded-[1.6rem] border-2 border-[#fff7ed] bg-[#fff7ed]/8 p-5"
+              >
+                <p className="text-sm font-black uppercase tracking-[0.22em] text-brand-yellow">
+                  {phase.phase}
+                </p>
+                <p className="mt-3 font-display text-3xl uppercase leading-none">
+                  {phase.title}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-[#fff7ed]/82">
+                  {phase.detail}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </PageSection>
