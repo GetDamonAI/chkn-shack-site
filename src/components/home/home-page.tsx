@@ -393,25 +393,22 @@ export function HomePage() {
         <div className="rounded-[2.4rem] border-2 border-brand-ink bg-brand-ink px-5 py-7 text-[#fff7ed] shadow-[0_16px_0_0_#ffd54a] sm:px-7">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <SectionIntro
-              eyebrow="Franchise"
-              title="Want in on the wing chaos?"
-              body="If you know your market, respect good ops, and believe ranch is serious business, CHKN Shack franchise opportunities are lining up next."
+              eyebrow="Franchising"
+              title="Franchise With CHKN Shack"
+              body="Built for operators. Designed to scale."
               theme="dark"
             />
             <div className="rounded-[1.8rem] border-2 border-[#fff7ed] bg-[#fff7ed]/8 p-5">
-              <p className="text-sm font-black uppercase tracking-[0.24em] text-brand-yellow">
-                What we are looking for
+              <p className="text-base leading-7 text-[#fff7ed]/84">
+                The full franchise story lives on its own page now, with the model,
+                support structure, and inquiry form in one place.
               </p>
-              <p className="mt-3 text-base leading-7 text-[#fff7ed]/84">
-                Operators who move fast, protect the food, and understand why a
-                delivery-first model can scale without turning into corporate wallpaper.
-              </p>
-              <a
-                href="mailto:franchise@chknshack.example"
+              <Link
+                href="/franchising"
                 className="mt-5 inline-flex rounded-full border-2 border-brand-yellow bg-brand-yellow px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#fff7ed]"
               >
-                Ask about franchising
-              </a>
+                Explore Franchising
+              </Link>
             </div>
           </div>
         </div>
