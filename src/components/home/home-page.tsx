@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { locations, menuItems, wingFlavours } from "@/components/home/data";
+import {
+  dipCards,
+  locations,
+  menuItems,
+  wingFlavours,
+} from "@/components/home/data";
 import { HeroOrderActions } from "@/components/home/hero-order-actions";
 
 type SectionIntroProps = {
@@ -114,6 +119,19 @@ function MenuCard({ name, detail }: (typeof menuItems)[number]) {
         {name}
       </p>
       <p className="mt-3 text-sm leading-6 text-brand-ink/78">{detail}</p>
+    </article>
+  );
+}
+
+function DipCard({ title, copy }: (typeof dipCards)[number]) {
+  return (
+    <article className="rounded-[1.6rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_10px_0_0_#100800]">
+      <p className="font-display text-3xl uppercase leading-none text-brand-ink">
+        {title}
+      </p>
+      <p className="mt-3 max-w-[18rem] text-sm leading-6 text-brand-ink/78">
+        {copy}
+      </p>
     </article>
   );
 }
@@ -268,6 +286,56 @@ export function HomePage() {
                 {flavour}
               </span>
             ))}
+          </div>
+        </div>
+      </HomeSection>
+
+      <HomeSection id="dips">
+        <div className="space-y-6">
+          <div className="max-w-2xl space-y-3">
+            <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-red">
+              THE DIPS
+            </p>
+            <h2 className="font-display text-4xl leading-none text-brand-ink sm:text-5xl">
+              Not just sides. The whole system.
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {dipCards.map((card) => (
+              <DipCard key={card.title} {...card} />
+            ))}
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div className="grain brand-burst relative overflow-hidden rounded-[2rem] border-2 border-brand-ink p-5 text-brand-ink shadow-[0_14px_0_0_#100800]">
+              <div className="relative flex min-h-[24rem] items-center justify-center rounded-[1.5rem] border-2 border-brand-ink/15 bg-[#fff9ef]/78 p-6">
+                <Image
+                  src="/vato-picante.png"
+                  alt="Vato Picante hot sauce bottle"
+                  width={1536}
+                  height={2048}
+                  className="h-auto w-full max-w-[13rem] object-contain drop-shadow-[0_18px_22px_rgba(16,8,0,0.24)] sm:max-w-[15rem]"
+                />
+              </div>
+            </div>
+
+            <div className="rounded-[2.2rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
+              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-red">
+                Featured dip
+              </p>
+              <h3 className="mt-3 font-display text-5xl uppercase leading-none text-brand-ink sm:text-6xl">
+                Vato Picante
+              </h3>
+              <p className="mt-4 max-w-xl text-base leading-7 text-brand-ink/82 sm:text-lg sm:leading-8">
+                A creamy habanero hot sauce built for wings, but made to go way
+                beyond them. Bold heat, citrus brightness, and a texture that hits
+                different.
+              </p>
+              <div className="mt-6 sm:max-w-[14rem]">
+                <LinkButton href="#menu" label="Buy the dips" />
+              </div>
+            </div>
           </div>
         </div>
       </HomeSection>

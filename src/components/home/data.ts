@@ -9,6 +9,11 @@ export type Location = {
   availability: string;
 };
 
+export type DipCard = {
+  title: string;
+  copy: string;
+};
+
 export const menuItems: MenuItem[] = [
   { name: "Wings", detail: "Stacks of flats and drums with zero patience for bland." },
   { name: "Fries", detail: "Seasoned, crispy, and built to drag through sauce." },
@@ -32,6 +37,25 @@ export const wingFlavours: string[] = [
   "Teriyaki Crackle",
   "Dill Pickle Ranch",
   "Atomic Nope",
+];
+
+export const dipCards: DipCard[] = [
+  {
+    title: "Signature Flavours",
+    copy: "Built to hit hard with wings",
+  },
+  {
+    title: "Bottle It",
+    copy: "Take the flavour home",
+  },
+  {
+    title: "Vato Picante",
+    copy: "Creamy habanero. Bold heat. Built to stand out.",
+  },
+  {
+    title: "Coming Soon",
+    copy: "Seasonal + limited drops",
+  },
 ];
 
 export const locations: Location[] = [
