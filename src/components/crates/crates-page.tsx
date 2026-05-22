@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/image";
 import {
   addonOptions,
   crateOptions,
@@ -304,10 +304,7 @@ export function CratesPage() {
             </div>
           </div>
 
-          <PlaceholderPanel
-            title="Crate hero shot"
-            detail="Use stacked CHKN Crates, open wing trays, fries spill, branded dips, and one absurd ranch moment."
-          />
+          <Image src="/crates-hero.webp" alt="Crates hero" width={1600} height={1280} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </PageSection>
 
@@ -400,11 +397,7 @@ export function CratesPage() {
 
       <PageSection id="bucket">
         <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-          <PlaceholderPanel
-            title="The Bucket"
-            detail="Use a totally unreasonable ranch vessel. Ten gallons. Stainless steel if possible. Nobody should mistake this for subtle."
-            tone="dark"
-          />
+          <Image src="/bucket-crates.webp" alt="Ranch bucket with dip cups" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
           <div className="rounded-[2.3rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
             <SectionIntro
               eyebrow="10 Gallon Ranch"

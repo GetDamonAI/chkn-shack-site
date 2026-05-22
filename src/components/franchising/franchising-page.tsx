@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/image";
 import {
   credibilityStatements,
   franchiseSteps,
@@ -218,10 +218,7 @@ export function FranchisingPage() {
             </div>
           </div>
 
-          <PlaceholderPanel
-            title="Brand system"
-            detail="Use a modern operator-facing visual: bold packaging, tight menu boards, digital order flow, and clean build-out details."
-          />
+          <Image src="/franchise-brand-system.webp" alt="CHKN Shack brand system" width={1536} height={1024} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </PageSection>
 

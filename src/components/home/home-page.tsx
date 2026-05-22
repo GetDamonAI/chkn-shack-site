@@ -233,11 +233,7 @@ export function HomePage() {
             <HeroOrderActions />
           </div>
 
-          <PlaceholderVisual
-            label="Hero food shot"
-            detail="Use a stacked platter, sauce sheen, fries spill, shake, and branded dip cups."
-            className="min-h-[22rem]"
-          />
+          <Image src="/hero.webp" alt="Wings platter" width={1600} height={1280} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </HomeSection>
 
@@ -311,7 +307,7 @@ export function HomePage() {
             <div className="grain brand-burst relative overflow-hidden rounded-[2rem] border-2 border-brand-ink p-5 text-brand-ink shadow-[0_14px_0_0_#100800]">
               <div className="relative flex min-h-[24rem] items-center justify-center rounded-[1.5rem] border-2 border-brand-ink/15 bg-[#fff9ef]/78 p-6">
                 <Image
-                  src="/vato-picante.png"
+                  src="/vato-picante.webp"
                   alt="Vato Picante hot sauce bottle"
                   width={1536}
                   height={2048}
@@ -374,19 +370,13 @@ export function HomePage() {
             </div>
           </div>
 
-          <PlaceholderVisual
-            label="Crate stack"
-            detail="Use branded catering boxes, wing trays, fries, and dip cups staged for a group order."
-          />
+          <Image src="/crate-stack.webp" alt="Catering boxes" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </HomeSection>
 
       <HomeSection id="bucket">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <PlaceholderVisual
-            label="The Bucket"
-            detail="Feature a ridiculous oversized ranch vessel with cups, wings, and serious commitment."
-          />
+          <Image src="/the-bucket.webp" alt="Ranch bucket" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
           <div className="rounded-[2.2rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
             <SectionIntro
               eyebrow="The Bucket"
