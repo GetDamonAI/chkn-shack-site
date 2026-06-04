@@ -60,18 +60,12 @@ export const crateOptions: CrateOption[] = [
 ];
 
 export const flavourOptions: string[] = [
-  "Shack Buffalo",
-  "Sweet Heat",
-  "Lemon Pepper",
-  "Honey BBQ",
-  "Garlic Parm",
-  "Mango Habanero",
-  "Nashville Hot",
-  "Cajun Dry Rub",
-  "Seoul Fire",
-  "Teriyaki Crackle",
-  "Dill Pickle Ranch",
-  "Atomic Nope",
+  // Heat
+  "Buffalo ★", "Honey Hot", "Jakarta Heat", "Chilean Chilli",
+  // Dry Rubs
+  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub", "Maple Bacon",
+  // Sweet & Sticky
+  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Honey Stinger",
 ];
 
 export const dipOptions: string[] = [

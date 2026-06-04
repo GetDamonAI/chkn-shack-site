@@ -1,7 +1,68 @@
-export type MenuItem = {
+export type MenuItemV2 = {
   name: string;
-  detail: string;
+  price?: string;
+  note?: string;
 };
+
+export type MenuCategory = {
+  name: string;
+  tagline: string;
+  items: MenuItemV2[];
+};
+
+export const menuCategories: MenuCategory[] = [
+  {
+    name: "Wings",
+    tagline: "Bone-in or boneless. Flats and drums.",
+    items: [
+      { name: "10pc", price: "$16" },
+      { name: "20pc", price: "$28" },
+      { name: "30pc", price: "$39" },
+    ],
+  },
+  {
+    name: "Fries & Sides",
+    tagline: "Seasoned, crispy, and built to drag through sauce.",
+    items: [
+      { name: "Cajun Seasoned", price: "$5", note: "default, plain on request" },
+      { name: "Peri Peri", price: "$8" },
+      { name: "Garlic Parm Herb", price: "$8" },
+      { name: "Yam Fries", price: "$7" },
+      { name: "Hot Honey Fries ★", price: "$8" },
+      { name: "Mac & Cheese", price: "$7" },
+      { name: "Perogies", price: "$8" },
+      { name: "Cauli Bites (veg)", price: "$8" },
+    ],
+  },
+  {
+    name: "Dips",
+    tagline: "Ranch, blue cheese, and a few bad decisions.",
+    items: [
+      { name: "Single dip", price: "$1.50" },
+      { name: "3 for", price: "$4" },
+      { name: "16oz bottle", price: "$9" },
+    ],
+  },
+  {
+    name: "Combos",
+    tagline: "One-person chaos with fries and a drink.",
+    items: [
+      { name: "Solo", price: "$22", note: "10pc + fries + drink" },
+      { name: "Anchor ★", price: "$36", note: "20pc + loaded fries + 3 dips + drink" },
+    ],
+  },
+  {
+    name: "CHKN Crates",
+    tagline: "Big box energy for teams, parties, and game night.",
+    items: [
+      { name: "50pc", price: "$75", note: "wings + fries + dips" },
+      { name: "100pc", price: "$135", note: "wings + fries + dips" },
+      { name: "200pc", price: "$245", note: "wings + fries + dips" },
+      { name: "Mac & Cheese Tray", price: "$32", note: "feeds 6–8" },
+      { name: "Perogie Tray", price: "$30", note: "feeds 6–8" },
+    ],
+  },
+];
 
 export type Location = {
   city: string;
@@ -14,29 +75,13 @@ export type DipCard = {
   copy: string;
 };
 
-export const menuItems: MenuItem[] = [
-  { name: "Wings", detail: "Stacks of flats and drums with zero patience for bland." },
-  { name: "Fries", detail: "Seasoned, crispy, and built to drag through sauce." },
-  { name: "Cauli Bites", detail: "Crunch-first, dunk-heavy, meatless menace." },
-  { name: "Dips", detail: "Ranch, blue cheese, and a few bad decisions." },
-  { name: "Shakes", detail: "Cold, thick, and suspiciously easy to finish." },
-  { name: "Combos", detail: "One-person chaos with fries and a drink in tow." },
-  { name: "CHKN Crates", detail: "Big box energy for teams, parties, and game night." },
-];
-
 export const wingFlavours: string[] = [
-  "Shack Buffalo",
-  "Sweet Heat",
-  "Lemon Pepper",
-  "Honey BBQ",
-  "Garlic Parm",
-  "Mango Habanero",
-  "Nashville Hot",
-  "Cajun Dry Rub",
-  "Seoul Fire",
-  "Teriyaki Crackle",
-  "Dill Pickle Ranch",
-  "Atomic Nope",
+  // Heat
+  "Buffalo ★", "Honey Hot", "Jakarta Heat", "Chilean Chilli",
+  // Dry Rubs
+  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub", "Maple Bacon",
+  // Sweet & Sticky
+  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Honey Stinger",
 ];
 
 export const dipCards: DipCard[] = [

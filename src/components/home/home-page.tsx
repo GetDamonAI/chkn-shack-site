@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import PartyBuilder from "@/components/party-builder";
 import {
   dipCards,
   locations,
-  menuItems,
+  menuCategories,
   wingFlavours,
 } from "@/components/home/data";
 import { HeroOrderActions } from "@/components/home/hero-order-actions";
+import { MenuAccordion } from "@/components/home/menu-accordion";
 
 type SectionIntroProps = {
   eyebrow: string;
@@ -109,17 +111,6 @@ function PlaceholderVisual({
         </div>
       </div>
     </div>
-  );
-}
-
-function MenuCard({ name, detail }: (typeof menuItems)[number]) {
-  return (
-    <article className="rounded-[1.6rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_10px_0_0_#100800]">
-      <p className="font-display text-3xl uppercase leading-none text-brand-ink">
-        {name}
-      </p>
-      <p className="mt-3 text-sm leading-6 text-brand-ink/78">{detail}</p>
-    </article>
   );
 }
 
@@ -239,16 +230,21 @@ export function HomePage() {
 
       <HomeSection id="menu">
         <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <SectionIntro
-            eyebrow="Quick menu"
-            title="Built for hungry people with no patience."
-            body="Short menu. Big payoff. Every item earns its space and plays nicely with extra sauce."
-          />
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {menuItems.map((item) => (
-              <MenuCard key={item.name} {...item} />
-            ))}
+          <div>
+            <SectionIntro
+              eyebrow="Quick menu"
+              title="Built for hungry people with no patience."
+              body="Short menu. Big payoff. Every item earns its space and plays nicely with extra sauce."
+            />
+            <div className="mt-4">
+              <PartyBuilder
+                showHero={false}
+                triggerLabel="Plan My Party"
+                triggerClassName="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-brand-ink bg-[#fff7ed] px-5 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
+              />
+            </div>
           </div>
+          <MenuAccordion categories={menuCategories} />
         </div>
       </HomeSection>
 
@@ -297,11 +293,14 @@ export function HomePage() {
             </h2>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {dipCards.map((card) => (
-              <DipCard key={card.title} {...card} />
-            ))}
-          </div>
+          {/* DIP_PURCHASING_HIDDEN — remove {false &&} to re-enable dip cards */}
+          {false && (
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {dipCards.map((card) => (
+                <DipCard key={card.title} {...card} />
+              ))}
+            </div>
+          )}
 
           <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
             <div className="grain brand-burst relative overflow-hidden rounded-[2rem] border-2 border-brand-ink p-5 text-brand-ink shadow-[0_14px_0_0_#100800]">
@@ -328,9 +327,12 @@ export function HomePage() {
                 beyond them. Bold heat, citrus brightness, and a texture that hits
                 different.
               </p>
-              <div className="mt-6 sm:max-w-[14rem]">
-                <LinkButton href="#menu" label="Buy the dips" />
-              </div>
+              {/* DIP_PURCHASING_HIDDEN — remove {false &&} to re-enable buy button */}
+              {false && (
+                <div className="mt-6 sm:max-w-[14rem]">
+                  <LinkButton href="#menu" label="Buy the dips" />
+                </div>
+              )}
             </div>
           </div>
         </div>
