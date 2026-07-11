@@ -39,7 +39,7 @@ function OrderButton({
     <a
       href={href}
       target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
       className={cn(
         "inline-flex items-center justify-center rounded-full border-2 border-brand-ink px-5 text-center font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
         compact ? "min-h-12 text-sm" : "min-h-14 text-base",
@@ -284,9 +284,9 @@ export function CratesPage() {
                 Order now
               </p>
               <div className="grid gap-3 sm:max-w-md sm:grid-cols-2">
-                <OrderButton href="https://www.ubereats.com" label="Uber Eats" />
+                <OrderButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Uber Eats" />
                 <OrderButton
-                  href="https://www.doordash.com"
+                  href="https://order.online/business/wings-chkn-shack-13029476"
                   label="DoorDash"
                   variant="secondary"
                 />
@@ -449,9 +449,9 @@ export function CratesPage() {
               theme="dark"
             />
             <div className="grid gap-3 sm:grid-cols-2">
-              <OrderButton href="https://www.ubereats.com" label="Uber Eats" />
+              <OrderButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Uber Eats" />
               <OrderButton
-                href="https://www.doordash.com"
+                href="https://order.online/business/wings-chkn-shack-13029476"
                 label="DoorDash"
                 variant="secondary"
               />
@@ -467,12 +467,12 @@ export function CratesPage() {
           </p>
           <div className="grid grid-cols-2 gap-2">
             <OrderButton
-              href="https://www.ubereats.com"
+              href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw"
               label="Uber Eats"
               compact
             />
             <OrderButton
-              href="https://www.doordash.com"
+              href="https://order.online/business/wings-chkn-shack-13029476"
               label="DoorDash"
               variant="secondary"
               compact

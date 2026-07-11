@@ -20,7 +20,7 @@ function ActionButton({
   return (
     <a
       href={href}
-      {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className={cn(
         "inline-flex min-h-14 items-center justify-center rounded-full border-2 border-brand-ink px-5 text-center text-base font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
         variant === "primary" && "bg-brand-red text-[#fff7ed] shadow-[0_8px_0_0_#100800]",
@@ -87,7 +87,7 @@ const trays = [
 ];
 
 const steps = [
-  "Order online — Uber Eats, DoorDash, or call.",
+  "Order online — Uber Eats or DoorDash.",
   "Same-day pickup or delivery for 50pc + 100pc. 200pc needs 24 hours.",
   "Custom orders? Email orders@wingschknshack.com.",
 ];
@@ -130,15 +130,13 @@ export function GroupOrdersPage() {
             Pick your dips. Show up with the box. Everybody wins.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <ActionButton href="https://www.ubereats.com" label="Order on Uber Eats" external />
+            <ActionButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Order on Uber Eats" external />
             <ActionButton
-              href="https://www.doordash.com"
+              href="https://order.online/business/wings-chkn-shack-13029476"
               label="Order on DoorDash"
               variant="secondary"
               external
             />
-            {/* TODO: replace tel:PHONE_TODO with the real store phone number */}
-            <ActionButton href="tel:PHONE_TODO" label="Call us" variant="ghost" />
             <ActionButton
               href="mailto:orders@wingschknshack.com"
               label="Email for custom orders"
@@ -236,9 +234,9 @@ export function GroupOrdersPage() {
               </h2>
             </div>
             <div className="flex flex-wrap gap-3">
-              <ActionButton href="https://www.ubereats.com" label="Uber Eats" external />
+              <ActionButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Uber Eats" external />
               <ActionButton
-                href="https://www.doordash.com"
+                href="https://order.online/business/wings-chkn-shack-13029476"
                 label="DoorDash"
                 variant="secondary"
                 external

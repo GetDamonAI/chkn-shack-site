@@ -16,7 +16,10 @@ const jsonLd = {
   hasMenu: "https://wingschknshack.com/",
   url: "https://wingschknshack.com",
   openingHours: ["Mo-Su 11:30-23:00"],
-  sameAs: ["https://www.ubereats.com", "https://www.doordash.com"],
+  sameAs: [
+    "https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw",
+    "https://order.online/business/wings-chkn-shack-13029476",
+  ],
 };
 
 export default function RootLayout({

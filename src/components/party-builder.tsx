@@ -16,9 +16,9 @@ import React, { useState, useMemo, useRef } from "react";
 // No store URLs yet → leave ORDERING_LIVE = false to ship now with no dead links.
 // When the UE/DD web store integrations go in: paste the URLs below (or import them
 // from your ordering.ts webUrls) and flip ORDERING_LIVE to true. The buttons light up.
-const ORDERING_LIVE = false;
-const UBER_EATS_URL = ""; // <-- CHKN Shack Uber Eats web store URL
-const DOORDASH_URL = ""; // <-- CHKN Shack DoorDash web store URL
+const ORDERING_LIVE = true;
+const UBER_EATS_URL = "https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw"; // CHKN Shack Uber Eats direct-order storefront
+const DOORDASH_URL = "https://order.online/business/wings-chkn-shack-13029476"; // CHKN Shack DoorDash direct-order storefront
 
 /* ---------- TYPES ---------- */
 type EventKey = "catering" | "ufc" | "gameday" | "birthday" | "casual";
@@ -353,8 +353,8 @@ export default function PartyBuilder({
 
                   {ORDERING_LIVE && UBER_EATS_URL && DOORDASH_URL ? (
                     <div className="pb-order-actions">
-                      <a className="pb-order-btn ue" href={UBER_EATS_URL} target="_blank" rel="noreferrer">Order on Uber Eats</a>
-                      <a className="pb-order-btn dd" href={DOORDASH_URL} target="_blank" rel="noreferrer">Order on DoorDash</a>
+                      <a className="pb-order-btn ue" href={UBER_EATS_URL} target="_blank" rel="noopener noreferrer">Order on Uber Eats</a>
+                      <a className="pb-order-btn dd" href={DOORDASH_URL} target="_blank" rel="noopener noreferrer">Order on DoorDash</a>
                     </div>
                   ) : (
                     <div className="pb-platforms">Order it on <span>Uber Eats</span> or <span>DoorDash</span></div>

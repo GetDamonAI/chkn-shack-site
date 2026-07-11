@@ -404,17 +404,17 @@ export function HomePage() {
           </div>
           <div className="grid shrink-0 grid-cols-2 gap-2">
             <a
-              href="https://www.ubereats.com"
+              href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow px-5 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_10px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
             >
               Uber Eats
             </a>
             <a
-              href="https://www.doordash.com"
+              href="https://order.online/business/wings-chkn-shack-13029476"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-brand-ink bg-[#fff7ed] px-5 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
             >
               DoorDash
