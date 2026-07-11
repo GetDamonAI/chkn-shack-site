@@ -9,6 +9,7 @@ import {
 import { HeroOrderActions } from "@/components/home/hero-order-actions";
 import { MenuAccordion } from "@/components/home/menu-accordion";
 import { flavourTaglineFor } from "@/components/home/taglines";
+import { crateOptions } from "@/components/crates/data";
 
 type SectionIntroProps = {
   eyebrow: string;
@@ -308,24 +309,20 @@ export function HomePage() {
               <LinkButton href="/crates" label="View Crates" />
             </div>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              <div className="rounded-[1.4rem] border-2 border-[#fff7ed] bg-brand-ink/18 p-4">
-                <p className="font-display text-2xl uppercase">Small chaos</p>
-                <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
-                  Feeds 4 to 6 with wings, fries, dips, and peace talks.
-                </p>
-              </div>
-              <div className="rounded-[1.4rem] border-2 border-[#fff7ed] bg-brand-ink/18 p-4">
-                <p className="font-display text-2xl uppercase">Medium mayhem</p>
-                <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
-                  For team lunches, playoff nights, and very optimistic hosts.
-                </p>
-              </div>
-              <div className="rounded-[1.4rem] border-2 border-[#fff7ed] bg-brand-ink/18 p-4">
-                <p className="font-display text-2xl uppercase">Full send</p>
-                <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
-                  The “nobody leaves hungry” move with extra ranch on deck.
-                </p>
-              </div>
+              {crateOptions.map((crate) => (
+                <div
+                  key={crate.name}
+                  className="rounded-[1.4rem] border-2 border-[#fff7ed] bg-brand-ink/18 p-4"
+                >
+                  <p className="font-display text-2xl uppercase">{crate.badge}</p>
+                  <p className="mt-1 text-sm font-black uppercase tracking-[0.16em] text-brand-yellow">
+                    {crate.name} · {crate.price}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
+                    {crate.wings} · {crate.feeds}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
