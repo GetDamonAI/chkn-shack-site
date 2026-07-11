@@ -8,6 +8,7 @@ import {
 } from "@/components/home/data";
 import { HeroOrderActions } from "@/components/home/hero-order-actions";
 import { MenuAccordion } from "@/components/home/menu-accordion";
+import { flavourTaglineFor } from "@/components/home/taglines";
 
 type SectionIntroProps = {
   eyebrow: string;
@@ -255,15 +256,25 @@ export function HomePage() {
             title="Every wing flavour, no mystery scroll required."
             body="Pick your lane: sticky, peppery, sweet, fiery, or a choice you immediately need ranch to justify."
           />
-          <div className="mt-6 flex flex-wrap gap-3">
-            {wingFlavours.map((flavour) => (
-              <span
-                key={flavour}
-                className="rounded-full border-2 border-brand-ink bg-brand-yellow px-4 py-3 text-sm font-black uppercase tracking-[0.16em] text-brand-ink sm:text-base"
-              >
-                {flavour}
-              </span>
-            ))}
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {wingFlavours.map((flavour) => {
+              const tagline = flavourTaglineFor(flavour);
+              return (
+                <div
+                  key={flavour}
+                  className="rounded-[1.2rem] border-2 border-brand-ink bg-brand-yellow px-4 py-3 text-brand-ink"
+                >
+                  <p className="text-sm font-black uppercase tracking-[0.16em] sm:text-base">
+                    {flavour}
+                  </p>
+                  {tagline && (
+                    <p className="mt-1 text-xs font-normal leading-5 text-brand-ink/70">
+                      {tagline}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </HomeSection>

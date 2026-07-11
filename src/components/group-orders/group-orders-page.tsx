@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CRATE_TAGLINES } from "@/components/home/taglines";
 
 function cn(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
@@ -54,21 +55,18 @@ const crates = [
     name: "CHKN Crate 50pc",
     price: "$75",
     tier: "Small chaos",
-    copy: "The group-order starter kit. 50 wings, 1 fry side, 3 dips, feeds 5-7.",
     subtitle: undefined as string | undefined,
   },
   {
     name: "CHKN Crate 100pc",
     price: "$135",
     tier: "Medium mayhem",
-    copy: "For team lunches, playoff nights, and very optimistic hosts.",
     subtitle: undefined as string | undefined,
   },
   {
     name: "CHKN Crate 200pc",
     price: "$245",
     tier: "Full send",
-    copy: "The 'nobody leaves hungry' move with extra ranch on deck.",
     subtitle: "24-hour notice required.",
   },
 ];
@@ -164,7 +162,11 @@ export function GroupOrdersPage() {
                   {crate.price}
                 </span>
               </div>
-              <p className="mt-3 text-sm leading-6 text-brand-ink/78">{crate.copy}</p>
+              {CRATE_TAGLINES[crate.name] && (
+                <p className="mt-3 text-sm leading-6 text-brand-ink/78">
+                  {CRATE_TAGLINES[crate.name]}
+                </p>
+              )}
               {crate.subtitle && (
                 <p className="mt-4 w-fit rounded-full border-2 border-brand-ink bg-brand-red px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#fff7ed]">
                   {crate.subtitle}

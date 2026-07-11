@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CRATE_TAGLINES } from "@/components/home/taglines";
 import {
   addonOptions,
   crateOptions,
@@ -190,6 +191,11 @@ function CrateCard({
         </span>
       </div>
       <p className="mt-3 text-sm leading-6 text-brand-ink/76">{vibe}</p>
+      {CRATE_TAGLINES[name] && (
+        <p className="mt-2 text-xs leading-5 text-brand-ink/60">
+          {CRATE_TAGLINES[name]}
+        </p>
+      )}
 
       <div className="mt-5 space-y-3 rounded-[1.3rem] border-2 border-brand-ink bg-brand-yellow p-4 text-sm font-black uppercase tracking-[0.14em] text-brand-ink">
         <div className="flex items-center justify-between gap-4">

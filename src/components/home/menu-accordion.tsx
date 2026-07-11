@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { MenuCategory } from "@/components/home/data";
+import { CRATE_TAGLINES, FLAVOUR_TAGLINES } from "@/components/home/taglines";
 
 const ITEM_TAGLINES: Record<string, string> = {
   "10 Piece Wings": "10 wings. One flavour. One dip. The 'I just want wings' order.",
@@ -32,21 +33,6 @@ const ITEM_TAGLINES: Record<string, string> = {
   "Sparkling Water": "Perrier or SanPellegrino. Adult behavior.",
 };
 
-const FLAVOUR_TAGLINES: Record<string, string> = {
-  "Buffalo": "The one everybody orders. Cayenne, butter, and yes — get the ranch.",
-  "Honey Hot": "Buffalo's sweeter twin. Real honey, real heat, real napkins required.",
-  "Jakarta Heat": "Southeast Asian sneak attack. Sambal, tamarind, and a slow-building 'oh.'",
-  "Chilean Chilli": "Chile knows heat. Merkén, smoked paprika, and about two minutes of 'wait, more.'",
-  "Salt and Pepper": "The purist's flex. Cracked pepper, flaky salt. That's it. That's the flavour.",
-  "Lemon Pepper": "The wing that texts back. Lemon zest, cracked pepper, absolute peace.",
-  "Texas Dry Rub": "Big flavour, small mess. Brown sugar, smoke — and yes, still get the ranch.",
-  "Honey Garlic": "The one people order twice. Sticky glaze, ranch on standby.",
-  "Louisiana Sweet": "The nice one. Sweet Louisiana glaze, mild heat, all charm.",
-  "Korean Sticky Sesame": "The wing with international flair. Sesame, gochujang, tamari, full commitment.",
-  "Maple Bourbon": "The Canadian one. Maple, bourbon char, and a wing that knows what winter is.",
-  "Honey Stinger": "Yes, it stings. Honey glaze up front, ghost pepper on the drop.",
-};
-
 const DIP_TAGLINES: Record<string, string> = {
   "Ranch": "The dip that ends debates. Absolute reliability.",
   "Wowy-ranch": "The ranch that changed things. Creamier, sharper, and the reason we sell 10-gallon buckets.",
@@ -61,12 +47,6 @@ const DIP_TAGLINES: Record<string, string> = {
   "Hot Honey": "Sweet with a punch line. Honey, chili flakes, medium heat.",
   "Maple BBQ": "The BBQ that skipped Texas and moved to Canada. Maple + smoke + sticky.",
   "Sweet Chili": "The dip that plays well with everyone. Sweet, sticky, whisper of chili.",
-};
-
-const CRATE_TAGLINES: Record<string, string> = {
-  "CHKN Crate 50pc": "The group-order starter kit. 50 wings, 1 fry side, 3 dips, feeds 5-7.",
-  "CHKN Crate 100pc": "Medium mayhem. For team lunches, playoff nights, and very optimistic hosts.",
-  "CHKN Crate 200pc": "Full send. The 'nobody leaves hungry' move with extra ranch on deck.",
 };
 
 function taglineFor(name: string): string | undefined {
