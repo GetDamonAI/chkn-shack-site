@@ -23,7 +23,7 @@ export const crateOptions: CrateOption[] = [
     wings: "24 wings",
     fries: "1 large fries",
     dips: "3 dips",
-    addons: "Add cauli bites, extra wings, or two shakes for the closer",
+    addons: "Add cauli bites, extra wings, or an extra dip tub for the closer",
     vibe: "For small office squads and snack-first hangs.",
   },
   {
@@ -44,7 +44,7 @@ export const crateOptions: CrateOption[] = [
     wings: "64 wings",
     fries: "3 large fries",
     dips: "6 dips",
-    addons: "Add cauli bites, shakes, and enough extra ranch to stop arguments",
+    addons: "Add cauli bites, sharing trays, and enough extra ranch to stop arguments",
     vibe: "Game-day volume without game-day panic.",
   },
   {
@@ -63,18 +63,25 @@ export const flavourOptions: string[] = [
   // Heat
   "Buffalo ★", "Honey Hot", "Jakarta Heat", "Chilean Chilli",
   // Dry Rubs
-  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub", "Maple Bacon",
+  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub",
   // Sweet & Sticky
-  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Honey Stinger",
+  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Maple Bourbon", "Honey Stinger",
 ];
 
 export const dipOptions: string[] = [
   "Ranch",
+  "Wowy-ranch",
   "Blue Cheese",
-  "Roasted Garlic Ranch",
-  "Spicy Shack Sauce",
+  "Garlic Aioli",
+  "Spicy Ranch",
+  "Buffalo Sauce",
+  "Spicy Aioli",
+  "Chipotle Crema",
+  "Housefire",
   "Honey Mustard",
-  "Buffalo Ranch",
+  "Hot Honey",
+  "Maple BBQ",
+  "Sweet Chili",
 ];
 
 export const sideOptions: string[] = [
@@ -82,7 +89,8 @@ export const sideOptions: string[] = [
   "Loaded fries",
   "Cauli bites",
   "Extra dips",
-  "Shakes",
+  "Mac and Cheese Tray",
+  "Perogie Tray",
 ];
 
 export const addonOptions: string[] = [

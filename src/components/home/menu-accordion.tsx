@@ -3,6 +3,81 @@
 import { useState } from "react";
 import type { MenuCategory } from "@/components/home/data";
 
+const ITEM_TAGLINES: Record<string, string> = {
+  "10 Piece Wings": "10 wings. One flavour. One dip. The 'I just want wings' order.",
+  "20 Piece Wings": "The size that wins. 20 wings, one flavour (or two for +$1.50), 3 dips, real weeknight energy.",
+  "30 Piece Wings": "The 30. Mix 2 flavours, 4 dips, feed two adults or one very committed one.",
+  "Solo Combo": "The 'just feed me' order. 10 wings, fries, drink, no need for a table.",
+  "Anchor Combo": "For the crowd of one who came prepared. 20 wings + loaded fries + 3 dips + drink.",
+  "Shack Cut Fries": "The base fry. Thick-cut russet, twice-fried, does its job.",
+  "Bayou Fries": "The fry that took a trip to Louisiana. Cajun-dust, warm, opinionated.",
+  "Peri Peri Fries": "Portuguese heat, Vancouver commute. Peri peri dust, smoky, mid-burn.",
+  "Garlic Parm Herb Fries": "The signature loaded. Garlic butter, parm, fresh parsley — the fries other loaded fries are jealous of.",
+  "Hot Honey Fries": "The fry with the punch line. Hot honey, chili flakes, salt, and the same personality as the wing.",
+  "Yam Fries (with Honey Mustard)": "The fry that thought ahead. Yam + Honey Mustard cup, no extra order needed.",
+  "Dirty Curly Fries": "New. Curly-cut, Cajun-dust, bacon crumble, chipotle crema. Bring napkins.",
+  "Shack Fries": "The fries that ate the menu. Pulled CHKN, Wowy-ranch, Hot Honey, scallion, absolute chaos.",
+  "Mac and Cheese (Side)": "Personal-sized comfort. Sharp cheddar, parm, breadcrumb. Add toppings if you insist.",
+  "Perogies (6pc Side)": "Baba would approve. Six pierogies, pan-finished, absolutely correct.",
+  "Cauli Bites": "All the flavour, none of the bird.",
+  "Mac and Cheese Tray": "The one that ends the argument about sides. Cheddar, parm, breadcrumb top, feeds 4-6.",
+  "Perogie Tray": "Full pierogie commitment. Butter-pan-finished, sour cream + chili crisp on standby, feeds 4-6.",
+  "Single Dip": "Pick any of our 13.",
+  "3 Dips (mix or match)": "The right ratio for any 10pc+ order.",
+  "Dip Flight — 4 mini cups": "Discovery mode.",
+  "16oz Dip Tub": "Take it home or feed the table.",
+  "Fountain Pop": "Coke, Diet, Sprite, Ginger Ale, or Root Beer. Correctly cold.",
+  "Iced Tea": "Sweet or unsweet. Not making that choice for you.",
+  "Bottled Water": "Water. 500mL. That's it. That's the item.",
+  "Sparkling Water": "Perrier or SanPellegrino. Adult behavior.",
+};
+
+const FLAVOUR_TAGLINES: Record<string, string> = {
+  "Buffalo": "The one everybody orders. Cayenne, butter, and yes — get the ranch.",
+  "Honey Hot": "Buffalo's sweeter twin. Real honey, real heat, real napkins required.",
+  "Jakarta Heat": "Southeast Asian sneak attack. Sambal, tamarind, and a slow-building 'oh.'",
+  "Chilean Chilli": "Chile knows heat. Merkén, smoked paprika, and about two minutes of 'wait, more.'",
+  "Salt and Pepper": "The purist's flex. Cracked pepper, flaky salt. That's it. That's the flavour.",
+  "Lemon Pepper": "The wing that texts back. Lemon zest, cracked pepper, absolute peace.",
+  "Texas Dry Rub": "Big flavour, small mess. Brown sugar, smoke — and yes, still get the ranch.",
+  "Honey Garlic": "The one people order twice. Sticky glaze, ranch on standby.",
+  "Louisiana Sweet": "The nice one. Sweet Louisiana glaze, mild heat, all charm.",
+  "Korean Sticky Sesame": "The wing with international flair. Sesame, gochujang, tamari, full commitment.",
+  "Maple Bourbon": "The Canadian one. Maple, bourbon char, and a wing that knows what winter is.",
+  "Honey Stinger": "Yes, it stings. Honey glaze up front, ghost pepper on the drop.",
+};
+
+const DIP_TAGLINES: Record<string, string> = {
+  "Ranch": "The dip that ends debates. Absolute reliability.",
+  "Wowy-ranch": "The ranch that changed things. Creamier, sharper, and the reason we sell 10-gallon buckets.",
+  "Blue Cheese": "Not for everyone. That's kind of the point.",
+  "Garlic Aioli": "For people tired of being polite with garlic. Roasted, sharp, present.",
+  "Spicy Ranch": "The ranch that woke up angry. Buffalo edge, still creamy.",
+  "Buffalo Sauce": "For dipping fries, wings, courage. Buffalo in cup form.",
+  "Spicy Aioli": "The dip that ends up on everything. Wings, fries, sandwich, life.",
+  "Chipotle Crema": "Smoke, cooled. Chipotle in crema form, calm-heat energy.",
+  "Housefire": "The signature burn. House chili, smoke, and the dip named after itself.",
+  "Honey Mustard": "The dip that already made a friend today. Honey + Dijon + zero drama.",
+  "Hot Honey": "Sweet with a punch line. Honey, chili flakes, medium heat.",
+  "Maple BBQ": "The BBQ that skipped Texas and moved to Canada. Maple + smoke + sticky.",
+  "Sweet Chili": "The dip that plays well with everyone. Sweet, sticky, whisper of chili.",
+};
+
+const CRATE_TAGLINES: Record<string, string> = {
+  "CHKN Crate 50pc": "The group-order starter kit. 50 wings, 1 fry side, 3 dips, feeds 5-7.",
+  "CHKN Crate 100pc": "Medium mayhem. For team lunches, playoff nights, and very optimistic hosts.",
+  "CHKN Crate 200pc": "Full send. The 'nobody leaves hungry' move with extra ranch on deck.",
+};
+
+function taglineFor(name: string): string | undefined {
+  return (
+    ITEM_TAGLINES[name] ??
+    FLAVOUR_TAGLINES[name] ??
+    DIP_TAGLINES[name] ??
+    CRATE_TAGLINES[name]
+  );
+}
+
 export function MenuAccordion({ categories }: { categories: MenuCategory[] }) {
   const [open, setOpen] = useState<string | null>(categories[0]?.name ?? null);
 
@@ -38,26 +113,33 @@ export function MenuAccordion({ categories }: { categories: MenuCategory[] }) {
               <div className="border-t-2 border-brand-ink/12 px-5 pb-4 pt-3">
                 {cat.items.length > 0 ? (
                   <div className="space-y-2.5">
-                    {cat.items.map((item) => (
-                      <div
-                        key={item.name}
-                        className="flex items-baseline justify-between gap-3"
-                      >
-                        <span className="text-sm font-semibold text-brand-ink">
-                          {item.name}
-                          {item.note && (
-                            <span className="ml-1.5 text-xs font-normal text-brand-ink/58">
-                              — {item.note}
+                    {cat.items.map((item) => {
+                      const tagline = taglineFor(item.name);
+                      return (
+                        <div key={item.name}>
+                          <div className="flex items-baseline justify-between gap-3">
+                            <span className="text-sm font-semibold text-brand-ink">
+                              {item.name}
+                              {item.note && (
+                                <span className="ml-1.5 text-xs font-normal text-brand-ink/58">
+                                  — {item.note}
+                                </span>
+                              )}
                             </span>
+                            {item.price && (
+                              <span className="shrink-0 text-sm font-black text-brand-ink">
+                                {item.price}
+                              </span>
+                            )}
+                          </div>
+                          {tagline && (
+                            <p className="mt-0.5 text-xs leading-5 text-brand-ink/55">
+                              {tagline}
+                            </p>
                           )}
-                        </span>
-                        {item.price && (
-                          <span className="shrink-0 text-sm font-black text-brand-ink">
-                            {item.price}
-                          </span>
-                        )}
-                      </div>
-                    ))}
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : (
                   <p className="text-sm text-brand-ink/58">Coming soon.</p>

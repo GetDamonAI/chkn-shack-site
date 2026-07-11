@@ -15,51 +15,66 @@ export const menuCategories: MenuCategory[] = [
     name: "Wings",
     tagline: "Bone-in or boneless. Flats and drums.",
     items: [
-      { name: "10pc", price: "$16" },
-      { name: "20pc", price: "$28" },
-      { name: "30pc", price: "$39" },
-    ],
-  },
-  {
-    name: "Fries & Sides",
-    tagline: "Seasoned, crispy, and built to drag through sauce.",
-    items: [
-      { name: "Cajun Seasoned", price: "$5", note: "default, plain on request" },
-      { name: "Peri Peri", price: "$8" },
-      { name: "Garlic Parm Herb", price: "$8" },
-      { name: "Yam Fries", price: "$7" },
-      { name: "Hot Honey Fries ★", price: "$8" },
-      { name: "Mac & Cheese", price: "$7" },
-      { name: "Perogies", price: "$8" },
-      { name: "Cauli Bites (veg)", price: "$8" },
-    ],
-  },
-  {
-    name: "Dips",
-    tagline: "Ranch, blue cheese, and a few bad decisions.",
-    items: [
-      { name: "Single dip", price: "$1.50" },
-      { name: "3 for", price: "$4" },
-      { name: "16oz bottle", price: "$9" },
+      { name: "10 Piece Wings", price: "$16" },
+      {
+        name: "20 Piece Wings",
+        price: "$28",
+        note: "our anchor · split 2 flavours for +$1.50",
+      },
+      { name: "30 Piece Wings", price: "$39" },
     ],
   },
   {
     name: "Combos",
     tagline: "One-person chaos with fries and a drink.",
     items: [
-      { name: "Solo", price: "$22", note: "10pc + fries + drink" },
-      { name: "Anchor ★", price: "$36", note: "20pc + loaded fries + 3 dips + drink" },
+      { name: "Solo Combo", price: "$22" },
+      { name: "Anchor Combo", price: "$36", note: "signature" },
     ],
   },
   {
-    name: "CHKN Crates",
-    tagline: "Big box energy for teams, parties, and game night.",
+    name: "Fries & Sides",
+    tagline: "Seasoned, crispy, and built to drag through sauce.",
     items: [
-      { name: "50pc", price: "$75", note: "wings + fries + dips" },
-      { name: "100pc", price: "$135", note: "wings + fries + dips" },
-      { name: "200pc", price: "$245", note: "wings + fries + dips" },
-      { name: "Mac & Cheese Tray", price: "$32", note: "feeds 6–8" },
-      { name: "Perogie Tray", price: "$30", note: "feeds 6–8" },
+      { name: "Shack Cut Fries", price: "$5", note: "default, plain on request" },
+      { name: "Bayou Fries", price: "$6" },
+      { name: "Peri Peri Fries", price: "$7", note: "NEW" },
+      { name: "Garlic Parm Herb Fries", price: "$8", note: "signature loaded" },
+      { name: "Hot Honey Fries", price: "$8", note: "signature loaded" },
+      { name: "Yam Fries (with Honey Mustard)", price: "$7" },
+      { name: "Dirty Curly Fries", price: "$8", note: "NEW" },
+      { name: "Shack Fries", price: "$9", note: "NEW · signature loaded" },
+      { name: "Mac and Cheese (Side)", price: "$8", note: "NEW" },
+      { name: "Perogies (6pc Side)", price: "$9", note: "NEW" },
+      { name: "Cauli Bites", price: "$8", note: "vegetarian" },
+    ],
+  },
+  {
+    name: "Sharing Trays",
+    tagline: "Big-batch comfort food built for the whole table.",
+    items: [
+      { name: "Mac and Cheese Tray", price: "$32", note: "feeds 4-6 · add toppings" },
+      { name: "Perogie Tray", price: "$30", note: "feeds 4-6 · add toppings" },
+    ],
+  },
+  {
+    name: "Dips",
+    tagline: "Ranch, blue cheese, and a few bad decisions.",
+    items: [
+      { name: "Single Dip", price: "$1.50" },
+      { name: "3 Dips (mix or match)", price: "$4.00" },
+      { name: "Dip Flight — 4 mini cups", price: "$5.00" },
+      { name: "16oz Dip Tub", price: "$9.00" },
+    ],
+  },
+  {
+    name: "Drinks",
+    tagline: "Cold, fizzy, and built to cut the heat.",
+    items: [
+      { name: "Fountain Pop", price: "$3.49" },
+      { name: "Iced Tea", price: "$3.49", note: "sweet or unsweet" },
+      { name: "Bottled Water", price: "$2.49" },
+      { name: "Sparkling Water", price: "$3.99", note: "Perrier or SanPellegrino" },
     ],
   },
 ];
@@ -70,37 +85,13 @@ export type Location = {
   availability: string;
 };
 
-export type DipCard = {
-  title: string;
-  copy: string;
-};
-
 export const wingFlavours: string[] = [
   // Heat
   "Buffalo ★", "Honey Hot", "Jakarta Heat", "Chilean Chilli",
   // Dry Rubs
-  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub", "Maple Bacon",
+  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub",
   // Sweet & Sticky
-  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Honey Stinger",
-];
-
-export const dipCards: DipCard[] = [
-  {
-    title: "Signature Flavours",
-    copy: "Built to hit hard with wings",
-  },
-  {
-    title: "Bottle It",
-    copy: "Take the flavour home",
-  },
-  {
-    title: "Vato Picante",
-    copy: "Creamy habanero. Bold heat. Built to stand out.",
-  },
-  {
-    title: "Coming Soon",
-    copy: "Seasonal + limited drops",
-  },
+  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Maple Bourbon", "Honey Stinger",
 ];
 
 export const locations: Location[] = [

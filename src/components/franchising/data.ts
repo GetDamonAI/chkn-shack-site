@@ -19,7 +19,7 @@ export const whyChknShack = [
   {
     title: "Focused menu",
     detail:
-      "Wings, fries, shakes, dips, crates. Tight menu. Cleaner execution. Easier repeatability.",
+      "Wings, fries, dips, crates. Tight menu. Cleaner execution. Easier repeatability.",
   },
   {
     title: "Scalable growth potential",

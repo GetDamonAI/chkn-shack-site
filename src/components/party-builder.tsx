@@ -136,7 +136,7 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
 
 function pickFlavors(spice: number, people: number): string[] {
   const ladders: string[][] = [
-    ["Honey Garlic", "Salt & Pepper", "Buffalo", "Lemon Pepper", "Maple Bacon", "Korean Sticky Sesame"],
+    ["Honey Garlic", "Salt & Pepper", "Buffalo", "Lemon Pepper", "Maple Bourbon", "Korean Sticky Sesame"],
     ["Buffalo", "Honey Garlic", "Lemon Pepper", "Honey Hot", "Korean Sticky Sesame", "Louisiana Sweet"],
     ["Buffalo", "Honey Hot", "Honey Garlic", "Lemon Pepper", "Texas Dry Rub", "Louisiana Sweet"],
     ["Honey Hot", "Jakarta Heat", "Buffalo", "Chilean Chilli", "Honey Stinger", "Texas Dry Rub"],
