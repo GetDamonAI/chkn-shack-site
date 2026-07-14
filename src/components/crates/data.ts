@@ -90,7 +90,7 @@ export const addonOptions: string[] = [
   "Extra flavour split",
   "Extra fries",
   "Dessert add-on",
-  "The Bucket",
+  // TODO: temporarily removed — 10-gal ranch bucket. Restore by re-adding: "The Bucket",
 ];
 
 export const occasions: Occasion[] = [

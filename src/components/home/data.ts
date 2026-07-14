@@ -58,6 +58,26 @@ export const menuCategories: MenuCategory[] = [
     ],
   },
   {
+    // Parallel render path in the accordion. crateOptions in
+    // src/components/crates/data.ts stays the source of truth for /crates +
+    // /group-orders. Taglines resolve from shared CRATE_TAGLINES via taglineFor.
+    name: "Crates",
+    tagline: "Group orders that actually feed the room.",
+    items: [
+      { name: "CHKN Crate 50pc", price: "$75", note: "Small chaos — feeds 5-7" },
+      {
+        name: "CHKN Crate 100pc",
+        price: "$135",
+        note: "Medium mayhem — feeds 10-14 — signature",
+      },
+      {
+        name: "CHKN Crate 200pc",
+        price: "$245",
+        note: "Full send — feeds 18-25 — 24h notice",
+      },
+    ],
+  },
+  {
     name: "Dips",
     tagline: "Ranch, blue cheese, and a few bad decisions.",
     items: [

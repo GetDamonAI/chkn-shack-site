@@ -131,6 +131,9 @@ function HomeSection({
   );
 }
 
+// TODO: temporarily hidden — 10-gal ranch bucket. Restore by flipping BUCKET_HIDDEN to false.
+const BUCKET_HIDDEN = true;
+
 export function HomePage() {
   return (
     <main className="bg-background pb-28 text-foreground md:pb-12">
@@ -330,22 +333,24 @@ export function HomePage() {
         </div>
       </HomeSection>
 
-      <HomeSection id="bucket">
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <Image src="/the-bucket.webp" alt="Ranch bucket" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
-          <div className="rounded-[2.2rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
-            <SectionIntro
-              eyebrow="The Bucket"
-              title="Yes, that is a 10 gallon ranch bucket."
-              body="Some brands talk about signature items. We hand you a ranch landmark. The Bucket is excessive, hilarious, and weirdly practical when the whole crew wants sauce like they mean it."
-            />
-            <p className="mt-5 text-lg font-semibold leading-8 text-brand-ink/80">
-              Perfect for parties, tournaments, office takeovers, or anyone who
-              thinks a normal ramekin is an insult.
-            </p>
+      {!BUCKET_HIDDEN && (
+        <HomeSection id="bucket">
+          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <Image src="/the-bucket.webp" alt="Ranch bucket" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+            <div className="rounded-[2.2rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
+              <SectionIntro
+                eyebrow="The Bucket"
+                title="Yes, that is a 10 gallon ranch bucket."
+                body="Some brands talk about signature items. We hand you a ranch landmark. The Bucket is excessive, hilarious, and weirdly practical when the whole crew wants sauce like they mean it."
+              />
+              <p className="mt-5 text-lg font-semibold leading-8 text-brand-ink/80">
+                Perfect for parties, tournaments, office takeovers, or anyone who
+                thinks a normal ramekin is an insult.
+              </p>
+            </div>
           </div>
-        </div>
-      </HomeSection>
+        </HomeSection>
+      )}
 
       <HomeSection id="locations">
         <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">

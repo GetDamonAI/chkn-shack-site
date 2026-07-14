@@ -29,7 +29,7 @@ export const CRATE_TAGLINES: Record<string, string> = {
 // Insertion order determines render order in the Dips-category chip grid.
 export const DIP_TAGLINES: Record<string, string> = {
   "Ranch": "The dip that ends debates. Absolute reliability.",
-  "Wowy-ranch": "The ranch that changed things. Creamier, sharper, and the reason we sell 10-gallon buckets.",
+  "Wowy-ranch": "The ranch that changed things. Creamier, sharper, unforgettable.",
   "Blue Cheese": "Not for everyone. That's kind of the point.",
   "Garlic Aioli": "For people tired of being polite with garlic. Roasted, sharp, present.",
   "Spicy Ranch": "The ranch that woke up angry. Buffalo edge, still creamy.",
