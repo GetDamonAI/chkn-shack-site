@@ -1,7 +1,9 @@
 // Shared brand-voice taglines surfaced across multiple render surfaces.
 // FLAVOUR_TAGLINES -> homepage flavour chips + menu accordion lookup.
 // CRATE_TAGLINES   -> /crates + /group-orders crate cards + menu accordion lookup.
-// ITEM_TAGLINES + DIP_TAGLINES stay in menu-accordion.tsx (only consumed there).
+// DIP_TAGLINES     -> Dips-category chip grid + menu accordion lookup.
+// SIGNATURE_DIPS   -> flags which dips get the "signature" pill in the grid.
+// ITEM_TAGLINES stays in menu-accordion.tsx (only consumed there).
 
 export const FLAVOUR_TAGLINES: Record<string, string> = {
   "Buffalo": "The one everybody orders. Cayenne, butter, and yes — get the ranch.",
@@ -23,6 +25,30 @@ export const CRATE_TAGLINES: Record<string, string> = {
   "CHKN Crate 100pc": "Medium mayhem. For team lunches, playoff nights, and very optimistic hosts.",
   "CHKN Crate 200pc": "Full send. The 'nobody leaves hungry' move with extra ranch on deck.",
 };
+
+// Insertion order determines render order in the Dips-category chip grid.
+export const DIP_TAGLINES: Record<string, string> = {
+  "Ranch": "The dip that ends debates. Absolute reliability.",
+  "Wowy-ranch": "The ranch that changed things. Creamier, sharper, and the reason we sell 10-gallon buckets.",
+  "Blue Cheese": "Not for everyone. That's kind of the point.",
+  "Garlic Aioli": "For people tired of being polite with garlic. Roasted, sharp, present.",
+  "Spicy Ranch": "The ranch that woke up angry. Buffalo edge, still creamy.",
+  "Buffalo Sauce": "For dipping fries, wings, courage. Buffalo in cup form.",
+  "Spicy Aioli": "The dip that ends up on everything. Wings, fries, sandwich, life.",
+  "Chipotle Crema": "Smoke, cooled. Chipotle in crema form, calm-heat energy.",
+  "Housefire": "The signature burn. House chili, smoke, and the dip named after itself.",
+  "Honey Mustard": "The dip that already made a friend today. Honey + Dijon + zero drama.",
+  "Hot Honey": "Sweet with a punch line. Honey, chili flakes, medium heat.",
+  "Maple BBQ": "The BBQ that skipped Texas and moved to Canada. Maple + smoke + sticky.",
+  "Sweet Chili": "The dip that plays well with everyone. Sweet, sticky, whisper of chili.",
+};
+
+export const SIGNATURE_DIPS = new Set<string>([
+  "Ranch",
+  "Wowy-ranch",
+  "Housefire",
+  "Hot Honey",
+]);
 
 // Normalise a wing flavour label ("Buffalo ★", "Salt & Pepper ★") to a
 // FLAVOUR_TAGLINES key ("Buffalo", "Salt and Pepper").

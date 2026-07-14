@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import type { MenuCategory } from "@/components/home/data";
-import { CRATE_TAGLINES, FLAVOUR_TAGLINES } from "@/components/home/taglines";
+import {
+  CRATE_TAGLINES,
+  DIP_TAGLINES,
+  FLAVOUR_TAGLINES,
+  SIGNATURE_DIPS,
+} from "@/components/home/taglines";
 
 const ITEM_TAGLINES: Record<string, string> = {
   "10 Piece Wings": "10 wings. One flavour. One dip. The 'I just want wings' order.",
@@ -31,22 +36,6 @@ const ITEM_TAGLINES: Record<string, string> = {
   "Iced Tea": "Sweet or unsweet. Not making that choice for you.",
   "Bottled Water": "Water. 500mL. That's it. That's the item.",
   "Sparkling Water": "Perrier or SanPellegrino. Adult behavior.",
-};
-
-const DIP_TAGLINES: Record<string, string> = {
-  "Ranch": "The dip that ends debates. Absolute reliability.",
-  "Wowy-ranch": "The ranch that changed things. Creamier, sharper, and the reason we sell 10-gallon buckets.",
-  "Blue Cheese": "Not for everyone. That's kind of the point.",
-  "Garlic Aioli": "For people tired of being polite with garlic. Roasted, sharp, present.",
-  "Spicy Ranch": "The ranch that woke up angry. Buffalo edge, still creamy.",
-  "Buffalo Sauce": "For dipping fries, wings, courage. Buffalo in cup form.",
-  "Spicy Aioli": "The dip that ends up on everything. Wings, fries, sandwich, life.",
-  "Chipotle Crema": "Smoke, cooled. Chipotle in crema form, calm-heat energy.",
-  "Housefire": "The signature burn. House chili, smoke, and the dip named after itself.",
-  "Honey Mustard": "The dip that already made a friend today. Honey + Dijon + zero drama.",
-  "Hot Honey": "Sweet with a punch line. Honey, chili flakes, medium heat.",
-  "Maple BBQ": "The BBQ that skipped Texas and moved to Canada. Maple + smoke + sticky.",
-  "Sweet Chili": "The dip that plays well with everyone. Sweet, sticky, whisper of chili.",
 };
 
 function taglineFor(name: string): string | undefined {
@@ -123,6 +112,42 @@ export function MenuAccordion({ categories }: { categories: MenuCategory[] }) {
                   </div>
                 ) : (
                   <p className="text-sm text-brand-ink/58">Coming soon.</p>
+                )}
+                {cat.name === "Dips" && (
+                  <div className="mt-4 border-t-2 border-brand-ink/12 pt-3">
+                    <p className="text-sm font-black uppercase tracking-wider text-brand-ink/55">
+                      Pick from all 13
+                    </p>
+                    <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                      {Object.entries(DIP_TAGLINES).map(([name, tagline]) => {
+                        const isSignature = SIGNATURE_DIPS.has(name);
+                        return (
+                          <div
+                            key={name}
+                            className="relative rounded-[1.2rem] border-2 border-brand-ink bg-brand-yellow px-4 py-3 text-brand-ink transition-transform duration-150 hover:-translate-y-0.5"
+                          >
+                            {isSignature && (
+                              <span className="absolute right-3 top-3 rounded-full border-2 border-brand-ink bg-brand-ink px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#fff7ed]">
+                                Signature
+                              </span>
+                            )}
+                            <p
+                              className={
+                                isSignature
+                                  ? "pr-20 text-sm font-semibold uppercase tracking-[0.12em] sm:text-base"
+                                  : "text-sm font-semibold uppercase tracking-[0.12em] sm:text-base"
+                              }
+                            >
+                              {name}
+                            </p>
+                            <p className="mt-1 text-xs font-normal leading-5 text-brand-ink/70">
+                              {tagline}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 )}
               </div>
             )}
