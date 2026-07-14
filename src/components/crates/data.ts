@@ -17,45 +17,37 @@ export type Occasion = {
 
 export const crateOptions: CrateOption[] = [
   {
-    name: "Small Crate",
-    price: "from $39",
-    feeds: "Feeds 3-4",
-    wings: "24 wings",
-    fries: "1 large fries",
-    dips: "3 dips",
-    addons: "Add cauli bites, extra wings, or two shakes for the closer",
-    vibe: "For small office squads and snack-first hangs.",
-  },
-  {
-    name: "Classic Crate",
-    price: "from $59",
-    badge: "Most Ordered",
+    name: "CHKN Crate 50pc",
+    price: "$75",
+    badge: "Small chaos",
     feeds: "Feeds 5-7",
-    wings: "40 wings",
-    fries: "2 large fries",
-    dips: "4 dips",
-    addons: "Add more fries, extra flavour split, or dessert backup",
-    vibe: "The reliable move for lunch drops and living-room takeovers.",
+    wings: "50 · up to 2 flavours",
+    fries: "1 large fry side",
+    dips: "3 dips",
+    addons: "Add cauli bites, extra wings, or an extra dip tub for the closer",
+    vibe: "The one you order when the group chat finally commits to a plan.",
   },
   {
-    name: "Mega Crate",
-    price: "from $89",
-    feeds: "Feeds 8-12",
-    wings: "64 wings",
-    fries: "3 large fries",
-    dips: "6 dips",
-    addons: "Add cauli bites, shakes, and enough extra ranch to stop arguments",
-    vibe: "Game-day volume without game-day panic.",
+    name: "CHKN Crate 100pc",
+    price: "$135",
+    badge: "Medium mayhem",
+    feeds: "Feeds 10-14",
+    wings: "100 · up to 2 flavours",
+    fries: "2 large fry sides",
+    dips: "5 dips",
+    addons: "Add sharing trays, an extra flavour split, or more dips",
+    vibe: "Enough wings that nobody does the sad math on who ate what.",
   },
   {
-    name: "Party Crate",
-    price: "from $129",
-    feeds: "Feeds 15+",
-    wings: "96 wings",
-    fries: "5 large fries",
-    dips: "10 dips",
-    addons: "Add dessert, extra sides, or go fully unhinged with The Bucket",
-    vibe: "For birthdays, office raids, and people who refuse to run out early.",
+    name: "CHKN Crate 200pc",
+    price: "$245",
+    badge: "Full send",
+    feeds: "Feeds 18-25",
+    wings: "200 · up to 2 flavours",
+    fries: "4 large fry sides",
+    dips: "8 dips",
+    addons: "Add sharing trays, extra sides, or go fully unhinged with The Bucket",
+    vibe: "When the invite list got out of hand and you leaned all the way in. Heads up: 24-hour advance notice required.",
   },
 ];
 
@@ -63,18 +55,25 @@ export const flavourOptions: string[] = [
   // Heat
   "Buffalo ★", "Honey Hot", "Jakarta Heat", "Chilean Chilli",
   // Dry Rubs
-  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub", "Maple Bacon",
+  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub",
   // Sweet & Sticky
-  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Honey Stinger",
+  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Maple Bourbon", "Honey Stinger",
 ];
 
 export const dipOptions: string[] = [
   "Ranch",
+  "Wowy-ranch",
   "Blue Cheese",
-  "Roasted Garlic Ranch",
-  "Spicy Shack Sauce",
+  "Garlic Aioli",
+  "Spicy Ranch",
+  "Buffalo Sauce",
+  "Spicy Aioli",
+  "Chipotle Crema",
+  "Housefire",
   "Honey Mustard",
-  "Buffalo Ranch",
+  "Hot Honey",
+  "Maple BBQ",
+  "Sweet Chili",
 ];
 
 export const sideOptions: string[] = [
@@ -82,7 +81,8 @@ export const sideOptions: string[] = [
   "Loaded fries",
   "Cauli bites",
   "Extra dips",
-  "Shakes",
+  "Mac and Cheese Tray",
+  "Perogie Tray",
 ];
 
 export const addonOptions: string[] = [
@@ -90,7 +90,7 @@ export const addonOptions: string[] = [
   "Extra flavour split",
   "Extra fries",
   "Dessert add-on",
-  "The Bucket",
+  // TODO: temporarily removed — 10-gal ranch bucket. Restore by re-adding: "The Bucket",
 ];
 
 export const occasions: Occasion[] = [

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CRATE_TAGLINES } from "@/components/home/taglines";
 import {
   addonOptions,
   crateOptions,
@@ -39,7 +40,7 @@ function OrderButton({
     <a
       href={href}
       target="_blank"
-      rel="noreferrer"
+      rel="noopener noreferrer"
       className={cn(
         "inline-flex items-center justify-center rounded-full border-2 border-brand-ink px-5 text-center font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
         compact ? "min-h-12 text-sm" : "min-h-14 text-base",
@@ -190,6 +191,11 @@ function CrateCard({
         </span>
       </div>
       <p className="mt-3 text-sm leading-6 text-brand-ink/76">{vibe}</p>
+      {CRATE_TAGLINES[name] && (
+        <p className="mt-2 text-xs leading-5 text-brand-ink/60">
+          {CRATE_TAGLINES[name]}
+        </p>
+      )}
 
       <div className="mt-5 space-y-3 rounded-[1.3rem] border-2 border-brand-ink bg-brand-yellow p-4 text-sm font-black uppercase tracking-[0.14em] text-brand-ink">
         <div className="flex items-center justify-between gap-4">
@@ -242,6 +248,9 @@ function PillList({
   );
 }
 
+// TODO: temporarily hidden — 10-gal ranch bucket. Restore by flipping BUCKET_HIDDEN to false.
+const BUCKET_HIDDEN = true;
+
 export function CratesPage() {
   return (
     <main className="bg-background pb-28 text-foreground md:pb-12">
@@ -284,9 +293,9 @@ export function CratesPage() {
                 Order now
               </p>
               <div className="grid gap-3 sm:max-w-md sm:grid-cols-2">
-                <OrderButton href="https://www.ubereats.com" label="Uber Eats" />
+                <OrderButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Uber Eats" />
                 <OrderButton
-                  href="https://www.doordash.com"
+                  href="https://order.online/business/wings-chkn-shack-13029476"
                   label="DoorDash"
                   variant="secondary"
                 />
@@ -396,22 +405,24 @@ export function CratesPage() {
         </div>
       </PageSection>
 
-      <PageSection id="bucket">
-        <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-          <Image src="/bucket-crates.webp" alt="Ranch bucket with dip cups" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
-          <div className="rounded-[2.3rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
-            <SectionIntro
-              eyebrow="10 Gallon Ranch"
-              title="The Bucket is not a joke. It is a warning."
-              body="Ten gallons of ranch for the people who look at a normal dip cup and feel personally insulted. Add it to the biggest orders when restraint has already left the building."
-            />
-            <p className="mt-5 text-lg font-semibold leading-8 text-brand-ink/80">
-              It is excessive. It is ridiculous. It is also exactly the kind of move
-              that gets remembered after the wings are gone.
-            </p>
+      {!BUCKET_HIDDEN && (
+        <PageSection id="bucket">
+          <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+            <Image src="/bucket-crates.webp" alt="Ranch bucket with dip cups" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+            <div className="rounded-[2.3rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
+              <SectionIntro
+                eyebrow="10 Gallon Ranch"
+                title="The Bucket is not a joke. It is a warning."
+                body="Ten gallons of ranch for the people who look at a normal dip cup and feel personally insulted. Add it to the biggest orders when restraint has already left the building."
+              />
+              <p className="mt-5 text-lg font-semibold leading-8 text-brand-ink/80">
+                It is excessive. It is ridiculous. It is also exactly the kind of move
+                that gets remembered after the wings are gone.
+              </p>
+            </div>
           </div>
-        </div>
-      </PageSection>
+        </PageSection>
+      )}
 
       <PageSection id="how-it-works">
         <div className="rounded-[2.3rem] border-2 border-brand-ink bg-brand-ink p-5 text-[#fff7ed] shadow-[0_14px_0_0_#ffd54a] sm:p-7">
@@ -449,9 +460,9 @@ export function CratesPage() {
               theme="dark"
             />
             <div className="grid gap-3 sm:grid-cols-2">
-              <OrderButton href="https://www.ubereats.com" label="Uber Eats" />
+              <OrderButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Uber Eats" />
               <OrderButton
-                href="https://www.doordash.com"
+                href="https://order.online/business/wings-chkn-shack-13029476"
                 label="DoorDash"
                 variant="secondary"
               />
@@ -467,12 +478,12 @@ export function CratesPage() {
           </p>
           <div className="grid grid-cols-2 gap-2">
             <OrderButton
-              href="https://www.ubereats.com"
+              href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw"
               label="Uber Eats"
               compact
             />
             <OrderButton
-              href="https://www.doordash.com"
+              href="https://order.online/business/wings-chkn-shack-13029476"
               label="DoorDash"
               variant="secondary"
               compact

@@ -2,13 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import PartyBuilder from "@/components/party-builder";
 import {
-  dipCards,
   locations,
   menuCategories,
   wingFlavours,
 } from "@/components/home/data";
 import { HeroOrderActions } from "@/components/home/hero-order-actions";
 import { MenuAccordion } from "@/components/home/menu-accordion";
+import { flavourTaglineFor } from "@/components/home/taglines";
+import { crateOptions } from "@/components/crates/data";
 
 type SectionIntroProps = {
   eyebrow: string;
@@ -114,19 +115,6 @@ function PlaceholderVisual({
   );
 }
 
-function DipCard({ title, copy }: (typeof dipCards)[number]) {
-  return (
-    <article className="rounded-[1.6rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_10px_0_0_#100800]">
-      <p className="font-display text-3xl uppercase leading-none text-brand-ink">
-        {title}
-      </p>
-      <p className="mt-3 max-w-[18rem] text-sm leading-6 text-brand-ink/78">
-        {copy}
-      </p>
-    </article>
-  );
-}
-
 function HomeSection({
   id,
   className,
@@ -142,6 +130,9 @@ function HomeSection({
     </section>
   );
 }
+
+// TODO: temporarily hidden — 10-gal ranch bucket. Restore by flipping BUCKET_HIDDEN to false.
+const BUCKET_HIDDEN = true;
 
 export function HomePage() {
   return (
@@ -217,7 +208,7 @@ export function HomePage() {
               Big wing energy. Zero dining room small talk.
             </h1>
             <p className="mt-5 max-w-lg text-lg leading-8 text-[#fff7ed]/82">
-              Loaded wings. Crisp fries. Cold shakes.
+              Loaded wings. Crisp fries. Cold dips.
               <br />
               Enough dip to cause problems.
             </p>
@@ -269,15 +260,25 @@ export function HomePage() {
             title="Every wing flavour, no mystery scroll required."
             body="Pick your lane: sticky, peppery, sweet, fiery, or a choice you immediately need ranch to justify."
           />
-          <div className="mt-6 flex flex-wrap gap-3">
-            {wingFlavours.map((flavour) => (
-              <span
-                key={flavour}
-                className="rounded-full border-2 border-brand-ink bg-brand-yellow px-4 py-3 text-sm font-black uppercase tracking-[0.16em] text-brand-ink sm:text-base"
-              >
-                {flavour}
-              </span>
-            ))}
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {wingFlavours.map((flavour) => {
+              const tagline = flavourTaglineFor(flavour);
+              return (
+                <div
+                  key={flavour}
+                  className="rounded-[1.2rem] border-2 border-brand-ink bg-brand-yellow px-4 py-3 text-brand-ink"
+                >
+                  <p className="text-sm font-black uppercase tracking-[0.16em] sm:text-base">
+                    {flavour}
+                  </p>
+                  {tagline && (
+                    <p className="mt-1 text-xs font-normal leading-5 text-brand-ink/70">
+                      {tagline}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </HomeSection>
@@ -291,49 +292,9 @@ export function HomePage() {
             <h2 className="font-display text-4xl leading-none text-brand-ink sm:text-5xl">
               Not just sides. The whole system.
             </h2>
-          </div>
-
-          {/* DIP_PURCHASING_HIDDEN — remove {false &&} to re-enable dip cards */}
-          {false && (
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {dipCards.map((card) => (
-                <DipCard key={card.title} {...card} />
-              ))}
-            </div>
-          )}
-
-          <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <div className="grain brand-burst relative overflow-hidden rounded-[2rem] border-2 border-brand-ink p-5 text-brand-ink shadow-[0_14px_0_0_#100800]">
-              <div className="relative flex min-h-[24rem] items-center justify-center rounded-[1.5rem] border-2 border-brand-ink/15 bg-[#fff9ef]/78 p-6">
-                <Image
-                  src="/vato-picante.webp"
-                  alt="Vato Picante hot sauce bottle"
-                  width={1536}
-                  height={2048}
-                  className="h-auto w-full max-w-[13rem] object-contain drop-shadow-[0_18px_22px_rgba(16,8,0,0.24)] sm:max-w-[15rem]"
-                />
-              </div>
-            </div>
-
-            <div className="rounded-[2.2rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-red">
-                Featured dip
-              </p>
-              <h3 className="mt-3 font-display text-5xl uppercase leading-none text-brand-ink sm:text-6xl">
-                Vato Picante
-              </h3>
-              <p className="mt-4 max-w-xl text-base leading-7 text-brand-ink/82 sm:text-lg sm:leading-8">
-                A creamy habanero hot sauce built for wings, but made to go way
-                beyond them. Bold heat, citrus brightness, and a texture that hits
-                different.
-              </p>
-              {/* DIP_PURCHASING_HIDDEN — remove {false &&} to re-enable buy button */}
-              {false && (
-                <div className="mt-6 sm:max-w-[14rem]">
-                  <LinkButton href="#menu" label="Buy the dips" />
-                </div>
-              )}
-            </div>
+            <p className="text-base leading-7 text-brand-ink/78 sm:text-lg">
+              13 dips. 74% attach rate. Not a coincidence.
+            </p>
           </div>
         </div>
       </HomeSection>
@@ -351,24 +312,20 @@ export function HomePage() {
               <LinkButton href="/crates" label="View Crates" />
             </div>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              <div className="rounded-[1.4rem] border-2 border-[#fff7ed] bg-brand-ink/18 p-4">
-                <p className="font-display text-2xl uppercase">Small chaos</p>
-                <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
-                  Feeds 4 to 6 with wings, fries, dips, and peace talks.
-                </p>
-              </div>
-              <div className="rounded-[1.4rem] border-2 border-[#fff7ed] bg-brand-ink/18 p-4">
-                <p className="font-display text-2xl uppercase">Medium mayhem</p>
-                <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
-                  For team lunches, playoff nights, and very optimistic hosts.
-                </p>
-              </div>
-              <div className="rounded-[1.4rem] border-2 border-[#fff7ed] bg-brand-ink/18 p-4">
-                <p className="font-display text-2xl uppercase">Full send</p>
-                <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
-                  The “nobody leaves hungry” move with extra ranch on deck.
-                </p>
-              </div>
+              {crateOptions.map((crate) => (
+                <div
+                  key={crate.name}
+                  className="rounded-[1.4rem] border-2 border-[#fff7ed] bg-brand-ink/18 p-4"
+                >
+                  <p className="font-display text-2xl uppercase">{crate.badge}</p>
+                  <p className="mt-1 text-sm font-black uppercase tracking-[0.16em] text-brand-yellow">
+                    {crate.name} · {crate.price}
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
+                    {crate.wings} · {crate.feeds}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -376,22 +333,24 @@ export function HomePage() {
         </div>
       </HomeSection>
 
-      <HomeSection id="bucket">
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <Image src="/the-bucket.webp" alt="Ranch bucket" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
-          <div className="rounded-[2.2rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
-            <SectionIntro
-              eyebrow="The Bucket"
-              title="Yes, that is a 10 gallon ranch bucket."
-              body="Some brands talk about signature items. We hand you a ranch landmark. The Bucket is excessive, hilarious, and weirdly practical when the whole crew wants sauce like they mean it."
-            />
-            <p className="mt-5 text-lg font-semibold leading-8 text-brand-ink/80">
-              Perfect for parties, tournaments, office takeovers, or anyone who
-              thinks a normal ramekin is an insult.
-            </p>
+      {!BUCKET_HIDDEN && (
+        <HomeSection id="bucket">
+          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <Image src="/the-bucket.webp" alt="Ranch bucket" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+            <div className="rounded-[2.2rem] border-2 border-brand-ink bg-brand-yellow p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
+              <SectionIntro
+                eyebrow="The Bucket"
+                title="Yes, that is a 10 gallon ranch bucket."
+                body="Some brands talk about signature items. We hand you a ranch landmark. The Bucket is excessive, hilarious, and weirdly practical when the whole crew wants sauce like they mean it."
+              />
+              <p className="mt-5 text-lg font-semibold leading-8 text-brand-ink/80">
+                Perfect for parties, tournaments, office takeovers, or anyone who
+                thinks a normal ramekin is an insult.
+              </p>
+            </div>
           </div>
-        </div>
-      </HomeSection>
+        </HomeSection>
+      )}
 
       <HomeSection id="locations">
         <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
@@ -453,22 +412,22 @@ export function HomePage() {
               Order now
             </p>
             <p className="truncate text-sm text-[#fff7ed]/82">
-              Wings, fries, shakes, and crate-level decisions.
+              Wings, fries, dips, and crate-level decisions.
             </p>
           </div>
           <div className="grid shrink-0 grid-cols-2 gap-2">
             <a
-              href="https://www.ubereats.com"
+              href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow px-5 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_10px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
             >
               Uber Eats
             </a>
             <a
-              href="https://www.doordash.com"
+              href="https://order.online/business/wings-chkn-shack-13029476"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-brand-ink bg-[#fff7ed] px-5 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
             >
               DoorDash

@@ -36,8 +36,8 @@ export type OrderDestination = {
 export const defaultStoreMap: StoreMap = {
   defaultStoreKey: "vancouver",
   locationSelector: {
-    "uber-eats": "https://www.ubereats.com",
-    doordash: "https://www.doordash.com",
+    "uber-eats": "https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw",
+    doordash: "https://order.online/business/wings-chkn-shack-13029476",
   },
   stores: {
     vancouver: {
@@ -45,12 +45,10 @@ export const defaultStoreMap: StoreMap = {
       label: "Vancouver",
       platforms: {
         "uber-eats": {
-          appDeepLink: "ubereats://",
-          webUrl: "https://www.ubereats.com",
+          webUrl: "https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw",
         },
         doordash: {
-          appDeepLink: "doordash://",
-          webUrl: "https://www.doordash.com",
+          webUrl: "https://order.online/business/wings-chkn-shack-13029476",
         },
       },
     },
