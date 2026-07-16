@@ -360,23 +360,55 @@ export function HomePage() {
             body="We’re rolling out delivery zones city by city. Tap in, check your app, and see if your couch qualifies."
           />
           <div className="grid gap-4 sm:grid-cols-3">
-            {locations.map((location) => (
-              <article
-                key={location.city}
-                className="rounded-[1.7rem] border-2 border-brand-ink bg-brand-ink p-5 text-[#fff7ed] shadow-[0_10px_0_0_#ef3d23]"
-              >
-                <p className="font-display text-3xl uppercase leading-none">
-                  {location.city}
-                </p>
-                <p className="mt-3 text-sm font-black uppercase tracking-[0.18em] text-brand-yellow">
-                  {location.area}
-                </p>
-                <p className="mt-4 text-sm leading-6 text-[#fff7ed]/82">
-                  {location.availability}
-                </p>
-              </article>
-            ))}
+            {locations.map((location) => {
+              const isComingSoon = location.status === "coming-soon";
+              return (
+                <article
+                  key={location.city}
+                  className={`rounded-[1.7rem] border-2 border-brand-ink bg-brand-ink p-5 text-[#fff7ed] shadow-[0_10px_0_0_#ef3d23]${
+                    isComingSoon ? " opacity-65" : ""
+                  }`}
+                >
+                  <p className="font-display text-3xl uppercase leading-none">
+                    {location.city}
+                  </p>
+                  {isComingSoon ? (
+                    <span className="mt-3 inline-block rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-brand-ink">
+                      Coming Soon
+                    </span>
+                  ) : (
+                    <span className="mt-3 inline-block rounded-full bg-brand-red px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#fff7ed]">
+                      Live
+                    </span>
+                  )}
+                  <p className="mt-3 text-sm font-black uppercase tracking-[0.18em] text-brand-yellow">
+                    {location.area}
+                  </p>
+                  {location.availability ? (
+                    <p className="mt-4 text-sm leading-6 text-[#fff7ed]/82">
+                      {location.availability}
+                    </p>
+                  ) : null}
+                </article>
+              );
+            })}
           </div>
+        </div>
+        <div className="mt-6 rounded-[1.7rem] border-2 border-dashed border-brand-ink/35 bg-[#fff9ef]/70 p-6 text-center">
+          <p className="font-display text-2xl uppercase leading-none text-brand-ink">
+            More locations coming.
+          </p>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-brand-ink/70">
+            We’re rolling into more neighbourhoods across Metro Vancouver. Get on
+            the list at{" "}
+            <a
+              href="mailto:damon@wingschknshack.com"
+              className="font-black text-brand-red underline"
+            >
+              damon@wingschknshack.com
+            </a>
+            .
+          </p>
         </div>
       </HomeSection>
 

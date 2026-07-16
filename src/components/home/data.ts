@@ -102,7 +102,8 @@ export const menuCategories: MenuCategory[] = [
 export type Location = {
   city: string;
   area: string;
-  availability: string;
+  availability?: string;
+  status: "live" | "coming-soon";
 };
 
 export const wingFlavours: string[] = [
@@ -116,18 +117,19 @@ export const wingFlavours: string[] = [
 
 export const locations: Location[] = [
   {
-    city: "Vancouver",
-    area: "Mount Pleasant",
+    city: "Downtown",
+    area: "Vancouver",
     availability: "Late lunch to midnight",
+    status: "live",
   },
   {
-    city: "Burnaby",
-    area: "Brentwood",
-    availability: "Open late for campus and condo cravings",
+    city: "Tsawwassen",
+    area: "Metro Vancouver",
+    status: "coming-soon",
   },
   {
-    city: "Surrey",
-    area: "Guildford",
-    availability: "Family feasts and game-day rescue missions",
+    city: "Maple Ridge",
+    area: "Metro Vancouver",
+    status: "coming-soon",
   },
 ];
