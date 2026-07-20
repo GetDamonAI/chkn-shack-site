@@ -14,7 +14,7 @@ const ITEM_TAGLINES: Record<string, string> = {
   "20 Piece Wings": "The size that wins. 20 wings, one flavour (or two for +$1.50), 3 dips, real weeknight energy.",
   "30 Piece Wings": "The 30. Mix 2 flavours, 4 dips, feed two adults or one very committed one.",
   "Solo Combo": "The 'just feed me' order. 10 wings, fries, drink, no need for a table.",
-  "Anchor Combo": "For the crowd of one who came prepared. 20 wings + loaded fries + 3 dips + drink.",
+  "Anchor Combo": "Twenty wings, loaded fries, three dips, drink. Built for one big eater or two who came prepared. The Anchor — our signature.",
   "Shack Cut Fries": "The base fry. Thick-cut russet, twice-fried, does its job.",
   "Bayou Fries": "The fry that took a trip to Louisiana. Cajun-dust, warm, opinionated.",
   "Peri Peri Fries": "Portuguese heat, Vancouver commute. Peri peri dust, smoky, mid-burn.",
