@@ -46,7 +46,7 @@ export const crateOptions: CrateOption[] = [
     wings: "200 · up to 2 flavours",
     fries: "4 large fry sides",
     dips: "8 dips",
-    addons: "Add sharing trays, extra sides, or go fully unhinged with The Bucket",
+    addons: "Add sharing trays, extra sides, or go fully unhinged with extra dips and fry sides",
     vibe: "When the invite list got out of hand and you leaned all the way in. Heads up: 24-hour advance notice required.",
   },
 ];
