@@ -215,7 +215,7 @@ export function HomePage() {
             <HeroOrderActions />
           </div>
 
-          <Image src="/hero.webp" alt="Wings platter" width={1600} height={1280} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+          <Image src="/hero.jpg" alt="Wings platter" width={2400} height={1600} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </HomeSection>
 
@@ -329,7 +329,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <Image src="/crate-stack.webp" alt="Catering boxes" width={1133} height={1418} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+          <Image src="/crate-stack.jpg" alt="Catering boxes" width={2400} height={1600} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </HomeSection>
 
