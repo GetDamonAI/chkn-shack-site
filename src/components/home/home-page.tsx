@@ -199,7 +199,7 @@ export function HomePage() {
       </HomeSection>
 
       <HomeSection>
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
+        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="rounded-[2.4rem] border-2 border-brand-ink bg-brand-ink px-5 py-6 text-[#fff7ed] shadow-[0_16px_0_0_#ef3d23] sm:px-7 sm:py-8">
             <p className="w-fit rounded-full bg-brand-yellow px-3 py-1 text-xs font-black uppercase tracking-[0.24em] text-brand-ink">
               Delivery-first. Sauce-forward.
