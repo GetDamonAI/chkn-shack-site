@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Raw shoot archive — source files are 3-15MB each (249MB total).
+# Kept on disk as the source archive; optimized WebP derivatives live in
+# public/menu/ and are what the site actually references.
+/public/SELECTS/

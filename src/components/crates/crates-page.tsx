@@ -314,7 +314,7 @@ export function CratesPage() {
             </div>
           </div>
 
-          <Image src="/crates-hero.jpg" alt="Crates hero" width={2400} height={1600} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+          <Image src="/menu/crates-hero.webp" alt="CHKN Crate of split-flavour wings with ranch dips" width={1600} height={1067} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </PageSection>
 

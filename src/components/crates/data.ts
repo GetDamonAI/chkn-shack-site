@@ -21,30 +21,30 @@ export const crateOptions: CrateOption[] = [
     price: "$75",
     badge: "Small chaos",
     feeds: "Feeds 5-7",
-    wings: "50 · up to 2 flavours",
+    wings: "50 · one flavour",
     fries: "1 large fry side",
     dips: "3 dips",
-    addons: "Add cauli bites, extra wings, or an extra dip tub for the closer",
-    vibe: "The one you order when the group chat finally commits to a plan.",
+    addons: "Grandpa J's toss on top. Add cauli bites, extra wings, or an extra dip tub for the closer",
+    vibe: "The group-order starter kit. Order it same-day when the group chat finally commits to a plan.",
   },
   {
     name: "CHKN Crate 100pc",
-    price: "$135",
+    price: "$145",
     badge: "Medium mayhem",
-    feeds: "Feeds 10-14",
-    wings: "100 · up to 2 flavours",
-    fries: "2 large fry sides",
+    feeds: "Feeds 10-15",
+    wings: "100 · across 2 flavours",
+    fries: "Party-size fries",
     dips: "5 dips",
     addons: "Add sharing trays, an extra flavour split, or more dips",
-    vibe: "Enough wings that nobody does the sad math on who ate what.",
+    vibe: "Enough wings that nobody does the sad math on who ate what. Heads up: 24-hour advance notice required.",
   },
   {
     name: "CHKN Crate 200pc",
-    price: "$245",
+    price: "$260",
     badge: "Full send",
-    feeds: "Feeds 18-25",
-    wings: "200 · up to 2 flavours",
-    fries: "4 large fry sides",
+    feeds: "Feeds 20-30",
+    wings: "200 · across 2 flavours",
+    fries: "2 party fry sides",
     dips: "8 dips",
     addons: "Add sharing trays, extra sides, or go fully unhinged with extra dips and fry sides",
     vibe: "When the invite list got out of hand and you leaned all the way in. Heads up: 24-hour advance notice required.",
@@ -53,27 +53,26 @@ export const crateOptions: CrateOption[] = [
 
 export const flavourOptions: string[] = [
   // Heat
-  "Buffalo ★", "Honey Hot", "Jakarta Heat", "Chilean Chilli",
-  // Dry Rubs
-  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub",
+  "Buffalo ★", "Honey Hot", "HouseFire Ranch", "Honey Stinger",
+  // Creamy & Dry
+  "Wowy-ranch", "S&P ★",
   // Sweet & Sticky
-  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Maple Bourbon", "Honey Stinger",
+  "Honey Garlic ★", "Louisiana Sweet", "Maple Bourbon", "Sweet Thai", "BC Honey Q", "Korean Sticky Sesame",
 ];
 
 export const dipOptions: string[] = [
   "Ranch",
   "Wowy-ranch",
-  "Blue Cheese",
-  "Garlic Aioli",
-  "Spicy Ranch",
-  "Buffalo Sauce",
-  "Spicy Aioli",
-  "Chipotle Crema",
-  "Housefire",
+  "HouseFire Ranch",
+  "BC Honey Q",
+  "Sweet Thai",
+  "Peri-Peri",
   "Honey Mustard",
+  "Sriracha Mayo",
+  "Garlic Aioli",
+  "Spicy Aioli",
+  "Blue Cheese",
   "Hot Honey",
-  "Maple BBQ",
-  "Sweet Chili",
 ];
 
 export const sideOptions: string[] = [
@@ -82,7 +81,7 @@ export const sideOptions: string[] = [
   "Cauli bites",
   "Extra dips",
   "Mac and Cheese Tray",
-  "Perogie Tray",
+  "Perogy Tray",
 ];
 
 export const addonOptions: string[] = [

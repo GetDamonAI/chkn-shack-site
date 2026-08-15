@@ -11,31 +11,29 @@ import {
 
 const ITEM_TAGLINES: Record<string, string> = {
   "10 Piece Wings": "10 wings. One flavour. One dip. The 'I just want wings' order.",
-  "20 Piece Wings": "The size that wins. 20 wings, one flavour (or two for +$1.50), 3 dips, real weeknight energy.",
-  "30 Piece Wings": "The 30. Mix 2 flavours, 4 dips, feed two adults or one very committed one.",
-  "Solo Combo": "The 'just feed me' order. 10 wings, fries, drink, no need for a table.",
-  "Anchor Combo": "Twenty wings, loaded fries, three dips, drink. Built for one big eater or two who came prepared. The Anchor — our signature.",
-  "Shack Cut Fries": "The base fry. Thick-cut russet, twice-fried, does its job.",
-  "Bayou Fries": "The fry that took a trip to Louisiana. Cajun-dust, warm, opinionated.",
-  "Peri Peri Fries": "Portuguese heat, Vancouver commute. Peri peri dust, smoky, mid-burn.",
-  "Garlic Parm Herb Fries": "The signature loaded. Garlic butter, parm, fresh parsley — the fries other loaded fries are jealous of.",
-  "Hot Honey Fries": "The fry with the punch line. Hot honey, chili flakes, salt, and the same personality as the wing.",
-  "Yam Fries (with Honey Mustard)": "The fry that thought ahead. Yam + Honey Mustard cup, no extra order needed.",
-  "Dirty Curly Fries": "New. Curly-cut, Cajun-dust, bacon crumble, chipotle crema. Bring napkins.",
-  "Shack Fries": "The fries that ate the menu. Pulled CHKN, Wowy-ranch, Hot Honey, scallion, absolute chaos.",
-  "Mac and Cheese (Side)": "Personal-sized comfort. Sharp cheddar, parm, breadcrumb. Add toppings if you insist.",
-  "Perogies (6pc Side)": "Baba would approve. Six pierogies, pan-finished, absolutely correct.",
-  "Cauli Bites": "All the flavour, none of the bird.",
-  "Mac and Cheese Tray": "The one that ends the argument about sides. Cheddar, parm, breadcrumb top, feeds 4-6.",
-  "Perogie Tray": "Full pierogie commitment. Butter-pan-finished, sour cream + chili crisp on standby, feeds 4-6.",
-  "Single Dip": "Pick any of our 13.",
-  "3 Dips (mix or match)": "The right ratio for any 10pc+ order.",
-  "Dip Flight — 4 mini cups": "Discovery mode.",
-  "16oz Dip Tub": "Take it home or feed the table.",
-  "Fountain Pop": "Coke, Diet, Sprite, Ginger Ale, or Root Beer. Correctly cold.",
-  "Iced Tea": "Sweet or unsweet. Not making that choice for you.",
-  "Bottled Water": "Water. 500mL. That's it. That's the item.",
-  "Sparkling Water": "Perrier or SanPellegrino. Adult behavior.",
+  "20 Piece Wings (Anchor)": "The size that wins. 20 wings, one flavour (or split 2 for +$1.50), 3 dips. Real weeknight energy.",
+  "30 Piece Wings": "The 30. Mix 2 flavours, 4 dips, feed two people or one hungry one.",
+  "Solo Combo": "10 wings, one flavour, one dip, Shack Cut Fries, drink. The party of one.",
+  "Anchor Combo": "Signature. 20 wings (one flavour or split 2), Shack Cut Fries, 3 dips, drink.",
+  "Shack Cut Seasoned Fries": "Hand-cut russet, house Cajun spice. Smoky + savoury. Get a dip.",
+  "Dirty Curly Fries": "Hand-cut curly, peri-peri spice blend, pickled onions, green onion, spicy aioli.",
+  "Parm Bomb Garlic Fries": "The signature loaded. Garlic + herb butter, shaved parm, fresh parsley. Feels like fine dining, priced like fries.",
+  "Hot Honey Fries": "Nashville hot seasoning, hot honey drizzle. Sweet-spicy hero.",
+  "Cauli Bites": "Buffalo-battered cauliflower. The veggie play that still hits.",
+  "Mac and Cheese (Side)": "Personal-sized comfort. Alfredo base, marble cheddar, breadcrumb top. Baked, not boiled.",
+  "Perogies (7pc Side)": "Baba would approve. Seven perogies, pan-finished with caramelized onions, bacon, sour cream on the side.",
+  "Gravy (Add-on)": "Beef gravy, hot-held, side ramekin. Add to any fry.",
+  "Coleslaw (Add-on)": "Fresh coleslaw, side ramekin.",
+  "Mac and Cheese Tray": "Full comfort. Alfredo base, marble cheddar, breadcrumb top, bacon. Feeds 4-6.",
+  "Perogy Tray": "Full perogy commitment. Butter-pan-finished with caramelized onions, bacon, sour cream. Feeds 4-6.",
+  "Single Dip": "Pick any of our 12. 2oz side cup.",
+  "3 Dips (mix or match)": "The right ratio for any 10pc+ order. Mix or match from our 12.",
+  "Dip Flight — 4 mini cups": "Discovery mode. Four mini cups. Find your ranch.",
+  "12oz Dip Tub": "Take it home or feed the table. 12oz of any dip. Pick your flavour.",
+  "Canned Pop": "Coke · Diet · Sprite · Ginger Ale. Cold and classic.",
+  "Bottled Water": "500ml still.",
+  "Red Bull": "Regular. 250ml. Cause you can never have enough energy.",
+  "Monster Energy": "Zero Ultra. 473ml. Cold, loud, and awake.",
 };
 
 function taglineFor(name: string): string | undefined {
@@ -116,7 +114,7 @@ export function MenuAccordion({ categories }: { categories: MenuCategory[] }) {
                 {cat.name === "Dips" && (
                   <div className="mt-4 border-t-2 border-brand-ink/12 pt-3">
                     <p className="text-sm font-black uppercase tracking-wider text-brand-ink/55">
-                      Pick from all 13
+                      Pick from all 12
                     </p>
                     <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                       {Object.entries(DIP_TAGLINES).map(([name, tagline]) => {
