@@ -29,7 +29,7 @@ export const crateOptions: CrateOption[] = [
   },
   {
     name: "CHKN Crate 100pc",
-    price: "$145",
+    price: "$135",
     badge: "Medium mayhem",
     feeds: "Feeds 10-15",
     wings: "100 · across 2 flavours",
@@ -40,7 +40,7 @@ export const crateOptions: CrateOption[] = [
   },
   {
     name: "CHKN Crate 200pc",
-    price: "$260",
+    price: "$245",
     badge: "Full send",
     feeds: "Feeds 20-30",
     wings: "200 · across 2 flavours",

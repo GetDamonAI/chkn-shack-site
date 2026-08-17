@@ -59,13 +59,13 @@ const crates = [
   },
   {
     name: "CHKN Crate 100pc",
-    price: "$145",
+    price: "$135",
     tier: "Medium mayhem",
     subtitle: "24-hour notice required.",
   },
   {
     name: "CHKN Crate 200pc",
-    price: "$260",
+    price: "$245",
     tier: "Full send",
     subtitle: "24-hour notice required.",
   },
@@ -75,7 +75,7 @@ const trays = [
   {
     name: "Mac and Cheese Tray",
     price: "$32",
-    copy: "Full comfort. Alfredo base, marble cheddar, breadcrumb top, bacon. Feeds 4-6.",
+    copy: "Full comfort. Alfredo base, marble cheddar, bacon. Feeds 4-6.",
   },
   {
     name: "Perogy Tray",

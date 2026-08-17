@@ -49,8 +49,8 @@ interface BuildArgs {
 
 /* ---------- MENU DATA (V2) ---------- */
 const CRATES: { pc: number; price: number }[] = [
-  { pc: 200, price: 260 },
-  { pc: 100, price: 145 },
+  { pc: 200, price: 245 },
+  { pc: 100, price: 135 },
   { pc: 50, price: 75 },
 ];
 
@@ -87,10 +87,10 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   if (people <= 2) {
     items.push({ qty: 1, name: "Solo Combo", detail: "10pc + fries + drink", price: 22, kind: "wings" });
     if (people === 2)
-      items.push({ qty: 1, name: "Anchor Combo ★", detail: "20pc + Shack Cut Fries + 3 dips + drink", price: 40, kind: "wings" });
+      items.push({ qty: 1, name: "Anchor Combo ★", detail: "20pc + Shack Cut Fries + 3 dips + drink", price: 36, kind: "wings" });
   } else if (people <= 5) {
     const anchors = Math.max(1, Math.round(targetWings / 20));
-    items.push({ qty: anchors, name: "Anchor Combo ★", detail: "20pc + Shack Cut Fries + 3 dips + drink", price: 40, kind: "wings" });
+    items.push({ qty: anchors, name: "Anchor Combo ★", detail: "20pc + Shack Cut Fries + 3 dips + drink", price: 36, kind: "wings" });
   } else {
     let remaining = targetWings;
     for (const c of CRATES) {
@@ -126,7 +126,7 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   // ----- VEGETARIAN -----
   if (veg > 0) {
     const cauli = Math.max(1, Math.ceil(veg / 3));
-    items.push({ qty: cauli, name: "Cauli Bites (veg)", detail: `for your ${veg} plant-based guest${veg > 1 ? "s" : ""}`, price: 10, kind: "veg" });
+    items.push({ qty: cauli, name: "Cauli Bites (veg)", detail: `for your ${veg} plant-based guest${veg > 1 ? "s" : ""}`, price: 8, kind: "veg" });
     items.push({ qty: 1, name: "Shack Cut Seasoned Fries", detail: "veg-friendly side", price: 6, kind: "veg" });
   }
 
