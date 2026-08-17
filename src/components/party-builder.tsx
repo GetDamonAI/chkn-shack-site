@@ -121,7 +121,7 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
 
   // ----- FRIES / SIDES -----
   if (!hasCrate || people > 8) items.push({ qty: 1, name: "Hot Honey Fries ★", detail: "the move", price: 8, kind: "sides" });
-  if (people >= 8) items.push({ qty: 1, name: "Mac & Cheese Tray", detail: "feeds 6–8", price: 32, kind: "sides" });
+  if (people >= 8) items.push({ qty: 1, name: "Mac and Cheese Tray", detail: "feeds 4-6", price: 32, kind: "sides" });
 
   // ----- VEGETARIAN -----
   if (veg > 0) {
