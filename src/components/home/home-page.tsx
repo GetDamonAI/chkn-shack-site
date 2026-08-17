@@ -293,7 +293,7 @@ export function HomePage() {
               Not just sides. The whole system.
             </h2>
             <p className="text-base leading-7 text-brand-ink/78 sm:text-lg">
-              12 dips. 74% attach rate. Not a coincidence.
+              12 dips. Almost nobody orders just one. Not a coincidence.
             </p>
           </div>
         </div>

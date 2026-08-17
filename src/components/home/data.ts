@@ -29,7 +29,7 @@ export const menuCategories: MenuCategory[] = [
     tagline: "One-person chaos with fries and a drink.",
     items: [
       { name: "Solo Combo", price: "$22" },
-      { name: "Anchor Combo", price: "$36", note: "signature" },
+      { name: "Anchor Combo", price: "$36" },
     ],
   },
   {
@@ -58,8 +58,8 @@ export const menuCategories: MenuCategory[] = [
     items: [
       { name: "Shack Cut Seasoned Fries", price: "$6" },
       { name: "Dirty Curly Fries", price: "$7" },
-      { name: "Parm Bomb Garlic Fries", price: "$11.75", note: "signature loaded" },
-      { name: "Hot Honey Fries", price: "$8", note: "signature loaded" },
+      { name: "Parm Bomb Garlic Fries", price: "$11.75" },
+      { name: "Hot Honey Fries", price: "$8" },
       { name: "Cauli Bites", price: "$8", note: "vegetarian" },
       { name: "Mac and Cheese (Side)", price: "$8" },
       { name: "Perogies (7pc Side)", price: "$9" },
