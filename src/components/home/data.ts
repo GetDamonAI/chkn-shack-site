@@ -13,11 +13,11 @@ export type MenuCategory = {
 export const menuCategories: MenuCategory[] = [
   {
     name: "Wings",
-    tagline: "Bone-in or boneless. Flats and drums.",
+    tagline: "Bone-in. Flats and drums.",
     items: [
       { name: "10 Piece Wings", price: "$16" },
       {
-        name: "20 Piece Wings",
+        name: "20 Piece Wings (Anchor)",
         price: "$28",
         note: "our anchor · split 2 flavours for +$1.50",
       },
@@ -33,68 +33,66 @@ export const menuCategories: MenuCategory[] = [
     ],
   },
   {
-    name: "Fries & Sides",
-    tagline: "Seasoned, crispy, and built to drag through sauce.",
-    items: [
-      { name: "Shack Cut Fries", price: "$5", note: "default, plain on request" },
-      { name: "Bayou Fries", price: "$6" },
-      { name: "Peri Peri Fries", price: "$7", note: "NEW" },
-      { name: "Garlic Parm Herb Fries", price: "$8", note: "signature loaded" },
-      { name: "Hot Honey Fries", price: "$8", note: "signature loaded" },
-      { name: "Yam Fries (with Honey Mustard)", price: "$7" },
-      { name: "Dirty Curly Fries", price: "$8", note: "NEW" },
-      { name: "Shack Fries", price: "$9", note: "NEW · signature loaded" },
-      { name: "Mac and Cheese (Side)", price: "$8", note: "NEW" },
-      { name: "Perogies (6pc Side)", price: "$9", note: "NEW" },
-      { name: "Cauli Bites", price: "$8", note: "vegetarian" },
-    ],
-  },
-  {
-    name: "Sharing Trays",
-    tagline: "Big-batch comfort food built for the whole table.",
-    items: [
-      { name: "Mac and Cheese Tray", price: "$32", note: "feeds 4-6 · add toppings" },
-      { name: "Perogie Tray", price: "$30", note: "feeds 4-6 · add toppings" },
-    ],
-  },
-  {
     // Parallel render path in the accordion. crateOptions in
     // src/components/crates/data.ts stays the source of truth for /crates +
     // /group-orders. Taglines resolve from shared CRATE_TAGLINES via taglineFor.
     name: "Crates",
     tagline: "Group orders that actually feed the room.",
     items: [
-      { name: "CHKN Crate 50pc", price: "$75", note: "Small chaos — feeds 5-7" },
+      { name: "CHKN Crate 50pc", price: "$75", note: "Small chaos — feeds 5-7 — same-day" },
       {
         name: "CHKN Crate 100pc",
         price: "$135",
-        note: "Medium mayhem — feeds 10-14 — signature",
+        note: "Medium mayhem — feeds 10-15 — 24h notice",
       },
       {
         name: "CHKN Crate 200pc",
         price: "$245",
-        note: "Full send — feeds 18-25 — 24h notice",
+        note: "Full send — feeds 20-30 — 24h notice",
       },
+    ],
+  },
+  {
+    name: "Fries & Sides",
+    tagline: "Seasoned, crispy, and built to drag through sauce.",
+    items: [
+      { name: "Shack Cut Seasoned Fries", price: "$6" },
+      { name: "Dirty Curly Fries", price: "$7" },
+      { name: "Parm Bomb Garlic Fries", price: "$11.75", note: "signature loaded" },
+      { name: "Hot Honey Fries", price: "$8", note: "signature loaded" },
+      { name: "Cauli Bites", price: "$8", note: "vegetarian" },
+      { name: "Mac and Cheese (Side)", price: "$8" },
+      { name: "Perogies (7pc Side)", price: "$9" },
+      { name: "Gravy (add-on)", price: "$2" },
+      { name: "Coleslaw (add-on)", price: "$3" },
+    ],
+  },
+  {
+    name: "Sharing Trays",
+    tagline: "Big-batch comfort food built for the whole table.",
+    items: [
+      { name: "Mac and Cheese Tray", price: "$32", note: "feeds 4-6" },
+      { name: "Perogy Tray", price: "$30", note: "feeds 4-6" },
     ],
   },
   {
     name: "Dips",
     tagline: "Ranch, blue cheese, and a few bad decisions.",
     items: [
-      { name: "Single Dip", price: "$1.50" },
-      { name: "3 Dips (mix or match)", price: "$4.00" },
-      { name: "Dip Flight — 4 mini cups", price: "$5.00" },
-      { name: "16oz Dip Tub", price: "$9.00" },
+      { name: "2oz Dip (Single)", price: "$1.50" },
+      { name: "3 Dips", price: "$4.00" },
+      { name: "Dip Flight (4 mini)", price: "$5.00" },
+      { name: "12oz Dip Tub", price: "$9.00" },
     ],
   },
   {
     name: "Drinks",
     tagline: "Cold, fizzy, and built to cut the heat.",
     items: [
-      { name: "Fountain Pop", price: "$3.49" },
-      { name: "Iced Tea", price: "$3.49", note: "sweet or unsweet" },
+      { name: "Canned Pop", price: "$3.49", note: "Coke · Diet · Sprite · Ginger Ale" },
       { name: "Bottled Water", price: "$2.49" },
-      { name: "Sparkling Water", price: "$3.99", note: "Perrier or SanPellegrino" },
+      { name: "Red Bull", price: "$5.00" },
+      { name: "Monster Energy", price: "$6.75" },
     ],
   },
 ];
@@ -108,11 +106,11 @@ export type Location = {
 
 export const wingFlavours: string[] = [
   // Heat
-  "Buffalo ★", "Honey Hot", "Jakarta Heat", "Chilean Chilli",
-  // Dry Rubs
-  "Salt & Pepper ★", "Lemon Pepper", "Texas Dry Rub",
+  "Buffalo ★", "Honey Hot", "HouseFire Ranch", "Honey Stinger",
+  // Creamy & Dry
+  "Wowy-ranch", "S&P ★",
   // Sweet & Sticky
-  "Honey Garlic ★", "Louisiana Sweet", "Korean Sticky Sesame", "Maple Bourbon", "Honey Stinger",
+  "Honey Garlic ★", "Louisiana Sweet", "Maple Bourbon", "Sweet Thai", "BC Honey Q", "Korean Sticky Sesame",
 ];
 
 export const locations: Location[] = [

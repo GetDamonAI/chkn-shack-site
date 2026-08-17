@@ -61,7 +61,7 @@ const crates = [
     name: "CHKN Crate 100pc",
     price: "$135",
     tier: "Medium mayhem",
-    subtitle: undefined as string | undefined,
+    subtitle: "24-hour notice required.",
   },
   {
     name: "CHKN Crate 200pc",
@@ -75,18 +75,18 @@ const trays = [
   {
     name: "Mac and Cheese Tray",
     price: "$32",
-    copy: "The one that ends the argument about sides. Cheddar, parm, breadcrumb top, feeds 4-6.",
+    copy: "Full comfort. Alfredo base, marble cheddar, bacon. Feeds 4-6.",
   },
   {
-    name: "Perogie Tray",
+    name: "Perogy Tray",
     price: "$30",
-    copy: "Full pierogie commitment. Butter-pan-finished, sour cream + chili crisp on standby, feeds 4-6.",
+    copy: "Full perogy commitment. Butter-pan-finished with caramelized onions, bacon, sour cream. Feeds 4-6.",
   },
 ];
 
 const steps = [
   "Order online — Uber Eats or DoorDash.",
-  "Same-day pickup or delivery for 50pc + 100pc. 200pc needs 24 hours.",
+  "Same-day pickup or delivery for 50pc. 100pc and 200pc need 24 hours.",
   "Custom orders? Email orders@wingschknshack.com.",
 ];
 

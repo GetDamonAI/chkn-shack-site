@@ -215,7 +215,7 @@ export function HomePage() {
             <HeroOrderActions />
           </div>
 
-          <Image src="/hero.jpg" alt="Wings platter" width={2400} height={1600} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+          <Image src="/menu/hero.webp" alt="Wings platter" width={1600} height={1067} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </HomeSection>
 
@@ -293,7 +293,7 @@ export function HomePage() {
               Not just sides. The whole system.
             </h2>
             <p className="text-base leading-7 text-brand-ink/78 sm:text-lg">
-              13 dips. 74% attach rate. Not a coincidence.
+              12 dips. 74% attach rate. Not a coincidence.
             </p>
           </div>
         </div>
@@ -329,7 +329,7 @@ export function HomePage() {
             </div>
           </div>
 
-          <Image src="/crate-stack.jpg" alt="Catering boxes" width={2400} height={1600} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+          <Image src="/menu/crate-stack.webp" alt="CHKN Crate of split-flavour wings with ranch dips" width={1600} height={1067} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </HomeSection>
 

@@ -66,8 +66,8 @@ const SPICE: { label: string; short: string; pick: string }[] = [
   { label: "I cry at black pepper", short: "Mild only", pick: "all flavor, zero burn" },
   { label: "Keep it friendly", short: "Light heat", pick: "a gentle warm-up, nothing scary" },
   { label: "Bring some heat", short: "Medium", pick: "the crowd-pleaser sweet spot" },
-  { label: "I like to suffer a little", short: "Hot", pick: "Jakarta Heat is calling" },
-  { label: "I want to see God", short: "Maximum", pick: "Chilean Chilli, no mercy" },
+  { label: "I like to suffer a little", short: "Hot", pick: "HouseFire Ranch is calling" },
+  { label: "I want to see God", short: "Maximum", pick: "Honey Stinger, no mercy" },
 ];
 
 const DIP_STYLES: Record<DipKey, { label: string; note: string }> = {
@@ -87,10 +87,10 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   if (people <= 2) {
     items.push({ qty: 1, name: "Solo Combo", detail: "10pc + fries + drink", price: 22, kind: "wings" });
     if (people === 2)
-      items.push({ qty: 1, name: "Anchor Combo ★", detail: "20pc + loaded fries + 3 dips + drink", price: 36, kind: "wings" });
+      items.push({ qty: 1, name: "Anchor Combo ★", detail: "20pc + Shack Cut Fries + 3 dips + drink", price: 36, kind: "wings" });
   } else if (people <= 5) {
     const anchors = Math.max(1, Math.round(targetWings / 20));
-    items.push({ qty: anchors, name: "Anchor Combo ★", detail: "20pc + loaded fries + 3 dips + drink", price: 36, kind: "wings" });
+    items.push({ qty: anchors, name: "Anchor Combo ★", detail: "20pc + Shack Cut Fries + 3 dips + drink", price: 36, kind: "wings" });
   } else {
     let remaining = targetWings;
     for (const c of CRATES) {
@@ -116,18 +116,18 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
     dipSets = Math.ceil(people / 5);
   }
   const dipPicks = pickDips(spice);
-  if (bottles > 0) items.push({ qty: bottles, name: "16oz Dip Bottle", detail: dipPicks.slice(0, 2).join(" / "), price: 9, kind: "dips" });
+  if (bottles > 0) items.push({ qty: bottles, name: "12oz Dip Tub", detail: dipPicks.slice(0, 2).join(" / "), price: 9, kind: "dips" });
   if (dipSets > 0) items.push({ qty: dipSets, name: "Dip — 3 for $4", detail: dipPicks.join(" · "), price: 4, kind: "dips" });
 
   // ----- FRIES / SIDES -----
   if (!hasCrate || people > 8) items.push({ qty: 1, name: "Hot Honey Fries ★", detail: "the move", price: 8, kind: "sides" });
-  if (people >= 8) items.push({ qty: 1, name: "Mac & Cheese Tray", detail: "feeds 6–8", price: 32, kind: "sides" });
+  if (people >= 8) items.push({ qty: 1, name: "Mac and Cheese Tray", detail: "feeds 4-6", price: 32, kind: "sides" });
 
   // ----- VEGETARIAN -----
   if (veg > 0) {
     const cauli = Math.max(1, Math.ceil(veg / 3));
     items.push({ qty: cauli, name: "Cauli Bites (veg)", detail: `for your ${veg} plant-based guest${veg > 1 ? "s" : ""}`, price: 8, kind: "veg" });
-    items.push({ qty: 1, name: "Yam Fries", detail: "veg-friendly side", price: 7, kind: "veg" });
+    items.push({ qty: 1, name: "Shack Cut Seasoned Fries", detail: "veg-friendly side", price: 6, kind: "veg" });
   }
 
   const subtotal = items.reduce((s, i) => s + i.qty * i.price, 0);
@@ -136,18 +136,18 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
 
 function pickFlavors(spice: number, people: number): string[] {
   const ladders: string[][] = [
-    ["Honey Garlic", "Salt & Pepper", "Buffalo", "Lemon Pepper", "Maple Bourbon", "Korean Sticky Sesame"],
-    ["Buffalo", "Honey Garlic", "Lemon Pepper", "Honey Hot", "Korean Sticky Sesame", "Louisiana Sweet"],
-    ["Buffalo", "Honey Hot", "Honey Garlic", "Lemon Pepper", "Texas Dry Rub", "Louisiana Sweet"],
-    ["Honey Hot", "Jakarta Heat", "Buffalo", "Chilean Chilli", "Honey Stinger", "Texas Dry Rub"],
-    ["Jakarta Heat", "Chilean Chilli", "Honey Stinger", "Honey Hot", "Buffalo", "Texas Dry Rub"],
+    ["Honey Garlic", "S&P", "Buffalo", "Sweet Thai", "Maple Bourbon", "Korean Sticky Sesame"],
+    ["Buffalo", "Honey Garlic", "Sweet Thai", "Honey Hot", "Korean Sticky Sesame", "Louisiana Sweet"],
+    ["Buffalo", "Honey Hot", "Honey Garlic", "BC Honey Q", "Wowy-ranch", "Louisiana Sweet"],
+    ["Honey Hot", "HouseFire Ranch", "Buffalo", "BC Honey Q", "Honey Stinger", "Wowy-ranch"],
+    ["HouseFire Ranch", "Honey Stinger", "Honey Hot", "Buffalo", "Korean Sticky Sesame", "Wowy-ranch"],
   ];
   const n = Math.min(6, Math.max(2, Math.round(people / 4) + 1));
   return ladders[spice].slice(0, n);
 }
 function pickDips(spice: number): string[] {
-  const base = ["House Ranch", "Hot Honey ★"];
-  const extra = spice >= 3 ? ["Blue Cheese", "Garlic Aioli"] : ["Honey Mustard", "Chipotle Mayo"];
+  const base = ["Ranch", "Hot Honey ★"];
+  const extra = spice >= 3 ? ["Blue Cheese", "Garlic Aioli"] : ["Honey Mustard", "Sriracha Mayo"];
   return [...base, ...extra];
 }
 
