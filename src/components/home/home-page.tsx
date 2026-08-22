@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import PartyBuilder from "@/components/party-builder";
-import {
-  locations,
-  menuCategories,
-  wingFlavours,
-} from "@/components/home/data";
+import { locations, menuCategories } from "@/components/home/data";
 import { HeroOrderActions } from "@/components/home/hero-order-actions";
 import { MenuAccordion } from "@/components/home/menu-accordion";
-import { flavourTaglineFor } from "@/components/home/taglines";
+import {
+  SIGNATURE_FLAVOURS,
+  flavourTaglineFor,
+} from "@/components/home/taglines";
 import { crateOptions } from "@/components/crates/data";
+import { WING_FLAVOURS } from "@/lib/menu-constants";
 
 type SectionIntroProps = {
   eyebrow: string;
@@ -261,7 +261,7 @@ export function HomePage() {
             body="Pick your lane: sticky, peppery, sweet, fiery, or a choice you immediately need ranch to justify."
           />
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {wingFlavours.map((flavour) => {
+            {WING_FLAVOURS.map((flavour) => {
               const tagline = flavourTaglineFor(flavour);
               return (
                 <div
@@ -270,6 +270,11 @@ export function HomePage() {
                 >
                   <p className="text-sm font-black uppercase tracking-[0.16em] sm:text-base">
                     {flavour}
+                    {SIGNATURE_FLAVOURS.has(flavour) && (
+                      <span aria-label="Signature flavour" title="Signature flavour">
+                        {" \u2605"}
+                      </span>
+                    )}
                   </p>
                   {tagline && (
                     <p className="mt-1 text-xs font-normal leading-5 text-brand-ink/70">
@@ -293,7 +298,7 @@ export function HomePage() {
               Not just sides. The whole system.
             </h2>
             <p className="text-base leading-7 text-brand-ink/78 sm:text-lg">
-              12 dips. Almost nobody orders just one. Not a coincidence.
+              10 dips. Almost nobody orders just one. Not a coincidence.
             </p>
           </div>
         </div>
@@ -311,25 +316,33 @@ export function HomePage() {
             <div className="mt-5 sm:max-w-[14rem]">
               <LinkButton href="/crates" label="View Crates" />
             </div>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {crateOptions.map((crate) => (
                 <div
                   key={crate.name}
                   className="rounded-[1.4rem] border-2 border-[#fff7ed] bg-brand-ink/18 p-4"
                 >
+                  {crate.ribbon && (
+                    <p className="mb-2 w-fit rounded-full bg-brand-yellow px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-brand-ink">
+                      {crate.ribbon}
+                    </p>
+                  )}
                   <p className="font-display text-2xl uppercase">{crate.badge}</p>
-                  <p className="mt-1 text-sm font-black uppercase tracking-[0.16em] text-brand-yellow">
+                  <p className="mt-1 text-sm font-black uppercase tracking-[0.16em] text-brand-yellow break-words">
                     {crate.name} · {crate.price}
                   </p>
                   <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
                     {crate.wings} · {crate.feeds}
+                  </p>
+                  <p className="mt-1 text-xs font-black uppercase tracking-[0.16em] text-[#fff7ed]/70">
+                    {crate.notice}
                   </p>
                 </div>
               ))}
             </div>
           </div>
 
-          <Image src="/menu/crate-stack.webp" alt="CHKN Crate of split-flavour wings with ranch dips" width={1600} height={1067} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+          <Image src="/menu/crate-stack.webp" alt="CHKN Crate of wings with ranch dips" width={1600} height={1067} className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </HomeSection>
 

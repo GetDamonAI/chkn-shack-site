@@ -2,57 +2,67 @@
 // FLAVOUR_TAGLINES -> homepage flavour chips + menu accordion lookup.
 // CRATE_TAGLINES   -> /crates + /group-orders crate cards + menu accordion lookup.
 // DIP_TAGLINES     -> Dips-category chip grid + menu accordion lookup.
-// SIGNATURE_DIPS   -> flags which dips get the "signature" pill in the grid.
+// SIGNATURE_*      -> flags which flavours/dips get the "signature" pill.
 // ITEM_TAGLINES stays in menu-accordion.tsx (only consumed there).
+//
+// Keys here MUST match WING_FLAVOURS / DIP_FLAVOURS in src/lib/menu-constants.ts
+// verbatim — those constants drive render order, this file only supplies copy.
 
 export const FLAVOUR_TAGLINES: Record<string, string> = {
   "Buffalo": "The one everybody orders. Cayenne, butter, and yes — get the ranch.",
   "Honey Hot": "Buffalo's sweeter twin. Real honey, real heat, real napkins required.",
-  "HouseFire Ranch": "Ranch with a temper. House chili heat cut with cool buttermilk.",
-  "Honey Stinger": "Yes, it stings. Honey glaze up front, ghost pepper on the drop.",
-  "Wowy-ranch": "The ranch that went rogue. Creamier, sharper, and somehow a wing sauce now.",
-  "S&P": "The purist's flex. Cracked pepper, flaky salt. That's it. That's the flavour.",
+  "Jakarta Heat": "Sambal-style burn with a slow build. Sweet on the way in, serious on the way out.",
+  "Chilean Chili": "Smoky South American chili. Deep heat that never raises its voice.",
+  "Salt and Pepper": "The purist's flex. Cracked pepper, flaky salt. That's it. That's the flavour.",
+  "Lemon Pepper": "Bright, zippy, dangerously easy. You'll finish twelve without noticing.",
+  "Texas Dry Rub": "No sauce, no apologies. Smoked paprika, brown sugar, and a proper crust.",
   "Honey Garlic": "The one people order twice. Sticky glaze, ranch on standby.",
   "Louisiana Sweet": "The nice one. Sweet Louisiana glaze, mild heat, all charm.",
-  "Maple Bourbon": "The Canadian one. Maple, bourbon char, and a wing that knows what winter is.",
-  "Sweet Thai": "Sweet chili with a passport. Sticky, mild, and gone first every time.",
-  "BC Honey Q": "Local honey, backyard smoke. The BBQ wing that grew up here.",
   "Korean Sticky Sesame": "The wing with international flair. Sesame, gochujang, tamari, full commitment.",
+  "Maple Bourbon": "The Canadian one. Maple, bourbon char, and a wing that knows what winter is.",
+  "Honey Stinger": "Yes, it stings. Honey glaze up front, ghost pepper on the drop.",
 };
+
+export const SIGNATURE_FLAVOURS = new Set<string>([
+  "Buffalo",
+  "Salt and Pepper",
+  "Honey Garlic",
+]);
 
 export const CRATE_TAGLINES: Record<string, string> = {
-  "CHKN Crate 50pc": "The group-order starter kit. 50 wings, one large fries, 3 dips, Grandpa J's toss on top. Feeds 5-7. Same-day.",
-  "CHKN Crate 100pc": "Medium mayhem. 100 wings across 2 flavours, party-size fries, 5 dips. 24-hr notice. Feeds 10-15.",
-  "CHKN Crate 200pc": "Full send. 200 wings, 2 party fries, 8 dips. 24-hr notice. Feeds 20-30.",
+  "CHKN Crate 50pc":
+    "The group-order starter kit. 50 wings, pick up to 2 flavours, 1 large fries, 3 dips. Feeds 5-7. Same-day.",
+  "CHKN Crate 100pc":
+    "Medium mayhem. 100 wings, pick up to 3 flavours, 2 party fries, 5 dips. Feeds 10-15. 24hr notice.",
+  "CHKN Crate 200pc":
+    "Full send. 200 wings, pick up to 4 flavours, 4 party fries, 8 dips. Feeds 20-30. 24hr notice.",
+  "The Tailgate Crate":
+    "30 wings, 2 flavours, 4 dips, big fries, 3 pops. Feeds the couch (3–4). Same-day. The game's already on.",
 };
 
-// Insertion order determines render order in the Dips-category chip grid.
+// Insertion order matches DIP_FLAVOURS; the chip grid renders from the constant.
 export const DIP_TAGLINES: Record<string, string> = {
+  "WOWY Ranch": "The ranch that changed things. Creamier, sharper, unforgettable.",
+  "House Fire Ranch": "The signature burn, cooled in ranch. House chili, smoke, buttermilk.",
   "Ranch": "The dip that ends debates. Absolute reliability.",
-  "Wowy-ranch": "The ranch that changed things. Creamier, sharper, unforgettable.",
-  "HouseFire Ranch": "The signature burn, cooled in ranch. House chili, smoke, buttermilk.",
-  "BC Honey Q": "Local honey meets backyard smoke. BBQ with a Canadian accent.",
-  "Sweet Thai": "Sweet, sticky, whisper of chili. Plays well with absolutely everything.",
-  "Peri-Peri": "Portuguese heat in a cup. Bright, smoky, and a proper mid-burn.",
-  "Honey Mustard": "The dip that already made a friend today. Honey + Dijon + zero drama.",
-  "Sriracha Mayo": "The creamy one with a mean streak. Sriracha, mayo, no notes.",
-  "Garlic Aioli": "For people tired of being polite with garlic. Roasted, sharp, present.",
-  "Spicy Aioli": "The dip that ends up on everything. Wings, fries, sandwich, life.",
   "Blue Cheese": "Not for everyone. That's kind of the point.",
+  "Garlic Aioli": "For people tired of being polite with garlic. Roasted, sharp, present.",
+  "Buffalo": "The sauce, in dip form. Double down and stop pretending you weren't going to.",
+  "Spicy Aioli": "The dip that ends up on everything. Wings, fries, sandwich, life.",
   "Hot Honey": "Sweet with a punch line. Honey, chili flakes, medium heat.",
+  "Honey BBQ": "Sweet, smoky, and the one the whole table quietly agrees on.",
+  "Sweet Thai": "Sweet, sticky, whisper of chili. Plays well with absolutely everything.",
 };
 
 export const SIGNATURE_DIPS = new Set<string>([
   "Ranch",
-  "Wowy-ranch",
-  "HouseFire Ranch",
+  "WOWY Ranch",
+  "House Fire Ranch",
   "Hot Honey",
 ]);
 
-// Normalise a wing flavour label ("Buffalo ★", "S&P ★") to a FLAVOUR_TAGLINES
-// key ("Buffalo", "S&P"). Only the signature star is stripped — flavour names
-// are otherwise keyed exactly as they render.
+// Flavour chips render straight from WING_FLAVOURS, so the label already matches
+// the tagline key. Kept as a helper so callers stay decoupled from the map shape.
 export function flavourTaglineFor(flavour: string): string | undefined {
-  const key = flavour.replace(/\s*★/g, "").trim();
-  return FLAVOUR_TAGLINES[key];
+  return FLAVOUR_TAGLINES[flavour];
 }
