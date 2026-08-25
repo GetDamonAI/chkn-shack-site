@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useRef } from "react";
+import { DIP_FLAVOURS, WING_FLAVOURS } from "@/lib/menu-constants";
 
 /**
  * CHKN SHACK — PARTY BUILDER
@@ -48,10 +49,10 @@ interface BuildArgs {
 }
 
 /* ---------- MENU DATA (V2) ---------- */
-const CRATES: { pc: number; price: number }[] = [
-  { pc: 200, price: 245 },
-  { pc: 100, price: 135 },
-  { pc: 50, price: 75 },
+const CRATES: { pc: number; price: number; name: string }[] = [
+  { pc: 200, price: 245, name: "CHKN Crate 200pc" },
+  { pc: 100, price: 135, name: "CHKN Crate 100pc" },
+  { pc: 50, price: 75, name: "CHKN Crate 50pc" },
 ];
 
 const EVENTS: Record<EventKey, { label: string; blurb: string; per: number }> = {
@@ -66,7 +67,7 @@ const SPICE: { label: string; short: string; pick: string }[] = [
   { label: "I cry at black pepper", short: "Mild only", pick: "all flavor, zero burn" },
   { label: "Keep it friendly", short: "Light heat", pick: "a gentle warm-up, nothing scary" },
   { label: "Bring some heat", short: "Medium", pick: "the crowd-pleaser sweet spot" },
-  { label: "I like to suffer a little", short: "Hot", pick: "HouseFire Ranch is calling" },
+  { label: "I like to suffer a little", short: "Hot", pick: "Jakarta Heat is calling" },
   { label: "I want to see God", short: "Maximum", pick: "Honey Stinger, no mercy" },
 ];
 
@@ -85,26 +86,26 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   // ----- WINGS -----
   const wingFlavors = pickFlavors(spice, people);
   if (people <= 2) {
-    items.push({ qty: 1, name: "Solo Combo", detail: "10pc + fries + drink", price: 22, kind: "wings" });
+    items.push({ qty: 1, name: "Solo Combo", detail: "wings + fries + dip + pop", price: 22, kind: "wings" });
     if (people === 2)
-      items.push({ qty: 1, name: "Anchor Combo ★", detail: "20pc + Shack Cut Fries + 3 dips + drink", price: 36, kind: "wings" });
+      items.push({ qty: 1, name: "The Drop", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
   } else if (people <= 5) {
-    const anchors = Math.max(1, Math.round(targetWings / 20));
-    items.push({ qty: anchors, name: "Anchor Combo ★", detail: "20pc + Shack Cut Fries + 3 dips + drink", price: 36, kind: "wings" });
+    const drops = Math.max(1, Math.round(targetWings / 20));
+    items.push({ qty: drops, name: "The Drop", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
   } else {
     let remaining = targetWings;
     for (const c of CRATES) {
       while (remaining >= c.pc * 0.8) {
-        items.push({ qty: 1, name: `${c.pc}pc CHKN Crate`, detail: "wings + fries + dips, group format", price: c.price, kind: "wings" });
+        items.push({ qty: 1, name: c.name, detail: "wings + fries + dips, group format", price: c.price, kind: "wings" });
         remaining -= c.pc;
       }
     }
     if (remaining > 12) items.push({ qty: 1, name: "20pc Wings", detail: "top-up", price: 28, kind: "wings" });
-    else if (remaining > 0) items.push({ qty: 1, name: "10pc Wings", detail: "top-up", price: 16, kind: "wings" });
+    else if (remaining > 0) items.push({ qty: 1, name: "10pc Wings", detail: "top-up", price: 18, kind: "wings" });
   }
 
   const hasCrate = items.some((i) => i.name.includes("Crate"));
-  const hasCombo = items.some((i) => i.name.includes("Combo"));
+  const hasCombo = items.some((i) => i.name.includes("Combo") || i.name === "The Drop");
 
   // ----- DIPS -----
   let dipSets = 0;
@@ -117,16 +118,16 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   }
   const dipPicks = pickDips(spice);
   if (bottles > 0) items.push({ qty: bottles, name: "12oz Dip Tub", detail: dipPicks.slice(0, 2).join(" / "), price: 9, kind: "dips" });
-  if (dipSets > 0) items.push({ qty: dipSets, name: "Dip — 3 for $4", detail: dipPicks.join(" · "), price: 4, kind: "dips" });
+  if (dipSets > 0) items.push({ qty: dipSets, name: "3 Dips (mix or match)", detail: dipPicks.join(" · "), price: 4, kind: "dips" });
 
   // ----- FRIES / SIDES -----
-  if (!hasCrate || people > 8) items.push({ qty: 1, name: "Hot Honey Fries ★", detail: "the move", price: 8, kind: "sides" });
-  if (people >= 8) items.push({ qty: 1, name: "Mac and Cheese Tray", detail: "feeds 4-6", price: 32, kind: "sides" });
+  if (!hasCrate || people > 8) items.push({ qty: 1, name: "Hot Honey Fries", detail: "the move", price: 8, kind: "sides" });
+  if (people >= 8) items.push({ qty: 1, name: "Mac and Cheese Tray", detail: "feeds 4-6", price: 29, kind: "sides" });
 
   // ----- VEGETARIAN -----
   if (veg > 0) {
     const cauli = Math.max(1, Math.ceil(veg / 3));
-    items.push({ qty: cauli, name: "Cauli Bites (veg)", detail: `for your ${veg} plant-based guest${veg > 1 ? "s" : ""}`, price: 8, kind: "veg" });
+    items.push({ qty: cauli, name: "Cauli Bites (veg)", detail: `for your ${veg} plant-based guest${veg > 1 ? "s" : ""}`, price: 10, kind: "veg" });
     items.push({ qty: 1, name: "Shack Cut Seasoned Fries", detail: "veg-friendly side", price: 6, kind: "veg" });
   }
 
@@ -134,20 +135,25 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   return { items, wingFlavors, subtotal, perPerson: subtotal / people, hasCrate, hasCombo };
 }
 
+// Ladders are ordered mild -> maximum and only ever name entries from
+// WING_FLAVOURS / DIP_FLAVOURS, so the builder can't recommend a dead SKU.
+type Flavour = (typeof WING_FLAVOURS)[number];
+type Dip = (typeof DIP_FLAVOURS)[number];
+
 function pickFlavors(spice: number, people: number): string[] {
-  const ladders: string[][] = [
-    ["Honey Garlic", "S&P", "Buffalo", "Sweet Thai", "Maple Bourbon", "Korean Sticky Sesame"],
-    ["Buffalo", "Honey Garlic", "Sweet Thai", "Honey Hot", "Korean Sticky Sesame", "Louisiana Sweet"],
-    ["Buffalo", "Honey Hot", "Honey Garlic", "BC Honey Q", "Wowy-ranch", "Louisiana Sweet"],
-    ["Honey Hot", "HouseFire Ranch", "Buffalo", "BC Honey Q", "Honey Stinger", "Wowy-ranch"],
-    ["HouseFire Ranch", "Honey Stinger", "Honey Hot", "Buffalo", "Korean Sticky Sesame", "Wowy-ranch"],
+  const ladders: Flavour[][] = [
+    ["Honey Garlic", "Salt and Pepper", "Lemon Pepper", "Maple Bourbon", "Louisiana Sweet", "Texas Dry Rub"],
+    ["Honey Garlic", "Lemon Pepper", "Louisiana Sweet", "Buffalo", "Korean Sticky Sesame", "Texas Dry Rub"],
+    ["Buffalo", "Honey Hot", "Honey Garlic", "Korean Sticky Sesame", "Louisiana Sweet", "Maple Bourbon"],
+    ["Honey Hot", "Buffalo", "Jakarta Heat", "Chilean Chili", "Honey Stinger", "Korean Sticky Sesame"],
+    ["Honey Stinger", "Jakarta Heat", "Chilean Chili", "Honey Hot", "Buffalo", "Texas Dry Rub"],
   ];
   const n = Math.min(6, Math.max(2, Math.round(people / 4) + 1));
   return ladders[spice].slice(0, n);
 }
 function pickDips(spice: number): string[] {
-  const base = ["Ranch", "Hot Honey ★"];
-  const extra = spice >= 3 ? ["Blue Cheese", "Garlic Aioli"] : ["Honey Mustard", "Sriracha Mayo"];
+  const base: Dip[] = ["Ranch", "Hot Honey"];
+  const extra: Dip[] = spice >= 3 ? ["Blue Cheese", "WOWY Ranch"] : ["Honey BBQ", "Sweet Thai"];
   return [...base, ...extra];
 }
 

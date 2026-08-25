@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { CRATE_TAGLINES } from "@/components/home/taglines";
+import { crateOptions } from "@/components/crates/data";
+import { TAILGATE_ACTIVE } from "@/lib/menu-constants";
 
 function cn(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
@@ -50,43 +52,26 @@ function PageSection({
   );
 }
 
-const crates = [
-  {
-    name: "CHKN Crate 50pc",
-    price: "$75",
-    tier: "Small chaos",
-    subtitle: undefined as string | undefined,
-  },
-  {
-    name: "CHKN Crate 100pc",
-    price: "$135",
-    tier: "Medium mayhem",
-    subtitle: "24-hour notice required.",
-  },
-  {
-    name: "CHKN Crate 200pc",
-    price: "$245",
-    tier: "Full send",
-    subtitle: "24-hour notice required.",
-  },
-];
 
 const trays = [
   {
     name: "Mac and Cheese Tray",
-    price: "$32",
-    copy: "Full comfort. Alfredo base, marble cheddar, bacon. Feeds 4-6.",
+    price: "$29",
+    copy: "The one that ends the argument about sides. Alfredo base, marble cheese, panko top. Feeds 4-6.",
   },
   {
     name: "Perogy Tray",
     price: "$30",
-    copy: "Full perogy commitment. Butter-pan-finished with caramelized onions, bacon, sour cream. Feeds 4-6.",
+    copy: "Full perogy commitment. 25 pan-finished, sour cream + chili crisp on standby. Feeds 4-6.",
   },
 ];
 
 const steps = [
   "Order online — Uber Eats or DoorDash.",
-  "Same-day pickup or delivery for 50pc. 100pc and 200pc need 24 hours.",
+  // Lead-time line follows the seasonal gate so it can't name a pulled SKU.
+  TAILGATE_ACTIVE
+    ? "Same-day pickup or delivery for the 50pc and the Tailgate Crate. 100pc and 200pc need 24 hours."
+    : "Same-day pickup or delivery for the 50pc. 100pc and 200pc need 24 hours.",
   "Custom orders? Email orders@wingschknshack.com.",
 ];
 
@@ -124,7 +109,7 @@ export function GroupOrdersPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-8 text-[#fff7ed]/84">
             Wing crates built for offices, parties, game nights, and anything
-            else worth gathering for. Mix up to two flavours. Pick your sides.
+            else worth gathering for. Mix up to four flavours. Pick your sides.
             Pick your dips. Show up with the box. Everybody wins.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
@@ -145,17 +130,22 @@ export function GroupOrdersPage() {
       </PageSection>
 
       <PageSection id="crates">
-        <div className="grid gap-4 lg:grid-cols-3">
-          {crates.map((crate) => (
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {crateOptions.map((crate) => (
             <article
               key={crate.name}
               className="flex flex-col rounded-[1.8rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_12px_0_0_#100800]"
             >
+              {crate.ribbon && (
+                <p className="mb-3 w-fit rounded-full border-2 border-brand-ink bg-brand-yellow px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-brand-ink">
+                  {crate.ribbon}
+                </p>
+              )}
               <p className="text-sm font-black uppercase tracking-[0.2em] text-brand-red">
-                {crate.tier}
+                {crate.badge}
               </p>
-              <div className="mt-2 flex items-start justify-between gap-3">
-                <h2 className="font-display text-3xl uppercase leading-none text-brand-ink">
+              <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
+                <h2 className="min-w-0 font-display text-3xl uppercase leading-none text-brand-ink break-words">
                   {crate.name}
                 </h2>
                 <span className="shrink-0 rounded-full border-2 border-brand-ink bg-brand-yellow px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-brand-ink">
@@ -167,11 +157,9 @@ export function GroupOrdersPage() {
                   {CRATE_TAGLINES[crate.name]}
                 </p>
               )}
-              {crate.subtitle && (
-                <p className="mt-4 w-fit rounded-full border-2 border-brand-ink bg-brand-red px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#fff7ed]">
-                  {crate.subtitle}
-                </p>
-              )}
+              <p className="mt-4 w-fit rounded-full border-2 border-brand-ink bg-brand-red px-3 py-1 text-xs font-black uppercase tracking-[0.16em] text-[#fff7ed]">
+                {crate.notice}
+              </p>
             </article>
           ))}
         </div>

@@ -165,58 +165,96 @@ function CrateCard({
   name,
   price,
   badge,
+  ribbon,
+  notice,
   feeds,
   wings,
   fries,
   dips,
-  addons,
-  vibe,
+  pops,
+  modifiers,
+  imagePending,
 }: (typeof crateOptions)[number]) {
   return (
-    <article className="relative rounded-[1.8rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_12px_0_0_#100800]">
-      {badge ? (
-        <span className="absolute right-4 top-4 rounded-full border-2 border-brand-ink bg-brand-red px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#fff7ed]">
-          {badge}
-        </span>
+    <article className="rounded-[1.8rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_12px_0_0_#100800]">
+      {ribbon ? (
+        <p className="mb-3 w-fit rounded-full border-2 border-brand-ink bg-brand-yellow px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-brand-ink">
+          {ribbon}
+        </p>
       ) : null}
-      <p className="text-sm font-black uppercase tracking-[0.2em] text-brand-red">
-        {feeds}
-      </p>
-      <div className="mt-2 flex items-start justify-between gap-3">
-        <h2 className="font-display text-4xl uppercase leading-none text-brand-ink">
+      <div className="flex flex-wrap items-center gap-2">
+        <p className="text-sm font-black uppercase tracking-[0.2em] text-brand-red">
+          {feeds}
+        </p>
+        <span className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.16em] text-brand-ink">
+          {notice}
+        </span>
+        {badge ? (
+          <span className="rounded-full border-2 border-brand-ink bg-brand-red px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#fff7ed]">
+            {badge}
+          </span>
+        ) : null}
+      </div>
+      <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
+        <h2 className="min-w-0 font-display text-4xl uppercase leading-none text-brand-ink break-words">
           {name}
         </h2>
         <span className="shrink-0 rounded-full border-2 border-brand-ink bg-brand-yellow px-3 py-1 text-xs font-black uppercase tracking-[0.18em] text-brand-ink">
           {price}
         </span>
       </div>
-      <p className="mt-3 text-sm leading-6 text-brand-ink/76">{vibe}</p>
       {CRATE_TAGLINES[name] && (
-        <p className="mt-2 text-xs leading-5 text-brand-ink/60">
+        <p className="mt-3 text-sm leading-6 text-brand-ink/76">
           {CRATE_TAGLINES[name]}
         </p>
       )}
 
+      {imagePending && (
+        <div className="mt-4 flex min-h-32 flex-col justify-between rounded-[1.3rem] border-2 border-dashed border-brand-ink/35 bg-[#fff7ed]/70 p-4">
+          <span className="w-fit rounded-full bg-brand-ink px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#fff7ed]">
+            Placeholder image
+          </span>
+          <p className="mt-3 text-xs leading-5 text-brand-ink/70">
+            Hero shot pending. Alt: &ldquo;{imagePending.alt}&rdquo;
+          </p>
+        </div>
+      )}
+
       <div className="mt-5 space-y-3 rounded-[1.3rem] border-2 border-brand-ink bg-brand-yellow p-4 text-sm font-black uppercase tracking-[0.14em] text-brand-ink">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
           <span>Wings</span>
-          <span>{wings}</span>
+          <span className="text-right">{wings}</span>
         </div>
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
           <span>Fries</span>
-          <span>{fries}</span>
+          <span className="text-right">{fries}</span>
         </div>
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
           <span>Dips</span>
-          <span>{dips}</span>
+          <span className="text-right">{dips}</span>
         </div>
+        {pops && (
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+            <span>Pops</span>
+            <span className="text-right">{pops}</span>
+          </div>
+        )}
       </div>
 
       <div className="mt-5 rounded-[1.3rem] bg-brand-ink p-4 text-[#fff7ed]">
         <p className="text-xs font-black uppercase tracking-[0.24em] text-brand-yellow">
-          Optional add-ons
+          What you pick
         </p>
-        <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">{addons}</p>
+        <ul className="mt-2 space-y-1.5">
+          {modifiers.map((modifier) => (
+            <li
+              key={modifier}
+              className="text-xs leading-5 text-[#fff7ed]/82 break-words"
+            >
+              {modifier}
+            </li>
+          ))}
+        </ul>
       </div>
     </article>
   );
@@ -251,9 +289,40 @@ function PillList({
 // TODO: temporarily hidden — 10-gal ranch bucket. Restore by flipping BUCKET_HIDDEN to false.
 const BUCKET_HIDDEN = true;
 
+// Crate lineup as structured data. Built from crateOptions so the seasonal
+// Tailgate SKU drops out of the schema with the card when the flag is off.
+const crateListJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "CHKN Crates",
+  itemListElement: crateOptions.map((crate, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Product",
+      name: crate.name,
+      description: CRATE_TAGLINES[crate.name],
+      brand: { "@type": "Brand", name: "CHKN Shack" },
+      offers: {
+        "@type": "Offer",
+        price: crate.price.replace("$", ""),
+        priceCurrency: "CAD",
+        availability: "https://schema.org/InStock",
+        url: "https://wingschknshack.com/crates",
+      },
+    },
+  })),
+};
+
 export function CratesPage() {
   return (
     <main className="bg-background pb-28 text-foreground md:pb-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(crateListJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <PageSection className="pt-4 sm:pt-6">
         <div className="brand-grid rounded-[2rem] border-2 border-brand-ink bg-surface px-4 py-4 shadow-[0_12px_0_0_#100800] sm:px-6">
           <div className="flex items-center justify-between gap-4">
@@ -314,7 +383,7 @@ export function CratesPage() {
             </div>
           </div>
 
-          <Image src="/menu/crates-hero.webp" alt="CHKN Crate of split-flavour wings with ranch dips" width={1600} height={1067} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+          <Image src="/menu/crates-hero.webp" alt="CHKN Crate of wings with ranch dips" width={1600} height={1067} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
         </div>
       </PageSection>
 
@@ -429,7 +498,7 @@ export function CratesPage() {
           <SectionIntro
             eyebrow="How it works"
             title="Easy enough to do hungry."
-            body="No spreadsheets. No awkward forms. Just choose the box, split the flavours, hit the app, and let the food do the heavy lifting."
+            body="No spreadsheets. No awkward forms. Just choose the box, pick the flavours, hit the app, and let the food do the heavy lifting."
             theme="dark"
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

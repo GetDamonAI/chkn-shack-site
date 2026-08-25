@@ -1,13 +1,29 @@
+import {
+  DIP_FLAVOURS,
+  DIP_TUB_9OZ_ADDON,
+  EXTRA_DIP_2OZ,
+  FRY_CHOICE_NAMES,
+  TAILGATE_ACTIVE,
+  WING_FLAVOURS,
+} from "@/lib/menu-constants";
+
 export type CrateOption = {
   name: string;
   price: string;
   badge?: string;
+  /** Seasonal ribbon copy. Only set on gated SKUs. */
+  ribbon?: string;
+  /** Lead-time badge — "Same-day" or "24hr notice". */
+  notice: string;
   feeds: string;
   wings: string;
   fries: string;
   dips: string;
-  addons: string;
-  vibe: string;
+  pops?: string;
+  /** Canonical customer-picked modifiers, in menu order. */
+  modifiers: string[];
+  /** Set while the real hero shot is pending — renders a placeholder tile. */
+  imagePending?: { alt: string };
 };
 
 export type Occasion = {
@@ -20,75 +36,100 @@ export const crateOptions: CrateOption[] = [
     name: "CHKN Crate 50pc",
     price: "$75",
     badge: "Small chaos",
+    notice: "Same-day",
     feeds: "Feeds 5-7",
-    wings: "50 · one flavour",
-    fries: "1 large fry side",
+    wings: "50 · pick up to 2 flavours",
+    fries: "1 large fries",
     dips: "3 dips",
-    addons: "Grandpa J's toss on top. Add cauli bites, extra wings, or an extra dip tub for the closer",
-    vibe: "The group-order starter kit. Order it same-day when the group chat finally commits to a plan.",
+    modifiers: [
+      "Wing Flavours (pick 1–2)",
+      "Fry Choice (pick 1): Shack Cut Seasoned Fries (Large 16oz) · Parm Bomb Garlic Fries · Hot Honey Fries · Dirty Curly Fries",
+      "Included Dips 2oz (pick 3)",
+      EXTRA_DIP_2OZ,
+      DIP_TUB_9OZ_ADDON,
+    ],
   },
   {
     name: "CHKN Crate 100pc",
     price: "$135",
     badge: "Medium mayhem",
+    notice: "24hr notice",
     feeds: "Feeds 10-15",
-    wings: "100 · across 2 flavours",
-    fries: "Party-size fries",
+    wings: "100 · pick up to 3 flavours",
+    fries: "2 party fries",
     dips: "5 dips",
-    addons: "Add sharing trays, an extra flavour split, or more dips",
-    vibe: "Enough wings that nobody does the sad math on who ate what. Heads up: 24-hour advance notice required.",
+    modifiers: [
+      "Wing Flavours (pick 1–3)",
+      "Fry Choice (pick 2)",
+      "Included Dips 2oz (pick 5)",
+      EXTRA_DIP_2OZ,
+      DIP_TUB_9OZ_ADDON,
+    ],
   },
   {
     name: "CHKN Crate 200pc",
     price: "$245",
     badge: "Full send",
+    notice: "24hr notice",
     feeds: "Feeds 20-30",
-    wings: "200 · across 2 flavours",
-    fries: "2 party fry sides",
+    wings: "200 · pick up to 4 flavours",
+    fries: "4 party fries",
     dips: "8 dips",
-    addons: "Add sharing trays, extra sides, or go fully unhinged with extra dips and fry sides",
-    vibe: "When the invite list got out of hand and you leaned all the way in. Heads up: 24-hour advance notice required.",
+    modifiers: [
+      "Wing Flavours (pick 1–4)",
+      "Fry Choice (pick 4)",
+      "Included Dips 2oz (pick 8)",
+      EXTRA_DIP_2OZ,
+      DIP_TUB_9OZ_ADDON,
+    ],
   },
+  // Seasonal SKU — Football Season, Sep 1 – Feb 28. Gated on
+  // NEXT_PUBLIC_TAILGATE_ACTIVE so it can be pulled without a code deploy.
+  ...(TAILGATE_ACTIVE
+    ? [
+        {
+          name: "The Tailgate Crate",
+          price: "$69",
+          badge: "New",
+          ribbon: "Seasonal · Football Season",
+          notice: "Same-day",
+          feeds: "Feeds the couch (3–4)",
+          wings: "30 · pick up to 2 flavours",
+          fries: "1 big fries",
+          dips: "4 dips",
+          pops: "3 pops",
+          modifiers: [
+            "Wing Flavours (pick 1–2 of 12)",
+            "Included Dips 2oz (pick 4 of 10, no upcharge)",
+            "Fry Choice (pick 1): Shack Cut Seasoned Fries (Large 16oz, included) · Dirty Curly Fries (+$3) · Parm Bomb Garlic Fries (+$3) · Hot Honey Fries (+$3)",
+            "Pop Flavour (pick 3 — duplicates allowed): Coke · Diet Coke · Sprite · Ginger Ale",
+            EXTRA_DIP_2OZ,
+            DIP_TUB_9OZ_ADDON,
+          ],
+          imagePending: {
+            alt: "The Tailgate Crate — 30 wings, fries, dips, pops.",
+          },
+        } satisfies CrateOption,
+      ]
+    : []),
 ];
 
-export const flavourOptions: string[] = [
-  // Heat
-  "Buffalo ★", "Honey Hot", "HouseFire Ranch", "Honey Stinger",
-  // Creamy & Dry
-  "Wowy-ranch", "S&P ★",
-  // Sweet & Sticky
-  "Honey Garlic ★", "Louisiana Sweet", "Maple Bourbon", "Sweet Thai", "BC Honey Q", "Korean Sticky Sesame",
-];
-
-export const dipOptions: string[] = [
-  "Ranch",
-  "Wowy-ranch",
-  "HouseFire Ranch",
-  "BC Honey Q",
-  "Sweet Thai",
-  "Peri-Peri",
-  "Honey Mustard",
-  "Sriracha Mayo",
-  "Garlic Aioli",
-  "Spicy Aioli",
-  "Blue Cheese",
-  "Hot Honey",
-];
+/** Wing flavour + dip pill lists render straight off the canonical constants. */
+export const flavourOptions: string[] = [...WING_FLAVOURS];
+export const dipOptions: string[] = [...DIP_FLAVOURS];
 
 export const sideOptions: string[] = [
-  "Large fries",
-  "Loaded fries",
-  "Cauli bites",
-  "Extra dips",
+  ...FRY_CHOICE_NAMES,
+  "Cauli Bites",
   "Mac and Cheese Tray",
   "Perogy Tray",
 ];
 
 export const addonOptions: string[] = [
-  "Extra wings",
-  "Extra flavour split",
-  "Extra fries",
-  "Dessert add-on",
+  EXTRA_DIP_2OZ,
+  DIP_TUB_9OZ_ADDON,
+  "Gravy (Add-on) — $2",
+  "Coleslaw (Add-on) — $3",
   // TODO: temporarily removed — 10-gal ranch bucket. Restore by re-adding: "The Bucket",
 ];
 
