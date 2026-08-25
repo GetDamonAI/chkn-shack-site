@@ -37,7 +37,7 @@ export const CRATE_TAGLINES: Record<string, string> = {
   "CHKN Crate 200pc":
     "Full send. 200 wings, pick up to 4 flavours, 4 party fries, 8 dips. Feeds 20-30. 24hr notice.",
   "The Tailgate Crate":
-    "30 wings, 2 flavours, 4 dips, big fries, 3 pops. Feeds the couch (3–4). Same-day. The game's already on.",
+    "50 wings, 2 flavours, 4 dips, big fries, 3 pops. Feeds the crew (5–7). Same-day. The game's already on.",
 };
 
 // Insertion order matches DIP_FLAVOURS; the chip grid renders from the constant.

@@ -4,6 +4,7 @@ import {
   EXTRA_DIP_2OZ,
   FRY_CHOICE_NAMES,
   TAILGATE_ACTIVE,
+  TAILGATE_PRICE,
   WING_FLAVOURS,
 } from "@/lib/menu-constants";
 
@@ -89,17 +90,17 @@ export const crateOptions: CrateOption[] = [
     ? [
         {
           name: "The Tailgate Crate",
-          price: "$69",
+          price: TAILGATE_PRICE,
           badge: "New",
           ribbon: "Seasonal · Football Season",
           notice: "Same-day",
-          feeds: "Feeds the couch (3–4)",
-          wings: "30 · pick up to 2 flavours",
+          feeds: "Feeds the crew (5–7)",
+          wings: "50 · pick up to 3 flavours",
           fries: "1 big fries",
           dips: "4 dips",
           pops: "3 pops",
           modifiers: [
-            "Wing Flavours (pick 1–2 of 12)",
+            "Wing Flavours (pick 1–3 of 12)",
             "Included Dips 2oz (pick 4 of 10, no upcharge)",
             "Fry Choice (pick 1): Shack Cut Seasoned Fries (Large 16oz, included) · Dirty Curly Fries (+$3) · Parm Bomb Garlic Fries (+$3) · Hot Honey Fries (+$3)",
             "Pop Flavour (pick 3 — duplicates allowed): Coke · Diet Coke · Sprite · Ginger Ale",
@@ -107,7 +108,7 @@ export const crateOptions: CrateOption[] = [
             DIP_TUB_9OZ_ADDON,
           ],
           imagePending: {
-            alt: "The Tailgate Crate — 30 wings, fries, dips, pops.",
+            alt: "The Tailgate Crate — 50 wings, fries, dips, pops.",
           },
         } satisfies CrateOption,
       ]

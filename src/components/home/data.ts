@@ -2,6 +2,7 @@ import {
   DIP_TUB_9OZ_ADDON,
   EXTRA_DIP_2OZ,
   TAILGATE_ACTIVE,
+  TAILGATE_PRICE,
 } from "@/lib/menu-constants";
 
 export type MenuItemV2 = {
@@ -136,10 +137,10 @@ export const menuCategories: MenuCategory[] = [
         ? [
             {
               name: "The Tailgate Crate",
-              price: "$69",
+              price: TAILGATE_PRICE,
               note: "Same-day · Seasonal",
               modifiers: [
-                "Wing Flavours (pick 1–2 of 12)",
+                "Wing Flavours (pick 1–3 of 12)",
                 "Included Dips 2oz (pick 4 of 10, no upcharge)",
                 "Fry Choice (pick 1): Shack Cut Seasoned Fries (Large 16oz, included) · Dirty Curly Fries (+$3) · Parm Bomb Garlic Fries (+$3) · Hot Honey Fries (+$3)",
                 "Pop Flavour (pick 3 — duplicates allowed): Coke · Diet Coke · Sprite · Ginger Ale",

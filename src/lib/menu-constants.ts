@@ -65,6 +65,12 @@ export type DipFlavour = (typeof DIP_FLAVOURS)[number];
 export type PopFlavour = (typeof POP_FLAVOURS)[number];
 
 /**
+ * THE TAILGATE CRATE price. Rendered on the homepage tile and the /crates card,
+ * and parsed into the Product schema — keep it here so a reprice is one edit.
+ */
+export const TAILGATE_PRICE = "$89";
+
+/**
  * Seasonal gate for THE TAILGATE CRATE (Football Season, Sep 1 – Feb 28).
  * Defaults to on; set NEXT_PUBLIC_TAILGATE_ACTIVE=false to pull the card and
  * product copy without a code change.
