@@ -23,8 +23,8 @@ export type CrateOption = {
   pops?: string;
   /** Canonical customer-picked modifiers, in menu order. */
   modifiers: string[];
-  /** Set while the real hero shot is pending — renders a placeholder tile. */
-  imagePending?: { alt: string };
+  /** Card photo. Omit to render the card without an image. */
+  image?: { src: string; alt: string };
 };
 
 export type Occasion = {
@@ -91,7 +91,6 @@ export const crateOptions: CrateOption[] = [
         {
           name: "The Tailgate Crate",
           price: TAILGATE_PRICE,
-          badge: "New",
           ribbon: "For Football SZN",
           notice: "Same-day",
           feeds: "Feeds the crew (5–7)",
@@ -107,7 +106,8 @@ export const crateOptions: CrateOption[] = [
             EXTRA_DIP_2OZ,
             DIP_TUB_9OZ_ADDON,
           ],
-          imagePending: {
+          image: {
+            src: "/menu/crates-hero.webp",
             alt: "The Tailgate Crate — 50 wings, fries, dips, pops.",
           },
         } satisfies CrateOption,

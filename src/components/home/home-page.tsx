@@ -327,7 +327,9 @@ export function HomePage() {
                       {crate.ribbon}
                     </p>
                   )}
-                  <p className="font-display text-2xl uppercase">{crate.badge}</p>
+                  {crate.badge && (
+                    <p className="font-display text-2xl uppercase">{crate.badge}</p>
+                  )}
                   <p className="mt-1 text-sm font-black uppercase tracking-[0.16em] text-brand-yellow break-words">
                     {crate.name} · {crate.price}
                   </p>
