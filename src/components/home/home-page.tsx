@@ -382,7 +382,11 @@ export function HomePage() {
                     isComingSoon ? " opacity-65" : ""
                   }`}
                 >
-                  <p className="font-display text-3xl uppercase leading-none break-words">
+                  {/* 30px fits the full-width mobile card; from sm up the
+                      3-column grid leaves ~143px of text, which a single long
+                      name like ABBOTSFORD (155px at 30px) would break mid-word.
+                      break-words stays as a last-resort guard against overflow. */}
+                  <p className="font-display text-3xl uppercase leading-none break-words sm:text-2xl">
                     {location.city}
                   </p>
                   {isComingSoon ? (
