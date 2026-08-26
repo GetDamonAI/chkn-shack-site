@@ -12,7 +12,7 @@ import {
 } from "@/components/crates/data";
 
 type SectionIntroProps = {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   body: string;
   theme?: "light" | "dark";
@@ -65,14 +65,16 @@ function SectionIntro({
 
   return (
     <div className="max-w-2xl space-y-3">
-      <p
-        className={cn(
-          "text-sm font-black uppercase tracking-[0.28em]",
-          theme === "dark" ? "text-brand-yellow" : "text-brand-red"
-        )}
-      >
-        {eyebrow}
-      </p>
+      {eyebrow ? (
+        <p
+          className={cn(
+            "text-sm font-black uppercase tracking-[0.28em]",
+            theme === "dark" ? "text-brand-yellow" : "text-brand-red"
+          )}
+        >
+          {eyebrow}
+        </p>
+      ) : null}
       <HeadingTag
         className={cn(
           "font-display text-5xl leading-[0.92] sm:text-6xl",
@@ -173,7 +175,7 @@ function CrateCard({
   dips,
   pops,
   modifiers,
-  imagePending,
+  image,
 }: (typeof crateOptions)[number]) {
   return (
     <article className="rounded-[1.8rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_12px_0_0_#100800]">
@@ -209,14 +211,15 @@ function CrateCard({
         </p>
       )}
 
-      {imagePending && (
-        <div className="mt-4 flex min-h-32 flex-col justify-between rounded-[1.3rem] border-2 border-dashed border-brand-ink/35 bg-[#fff7ed]/70 p-4">
-          <span className="w-fit rounded-full bg-brand-ink px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#fff7ed]">
-            Placeholder image
-          </span>
-          <p className="mt-3 text-xs leading-5 text-brand-ink/70">
-            Hero shot pending. Alt: &ldquo;{imagePending.alt}&rdquo;
-          </p>
+      {image && (
+        <div className="relative mt-4 h-40 overflow-hidden rounded-[1.3rem] border-2 border-brand-ink">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="(min-width: 1280px) 22vw, (min-width: 1024px) 40vw, 100vw"
+            className="object-cover"
+          />
         </div>
       )}
 
@@ -345,13 +348,12 @@ export function CratesPage() {
       </PageSection>
 
       <PageSection>
-        <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+        <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
           <div className="rounded-[2.5rem] border-2 border-brand-ink bg-brand-ink px-5 py-6 text-[#fff7ed] shadow-[0_16px_0_0_#ef3d23] sm:px-7 sm:py-8">
             <p className="w-fit rounded-full bg-brand-yellow px-3 py-1 text-xs font-black uppercase tracking-[0.24em] text-brand-ink">
               Crates only
             </p>
             <SectionIntro
-              eyebrow="Large orders"
               title="Feed the Crew."
               body="Wings, fries, dips, and everything you need — built for groups. Big boxes, fast decisions, no weak portions."
               theme="dark"
@@ -372,18 +374,29 @@ export function CratesPage() {
             </div>
             <a
               href="#crate-options"
-              className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full border-2 border-[#fff7ed] px-5 text-sm font-black uppercase tracking-[0.2em] text-[#fff7ed] transition-transform duration-150 hover:-translate-y-0.5"
+              className="mt-4 inline-block text-sm font-black uppercase tracking-[0.16em] text-brand-yellow underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fff7ed]"
             >
-              Plan a Large Order
+              Or compare the crate sizes ↓
             </a>
-            <div className="mt-7 grid gap-3 text-sm font-semibold text-[#fff7ed]/82 sm:grid-cols-3">
-              <p>Office lunch sorted.</p>
-              <p>Game day under control.</p>
-              <p>Party table no longer embarrassing.</p>
-            </div>
+            <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 border-t-2 border-[#fff7ed]/15 pt-5 text-sm font-semibold text-[#fff7ed]/78">
+              <li>Office lunch sorted.</li>
+              <li>Game day under control.</li>
+              <li>Party table no longer embarrassing.</li>
+            </ul>
           </div>
 
-          <Image src="/menu/crates-hero.webp" alt="CHKN Crate of wings with ranch dips" width={1600} height={1067} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
+          {/* h-full + object-cover so the photo matches the panel's height on
+              lg instead of floating centred against it. */}
+          <div className="relative h-64 overflow-hidden rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800] sm:h-80 lg:h-full">
+            <Image
+              src="/menu/crates-hero.webp"
+              alt="CHKN Crate of wings with ranch dips"
+              fill
+              sizes="(min-width: 1024px) 46vw, 100vw"
+              priority
+              className="object-cover"
+            />
+          </div>
         </div>
       </PageSection>
 
