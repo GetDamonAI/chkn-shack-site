@@ -92,7 +92,7 @@ export const crateOptions: CrateOption[] = [
           name: "The Tailgate Crate",
           price: TAILGATE_PRICE,
           badge: "New",
-          ribbon: "Seasonal · Football Season",
+          ribbon: "For Football SZN",
           notice: "Same-day",
           feeds: "Feeds the crew (5–7)",
           wings: "50 · pick up to 3 flavours",
