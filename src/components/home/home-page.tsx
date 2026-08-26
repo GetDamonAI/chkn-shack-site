@@ -382,12 +382,19 @@ export function HomePage() {
                     isComingSoon ? " opacity-65" : ""
                   }`}
                 >
-                  <p className="font-display text-3xl uppercase leading-none">
+                  <p className="font-display text-3xl uppercase leading-none break-words">
                     {location.city}
                   </p>
                   {isComingSoon ? (
-                    <span className="mt-3 inline-block rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-brand-ink">
-                      Coming Soon
+                    <span className="mt-3 flex flex-col items-start gap-1">
+                      <span className="inline-block rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-brand-ink">
+                        Coming Soon
+                      </span>
+                      {location.launchNote && (
+                        <span className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-yellow">
+                          {location.launchNote}
+                        </span>
+                      )}
                     </span>
                   ) : (
                     <span className="mt-3 inline-block rounded-full bg-brand-red px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#fff7ed]">
@@ -441,7 +448,7 @@ export function HomePage() {
               </p>
               <Link
                 href="/franchising"
-                className="mt-5 inline-flex rounded-full border-2 border-brand-yellow bg-brand-yellow px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#fff7ed]"
+                className="mt-5 inline-flex rounded-full border-2 border-brand-yellow bg-brand-yellow px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#fff7ed] transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fff7ed]"
               >
                 Explore Franchising
               </Link>

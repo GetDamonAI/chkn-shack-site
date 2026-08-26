@@ -251,23 +251,28 @@ export type Location = {
   area: string;
   availability?: string;
   status: "live" | "coming-soon";
+  /** Sub-label under the Coming Soon badge, e.g. a launch date. */
+  launchNote?: string;
 };
 
 export const locations: Location[] = [
   {
-    city: "Downtown",
+    city: "Downtown Vancouver",
     area: "Vancouver",
     availability: "Late lunch to midnight",
     status: "live",
   },
   {
-    city: "Tsawwassen",
-    area: "Metro Vancouver",
+    city: "Abbotsford",
+    area: "Fraser Valley",
+    availability: "Late lunch to midnight",
     status: "coming-soon",
+    launchNote: "Launching Sep 6",
   },
   {
-    city: "Maple Ridge",
+    city: "Burnaby",
     area: "Metro Vancouver",
+    availability: "TBD",
     status: "coming-soon",
   },
 ];
