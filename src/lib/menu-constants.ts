@@ -42,23 +42,13 @@ export const POP_FLAVOURS = [
   "Ginger Ale",
 ] as const;
 
-/**
- * Fry choices offered as a modifier on combos and crates. `upcharge` is the
- * Solo Combo / The Drop / Tailgate surcharge; crate 50/100/200 fry picks carry
- * no upcharge, so those surfaces render `name` alone.
- */
-export const FRY_CHOICES = [
-  { name: "Shack Cut Seasoned Fries", upcharge: 0 },
-  { name: "Dirty Curly Fries", upcharge: 3 },
-  { name: "Parm Bomb Garlic Fries", upcharge: 3 },
-  { name: "Hot Honey Fries", upcharge: 3 },
+/** The four fries, in menu order. Pricing lives in the ordering platform. */
+export const FRY_CHOICE_NAMES = [
+  "Shack Cut Seasoned Fries",
+  "Dirty Curly Fries",
+  "Parm Bomb Garlic Fries",
+  "Hot Honey Fries",
 ] as const;
-
-export const FRY_CHOICE_NAMES = FRY_CHOICES.map((fry) => fry.name);
-
-/** Shared dip add-on modifier copy — identical on every wing, combo, and crate. */
-export const EXTRA_DIP_2OZ = "Extra Dips 2oz — +$1.50 each";
-export const DIP_TUB_9OZ_ADDON = "Add 9oz Dip Tub — +$6.00 each";
 
 export type WingFlavour = (typeof WING_FLAVOURS)[number];
 export type DipFlavour = (typeof DIP_FLAVOURS)[number];

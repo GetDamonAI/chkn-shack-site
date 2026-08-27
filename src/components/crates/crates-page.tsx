@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { CRATE_TAGLINES } from "@/components/home/taglines";
 import {
-  addonOptions,
   crateOptions,
   dipOptions,
   flavourOptions,
@@ -166,15 +165,10 @@ function PlaceholderPanel({
 function CrateCard({
   name,
   price,
-  badge,
   ribbon,
   notice,
   feeds,
-  wings,
-  fries,
-  dips,
-  pops,
-  modifiers,
+  composition,
   image,
 }: (typeof crateOptions)[number]) {
   return (
@@ -191,11 +185,6 @@ function CrateCard({
         <span className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.16em] text-brand-ink">
           {notice}
         </span>
-        {badge ? (
-          <span className="rounded-full border-2 border-brand-ink bg-brand-red px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#fff7ed]">
-            {badge}
-          </span>
-        ) : null}
       </div>
       <div className="mt-2 flex flex-wrap items-start justify-between gap-3">
         <h2 className="min-w-0 font-display text-4xl uppercase leading-none text-brand-ink break-words">
@@ -223,41 +212,13 @@ function CrateCard({
         </div>
       )}
 
-      <div className="mt-5 space-y-3 rounded-[1.3rem] border-2 border-brand-ink bg-brand-yellow p-4 text-sm font-black uppercase tracking-[0.14em] text-brand-ink">
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-          <span>Wings</span>
-          <span className="text-right">{wings}</span>
-        </div>
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-          <span>Fries</span>
-          <span className="text-right">{fries}</span>
-        </div>
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-          <span>Dips</span>
-          <span className="text-right">{dips}</span>
-        </div>
-        {pops && (
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-            <span>Pops</span>
-            <span className="text-right">{pops}</span>
-          </div>
-        )}
-      </div>
-
-      <div className="mt-5 rounded-[1.3rem] bg-brand-ink p-4 text-[#fff7ed]">
-        <p className="text-xs font-black uppercase tracking-[0.24em] text-brand-yellow">
-          What you pick
+      <div className="mt-5 rounded-[1.3rem] border-2 border-brand-ink bg-brand-yellow p-4">
+        <p className="text-[11px] font-black uppercase tracking-[0.22em] text-brand-ink/60">
+          What&rsquo;s included
         </p>
-        <ul className="mt-2 space-y-1.5">
-          {modifiers.map((modifier) => (
-            <li
-              key={modifier}
-              className="text-xs leading-5 text-[#fff7ed]/82 break-words"
-            >
-              {modifier}
-            </li>
-          ))}
-        </ul>
+        <p className="mt-1.5 text-sm font-black uppercase leading-6 tracking-[0.1em] text-brand-ink break-words">
+          {composition}
+        </p>
       </div>
     </article>
   );
@@ -424,7 +385,7 @@ export function CratesPage() {
               responsible, then send it.
             </p>
           </div>
-          <div className="grid gap-4 xl:grid-cols-2">
+          <div className="grid items-start gap-4 xl:grid-cols-2">
             {crateOptions.map((crate) => (
               <CrateCard key={crate.name} {...crate} />
             ))}
@@ -454,10 +415,7 @@ export function CratesPage() {
               <p className="font-display text-3xl uppercase leading-none">Sides</p>
               <PillList items={sideOptions} />
             </article>
-            <article className="rounded-[1.6rem] border-2 border-brand-ink bg-brand-ink p-5 text-[#fff7ed]">
-              <p className="font-display text-3xl uppercase leading-none">Add-ons</p>
-              <PillList items={addonOptions} theme="dark" />
-            </article>
+
           </div>
         </div>
       </PageSection>
