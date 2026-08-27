@@ -333,8 +333,11 @@ export function HomePage() {
                   <p className="mt-1 text-sm font-black uppercase tracking-[0.16em] text-brand-yellow break-words">
                     {crate.name} · {crate.price}
                   </p>
-                  <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82">
-                    {crate.wings} · {crate.feeds}
+                  <p className="mt-2 text-sm leading-6 text-[#fff7ed]/82 break-words">
+                    {crate.composition}
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-[#fff7ed]/70">
+                    {crate.feeds}
                   </p>
                   <p className="mt-1 text-xs font-black uppercase tracking-[0.16em] text-[#fff7ed]/70">
                     {crate.notice}
@@ -371,7 +374,7 @@ export function HomePage() {
         <div className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
           <SectionIntro
             eyebrow="Locations"
-            title="A few neighborhoods down. More on the way."
+            title="A few neighbourhoods down. More on the way."
             body="We’re rolling out delivery zones city by city. Tap in, check your app, and see if your couch qualifies."
           />
           <div className="grid gap-4 sm:grid-cols-3">

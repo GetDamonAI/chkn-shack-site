@@ -79,7 +79,7 @@ export const growthPathPhases = [
     phase: "Phase 1",
     title: "Launch Lean",
     detail:
-      "We begin with a delivery-first model designed to validate demand, optimize operations, and build early momentum.",
+      "We begin with a delivery-first model designed to validate demand, optimise operations, and build early momentum.",
   },
   {
     phase: "Phase 2",

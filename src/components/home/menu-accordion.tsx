@@ -14,11 +14,11 @@ import { DIP_FLAVOURS } from "@/lib/menu-constants";
 // edit the menu, not these strings. Dips and Drinks carry their pick rules in
 // item `note`s instead, so they intentionally have no entry here.
 const ITEM_TAGLINES: Record<string, string> = {
-  "10pc Wings": "10 wings. One flavour. One dip. The 'I just want wings' order.",
-  "20pc Wings": "The size that wins. 20 wings, pick up to 2 flavours, 3 dips. Real weeknight energy.",
-  "30pc Wings": "The 30. Pick up to 3 flavours, 4 dips. Feeds two \u2014 or one hungry one.",
-  "Solo Combo": "The one-person plan. Wings your flavour, fries your call, dip, pop.",
-  "The Drop": "20 wings, 2 flavours, 2 dips, big fries, cold pop. The whole shack in one drop.",
+  "10pc Wings": "The 'I just want wings' order.",
+  "20pc Wings": "The size that wins. Real weeknight energy.",
+  "30pc Wings": "The 30. Feeds two \u2014 or one hungry one.",
+  "Solo Combo": "The one-person plan.",
+  "The Drop": "The whole shack in one drop.",
   "Shack Cut Seasoned Fries": "Thick-cut russet, twice-fried, tossed in Texas Dry Rub + Grandpa J's seasoning. Pick your size.",
   "Parm Bomb Garlic Fries": "16oz fries tossed in parm + herbs, fresh parsley, and a Garlic Aioli ramekin on the side. No drizzle \u2014 dip on your terms.",
   "Hot Honey Fries": "Shack cut fries tossed in Nashville Hot seasoning, hot honey sauce in a side ramekin. Sweet meets scorched.",
@@ -100,17 +100,10 @@ export function MenuAccordion({ categories }: { categories: MenuCategory[] }) {
                               {tagline}
                             </p>
                           )}
-                          {item.modifiers && item.modifiers.length > 0 && (
-                            <ul className="mt-1.5 space-y-1">
-                              {item.modifiers.map((modifier) => (
-                                <li
-                                  key={modifier}
-                                  className="text-[11px] leading-4 text-brand-ink/50 break-words"
-                                >
-                                  {modifier}
-                                </li>
-                              ))}
-                            </ul>
+                          {item.composition && (
+                            <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-ink/50 break-words">
+                              {item.composition}
+                            </p>
                           )}
                         </div>
                       );

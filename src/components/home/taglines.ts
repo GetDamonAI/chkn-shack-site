@@ -30,14 +30,10 @@ export const SIGNATURE_FLAVOURS = new Set<string>([
 ]);
 
 export const CRATE_TAGLINES: Record<string, string> = {
-  "CHKN Crate 50pc":
-    "The group-order starter kit. 50 wings, pick up to 2 flavours, 1 large fries, 3 dips. Feeds 5-7. Same-day.",
-  "CHKN Crate 100pc":
-    "Medium mayhem. 100 wings, pick up to 3 flavours, 2 party fries, 5 dips. Feeds 10-15. 24hr notice.",
-  "CHKN Crate 200pc":
-    "Full send. 200 wings, pick up to 4 flavours, 4 party fries, 8 dips. Feeds 20-30. 24hr notice.",
-  "The Tailgate Crate":
-    "50 wings, 2 flavours, 4 dips, big fries, 3 pops. Feeds the crew (5–7). Same-day. The game's already on.",
+  "CHKN Crate 50pc": "The group-order starter kit.",
+  "CHKN Crate 100pc": "Medium mayhem.",
+  "CHKN Crate 200pc": "Full send.",
+  "The Tailgate Crate": "The game's already on.",
 };
 
 // Insertion order matches DIP_FLAVOURS; the chip grid renders from the constant.

@@ -60,11 +60,11 @@ const EVENTS: Record<EventKey, { label: string; blurb: string; per: number }> = 
   ufc: { label: "Fight Night", blurb: "Made for the main event", per: 7 },
   gameday: { label: "Big Game", blurb: "The big spread", per: 7 },
   birthday: { label: "Birthday Bash", blurb: "Celebration mode", per: 6 },
-  casual: { label: "Casual Hang", blurb: "Low-key, high-flavor", per: 5 },
+  casual: { label: "Casual Hang", blurb: "Low-key, high-flavour", per: 5 },
 };
 
 const SPICE: { label: string; short: string; pick: string }[] = [
-  { label: "I cry at black pepper", short: "Mild only", pick: "all flavor, zero burn" },
+  { label: "I cry at black pepper", short: "Mild only", pick: "all flavour, zero burn" },
   { label: "Keep it friendly", short: "Light heat", pick: "a gentle warm-up, nothing scary" },
   { label: "Bring some heat", short: "Medium", pick: "the crowd-pleaser sweet spot" },
   { label: "I like to suffer a little", short: "Hot", pick: "Jakarta Heat is calling" },
@@ -212,7 +212,7 @@ export default function PartyBuilder({
     if (!order || !event) return "";
     const lines = [`CHKN SHACK — ${EVENTS[event].label} (${people} people)`, ""];
     order.items.forEach((i) => lines.push(`${i.qty}× ${i.name}${i.detail ? `  — ${i.detail}` : ""}`));
-    lines.push("", `Flavors: ${order.wingFlavors.join(", ")}`);
+    lines.push("", `Flavours: ${order.wingFlavors.join(", ")}`);
     lines.push(`~$${order.subtotal} total  ·  ~$${order.perPerson.toFixed(0)}/person`, "", "Order on Uber Eats or DoorDash 🍗");
     return lines.join("\n");
   }, [order, event, people]);
@@ -349,7 +349,7 @@ export default function PartyBuilder({
                   </div>
 
                   <div className="pb-flavors">
-                    <span className="pb-flavors-lab">FLAVORS</span>
+                    <span className="pb-flavors-lab">FLAVOURS</span>
                     {order.wingFlavors.map((f) => <span className="pb-chip" key={f}>{f}</span>)}
                   </div>
 

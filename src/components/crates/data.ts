@@ -1,7 +1,5 @@
 import {
   DIP_FLAVOURS,
-  DIP_TUB_9OZ_ADDON,
-  EXTRA_DIP_2OZ,
   FRY_CHOICE_NAMES,
   TAILGATE_ACTIVE,
   TAILGATE_PRICE,
@@ -17,12 +15,11 @@ export type CrateOption = {
   /** Lead-time badge — "Same-day" or "24hr notice". */
   notice: string;
   feeds: string;
-  wings: string;
-  fries: string;
-  dips: string;
-  pops?: string;
-  /** Canonical customer-picked modifiers, in menu order. */
-  modifiers: string[];
+  /**
+   * What's in the crate, as one plain line. Upcharges and pick-rules live in
+   * the ordering platform, not here.
+   */
+  composition: string;
   /** Card photo. Omit to render the card without an image. */
   image?: { src: string; alt: string };
 };
@@ -39,16 +36,7 @@ export const crateOptions: CrateOption[] = [
     badge: "Small chaos",
     notice: "Same-day",
     feeds: "Feeds 5-7",
-    wings: "50 · pick up to 2 flavours",
-    fries: "1 large fries",
-    dips: "3 dips",
-    modifiers: [
-      "Wing Flavours (pick 1–2)",
-      "Fry Choice (pick 1): Shack Cut Seasoned Fries (Large 16oz) · Parm Bomb Garlic Fries · Hot Honey Fries · Dirty Curly Fries",
-      "Included Dips 2oz (pick 3)",
-      EXTRA_DIP_2OZ,
-      DIP_TUB_9OZ_ADDON,
-    ],
+    composition: "50 wings · up to 2 flavours · 3 dips · 1 large fries",
   },
   {
     name: "CHKN Crate 100pc",
@@ -56,16 +44,7 @@ export const crateOptions: CrateOption[] = [
     badge: "Medium mayhem",
     notice: "24hr notice",
     feeds: "Feeds 10-15",
-    wings: "100 · pick up to 3 flavours",
-    fries: "2 party fries",
-    dips: "5 dips",
-    modifiers: [
-      "Wing Flavours (pick 1–3)",
-      "Fry Choice (pick 2)",
-      "Included Dips 2oz (pick 5)",
-      EXTRA_DIP_2OZ,
-      DIP_TUB_9OZ_ADDON,
-    ],
+    composition: "100 wings · up to 3 flavours · 5 dips · 2 party fries",
   },
   {
     name: "CHKN Crate 200pc",
@@ -73,16 +52,7 @@ export const crateOptions: CrateOption[] = [
     badge: "Full send",
     notice: "24hr notice",
     feeds: "Feeds 20-30",
-    wings: "200 · pick up to 4 flavours",
-    fries: "4 party fries",
-    dips: "8 dips",
-    modifiers: [
-      "Wing Flavours (pick 1–4)",
-      "Fry Choice (pick 4)",
-      "Included Dips 2oz (pick 8)",
-      EXTRA_DIP_2OZ,
-      DIP_TUB_9OZ_ADDON,
-    ],
+    composition: "200 wings · up to 4 flavours · 8 dips · 4 party fries",
   },
   // Seasonal SKU — Football Season, Sep 1 – Feb 28. Gated on
   // NEXT_PUBLIC_TAILGATE_ACTIVE so it can be pulled without a code deploy.
@@ -94,18 +64,7 @@ export const crateOptions: CrateOption[] = [
           ribbon: "For Football SZN",
           notice: "Same-day",
           feeds: "Feeds the crew (5–7)",
-          wings: "50 · pick up to 3 flavours",
-          fries: "1 big fries",
-          dips: "4 dips",
-          pops: "3 pops",
-          modifiers: [
-            "Wing Flavours (pick 1–3 of 12)",
-            "Included Dips 2oz (pick 4 of 10, no upcharge)",
-            "Fry Choice (pick 1): Shack Cut Seasoned Fries (Large 16oz, included) · Dirty Curly Fries (+$3) · Parm Bomb Garlic Fries (+$3) · Hot Honey Fries (+$3)",
-            "Pop Flavour (pick 3 — duplicates allowed): Coke · Diet Coke · Sprite · Ginger Ale",
-            EXTRA_DIP_2OZ,
-            DIP_TUB_9OZ_ADDON,
-          ],
+          composition: "50 wings · up to 3 flavours · 4 dips · large fries · 3 pops",
           image: {
             src: "/menu/crates-hero.webp",
             alt: "The Tailgate Crate — 50 wings, fries, dips, pops.",
@@ -126,13 +85,6 @@ export const sideOptions: string[] = [
   "Perogy Tray",
 ];
 
-export const addonOptions: string[] = [
-  EXTRA_DIP_2OZ,
-  DIP_TUB_9OZ_ADDON,
-  "Gravy (Add-on) — $2",
-  "Coleslaw (Add-on) — $3",
-  // TODO: temporarily removed — 10-gal ranch bucket. Restore by re-adding: "The Bucket",
-];
 
 export const occasions: Occasion[] = [
   {
