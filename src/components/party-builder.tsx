@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useRef } from "react";
+import { PlatformLink } from "@/components/analytics/platform-link";
 import { DIP_FLAVOURS, WING_FLAVOURS } from "@/lib/menu-constants";
 
 /**
@@ -10,16 +11,12 @@ import { DIP_FLAVOURS, WING_FLAVOURS } from "@/lib/menu-constants";
  *
  * Ordering routes through Uber Eats / DoorDash, so the output gives a
  * copyable order list + buttons that open your store on each platform.
- *
- * 👉 Reuse your existing store URLs from src/components/home/hero-order-actions.tsx
  */
-// Ordering routes through the Uber Eats / DoorDash web stores.
-// No store URLs yet → leave ORDERING_LIVE = false to ship now with no dead links.
-// When the UE/DD web store integrations go in: paste the URLs below (or import them
-// from your ordering.ts webUrls) and flip ORDERING_LIVE to true. The buttons light up.
+// Ordering routes through the Uber Eats / DoorDash web stores. The storefront
+// URLs now live in src/lib/ordering.ts and reach the buttons via <PlatformLink>,
+// which also tags them with UTMs and reports the click. Set ORDERING_LIVE to
+// false to swap the buttons back out for plain "order it on…" text.
 const ORDERING_LIVE = true;
-const UBER_EATS_URL = "https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw"; // CHKN Shack Uber Eats direct-order storefront
-const DOORDASH_URL = "https://order.online/business/wings-chkn-shack-13029476"; // CHKN Shack DoorDash direct-order storefront
 
 /* ---------- TYPES ---------- */
 type EventKey = "catering" | "ufc" | "gameday" | "birthday" | "casual";
@@ -357,10 +354,10 @@ export default function PartyBuilder({
 
                   <button className="pb-copy primary" onClick={copy}>{copied ? "✓ Copied — now paste it on Uber Eats or DoorDash" : "Copy my order list"}</button>
 
-                  {ORDERING_LIVE && UBER_EATS_URL && DOORDASH_URL ? (
+                  {ORDERING_LIVE ? (
                     <div className="pb-order-actions">
-                      <a className="pb-order-btn ue" href={UBER_EATS_URL} target="_blank" rel="noopener noreferrer">Order on Uber Eats</a>
-                      <a className="pb-order-btn dd" href={DOORDASH_URL} target="_blank" rel="noopener noreferrer">Order on DoorDash</a>
+                      <PlatformLink className="pb-order-btn ue" platform="uber-eats" location="party_builder">Order on Uber Eats</PlatformLink>
+                      <PlatformLink className="pb-order-btn dd" platform="doordash" location="party_builder">Order on DoorDash</PlatformLink>
                     </div>
                   ) : (
                     <div className="pb-platforms">Order it on <span>Uber Eats</span> or <span>DoorDash</span></div>

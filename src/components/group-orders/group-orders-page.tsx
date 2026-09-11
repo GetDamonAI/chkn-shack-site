@@ -1,18 +1,38 @@
 import Link from "next/link";
+import { PlatformLink } from "@/components/analytics/platform-link";
 import { CRATE_TAGLINES } from "@/components/home/taglines";
 import { crateOptions } from "@/components/crates/data";
 import { TAILGATE_ACTIVE } from "@/lib/menu-constants";
+import type { OrderLocation, OrderPlatform } from "@/lib/ordering";
 
 function cn(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
 }
 
+type ActionButtonVariant = "primary" | "secondary" | "ghost";
+
 type ActionButtonProps = {
   href: string;
   label: string;
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: ActionButtonVariant;
   external?: boolean;
 };
+
+type PlatformActionButtonProps = {
+  platform: OrderPlatform;
+  location: OrderLocation;
+  label: string;
+  variant?: ActionButtonVariant;
+};
+
+function actionButtonClass(variant: ActionButtonVariant) {
+  return cn(
+    "inline-flex min-h-14 items-center justify-center rounded-full border-2 border-brand-ink px-5 text-center text-base font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
+    variant === "primary" && "bg-brand-red text-[#fff7ed] shadow-[0_8px_0_0_#100800]",
+    variant === "secondary" && "bg-brand-yellow text-brand-ink shadow-[0_8px_0_0_#100800]",
+    variant === "ghost" && "bg-[#fff7ed] text-brand-ink shadow-[0_8px_0_0_#100800]"
+  );
+}
 
 function ActionButton({
   href,
@@ -24,15 +44,28 @@ function ActionButton({
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className={cn(
-        "inline-flex min-h-14 items-center justify-center rounded-full border-2 border-brand-ink px-5 text-center text-base font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
-        variant === "primary" && "bg-brand-red text-[#fff7ed] shadow-[0_8px_0_0_#100800]",
-        variant === "secondary" && "bg-brand-yellow text-brand-ink shadow-[0_8px_0_0_#100800]",
-        variant === "ghost" && "bg-[#fff7ed] text-brand-ink shadow-[0_8px_0_0_#100800]"
-      )}
+      className={actionButtonClass(variant)}
     >
       {label}
     </a>
+  );
+}
+
+/** Same button, but pointed at a delivery platform so the click is tracked. */
+function PlatformActionButton({
+  platform,
+  location,
+  label,
+  variant = "primary",
+}: PlatformActionButtonProps) {
+  return (
+    <PlatformLink
+      platform={platform}
+      location={location}
+      className={actionButtonClass(variant)}
+    >
+      {label}
+    </PlatformLink>
   );
 }
 
@@ -113,12 +146,16 @@ export function GroupOrdersPage() {
             Pick your dips. Show up with the box. Everybody wins.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <ActionButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Order on Uber Eats" external />
-            <ActionButton
-              href="https://order.online/business/wings-chkn-shack-13029476"
+            <PlatformActionButton
+              platform="uber-eats"
+              location="group_orders_hero"
+              label="Order on Uber Eats"
+            />
+            <PlatformActionButton
+              platform="doordash"
+              location="group_orders_hero"
               label="Order on DoorDash"
               variant="secondary"
-              external
             />
             <ActionButton
               href="mailto:orders@wingschknshack.com"
@@ -224,12 +261,16 @@ export function GroupOrdersPage() {
               </h2>
             </div>
             <div className="flex flex-wrap gap-3">
-              <ActionButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Uber Eats" external />
-              <ActionButton
-                href="https://order.online/business/wings-chkn-shack-13029476"
+              <PlatformActionButton
+                platform="uber-eats"
+                location="group_orders_final_cta"
+                label="Uber Eats"
+              />
+              <PlatformActionButton
+                platform="doordash"
+                location="group_orders_final_cta"
                 label="DoorDash"
                 variant="secondary"
-                external
               />
               <ActionButton
                 href="mailto:orders@wingschknshack.com"

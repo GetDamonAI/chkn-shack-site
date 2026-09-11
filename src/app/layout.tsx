@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+
+import { Analytics } from "@/components/analytics/analytics";
+import { RouteTracker } from "@/components/analytics/route-tracker";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -36,6 +40,12 @@ export default function RootLayout({
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
+        <Analytics />
+        {/* useSearchParams opts its subtree into client rendering, so the
+            boundary keeps the rest of the page prerenderable. */}
+        <Suspense fallback={null}>
+          <RouteTracker />
+        </Suspense>
         {children}
       </body>
     </html>

@@ -4,8 +4,12 @@ import Link from "next/link";
 import {
   defaultStoreMap,
   openOrderLink,
+  type OrderLocation,
   type OrderPlatform,
 } from "@/lib/ordering";
+import { trackPlatformClick } from "@/lib/tracking";
+
+const HERO_LOCATION: OrderLocation = "homepage_hero";
 
 type PlatformButtonProps = {
   label: string;
@@ -26,7 +30,13 @@ function PlatformButton({
     <button
       type="button"
       onClick={() => {
-        openOrderLink(platform, null, defaultStoreMap);
+        // Report before handing the tab over: openOrderLink navigates this
+        // document away rather than opening a new one, so anything queued
+        // after the call risks being cancelled mid-flight.
+        trackPlatformClick(platform, HERO_LOCATION);
+        openOrderLink(platform, null, defaultStoreMap, {
+          utmContent: HERO_LOCATION,
+        });
       }}
       className={cn(
         "inline-flex min-h-14 items-center justify-center rounded-full border-2 border-brand-ink px-5 text-center font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
