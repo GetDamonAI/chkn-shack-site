@@ -6,9 +6,9 @@ import {
   franchiseSupport,
   growthPathPhases,
   idealPartnerPoints,
-  investmentRanges,
   whyChknShack,
 } from "@/components/franchising/data";
+import { FranchiseInquiryForm } from "@/components/franchising/franchise-inquiry-form";
 
 type SectionIntroProps = {
   eyebrow: string;
@@ -151,32 +151,6 @@ function InfoCard({
         {detail}
       </p>
     </article>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  placeholder,
-}: Readonly<{
-  label: string;
-  name: string;
-  type?: string;
-  placeholder?: string;
-}>) {
-  return (
-    <label className="block space-y-2">
-      <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-ink">
-        {label}
-      </span>
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        className="min-h-14 w-full rounded-[1.2rem] border-2 border-brand-ink bg-[#fffdf7] px-4 text-base text-brand-ink outline-none placeholder:text-brand-ink/45"
-      />
-    </label>
   );
 }
 
@@ -363,10 +337,6 @@ export function FranchisingPage() {
               body="If you are serious about the model, send the basics and we will take it from there."
               theme="dark"
             />
-            <p className="mt-5 text-sm leading-6 text-[#fff7ed]/78">
-              This form is a placeholder for the future email/CRM integration. The
-              UI and field structure are ready; the submission wiring comes next.
-            </p>
           </div>
 
           <div className="space-y-6">
@@ -387,74 +357,7 @@ export function FranchisingPage() {
             </div>
 
             <div className="rounded-[2rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_12px_0_0_#100800] sm:p-7">
-            {/* TODO: Replace the mailto placeholder with the real email/CRM integration endpoint. */}
-            <form
-              action="mailto:franchise@chknshack.example"
-              method="post"
-              encType="text/plain"
-              className="grid gap-4"
-            >
-              <p className="text-base leading-7 text-brand-ink/78">
-                Tell us a bit about yourself — we’ll follow up with next steps.
-              </p>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <Field label="Full Name" name="fullName" placeholder="Your name" />
-                <Field
-                  label="Email"
-                  name="email"
-                  type="email"
-                  placeholder="you@example.com"
-                />
-                <Field label="Phone" name="phone" type="tel" placeholder="(555) 555-5555" />
-                <Field
-                  label="City / Province"
-                  name="cityProvince"
-                  placeholder="Vancouver, BC"
-                />
-              </div>
-
-              <label className="block space-y-2">
-                <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-ink">
-                  Investment Range
-                </span>
-                <select
-                  name="investmentRange"
-                  defaultValue=""
-                  className="min-h-14 w-full rounded-[1.2rem] border-2 border-brand-ink bg-[#fffdf7] px-4 text-base text-brand-ink outline-none"
-                >
-                  <option value="" disabled>
-                    Select range
-                  </option>
-                  {investmentRanges.map((range) => (
-                    <option key={range} value={range}>
-                      {range}
-                    </option>
-                  ))}
-                </select>
-                <p className="text-sm leading-6 text-brand-ink/60">
-                  Typical partners are prepared for a multi-location growth path.
-                </p>
-              </label>
-
-              <label className="block space-y-2">
-                <span className="text-sm font-black uppercase tracking-[0.18em] text-brand-ink">
-                  Notes / Why are you interested?
-                </span>
-                <textarea
-                  name="notes"
-                  rows={6}
-                  placeholder="Tell us about your background, market, and why CHKN Shack fits what you are looking for."
-                  className="w-full rounded-[1.2rem] border-2 border-brand-ink bg-[#fffdf7] px-4 py-3 text-base text-brand-ink outline-none placeholder:text-brand-ink/45"
-                />
-              </label>
-
-              <button
-                type="submit"
-                className="inline-flex min-h-14 items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow px-5 text-center font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_10px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5 sm:max-w-[16rem]"
-              >
-                Inquire Now
-              </button>
-            </form>
+            <FranchiseInquiryForm />
           </div>
           </div>
         </div>
