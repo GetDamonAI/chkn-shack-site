@@ -61,3 +61,18 @@ export function trackPlatformClick(
     location,
   });
 }
+
+/**
+ * A franchise inquiry that actually reached the inbox (fired on server success,
+ * not on submit). GA4 only, on purpose: Meta `Lead` and TikTok
+ * `CompleteRegistration` are what the delivery-order campaigns optimise
+ * against, and franchise leads mixed in would skew them.
+ */
+export function trackFranchiseInquiry(investmentRange: string) {
+  if (typeof window === "undefined") return;
+
+  window.gtag?.("event", "generate_lead", {
+    lead_source: "franchise_inquiry",
+    investment_range: investmentRange || "unspecified",
+  });
+}

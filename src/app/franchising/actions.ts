@@ -8,6 +8,7 @@ const FRANCHISE_INBOX = "franchise@wingschknshack.com";
 export type FranchiseInquiryState = {
   status: "idle" | "success" | "error";
   message: string;
+  investmentRange?: string;
 };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -110,5 +111,6 @@ export async function submitFranchiseInquiry(
   return {
     status: "success",
     message: "Thanks — your inquiry is in. We’ll follow up with next steps soon.",
+    investmentRange,
   };
 }

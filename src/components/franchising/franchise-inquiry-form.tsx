@@ -1,11 +1,12 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import {
   submitFranchiseInquiry,
   type FranchiseInquiryState,
 } from "@/app/franchising/actions";
 import { investmentRanges } from "@/components/franchising/data";
+import { trackFranchiseInquiry } from "@/lib/tracking";
 
 const initialState: FranchiseInquiryState = { status: "idle", message: "" };
 
@@ -46,6 +47,14 @@ export function FranchiseInquiryForm() {
     submitFranchiseInquiry,
     initialState
   );
+
+  useEffect(() => {
+    // investmentRange is only set on a real send — the honeypot's fake
+    // success leaves it undefined, so bots don't count as leads.
+    if (state.status === "success" && state.investmentRange !== undefined) {
+      trackFranchiseInquiry(state.investmentRange);
+    }
+  }, [state]);
 
   if (state.status === "success") {
     return (
