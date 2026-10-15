@@ -33,6 +33,43 @@ export type OrderDestination = {
   usedLocationSelector: boolean;
 };
 
+// Every place on the site that can send someone to Uber Eats / DoorDash. This is
+// a closed union so the analytics `location` dimension and the outbound
+// `utm_content` value can never drift apart or pick up a typo at a call site.
+export type OrderLocation =
+  | "homepage_hero"
+  | "homepage_sticky_bar"
+  | "crates_hero"
+  | "crates_final_cta"
+  | "crates_sticky_bar"
+  | "group_orders_hero"
+  | "group_orders_final_cta"
+  | "party_builder";
+
+const UTM_PARAMS = {
+  utm_source: "wingschknshack.com",
+  utm_medium: "website",
+  utm_campaign: "direct",
+} as const;
+
+/**
+ * Tag an outbound platform URL so Uber Eats / DoorDash attribute the session to
+ * us too. Deep links (uberats://, doordash://) are returned untouched — the apps
+ * parse their own path grammar and choke on stray query params.
+ */
+export function withOrderUtm(url: string, location: OrderLocation): string {
+  if (!/^https?:\/\//i.test(url)) {
+    return url;
+  }
+
+  const tagged = new URL(url);
+  for (const [key, value] of Object.entries(UTM_PARAMS)) {
+    tagged.searchParams.set(key, value);
+  }
+  tagged.searchParams.set("utm_content", location);
+  return tagged.toString();
+}
+
 export const defaultStoreMap: StoreMap = {
   defaultStoreKey: "vancouver",
   locationSelector: {
@@ -96,26 +133,31 @@ export function getOrderLink(
   storeMap: StoreMap = defaultStoreMap,
   options?: {
     preferDeepLink?: boolean;
+    utmContent?: OrderLocation;
   }
 ): OrderDestination {
   const storeKey = resolveStoreKey(userLocation, storeMap);
   const platformStore = storeMap.stores[storeKey]?.platforms[platform];
   const locationSelector = storeMap.locationSelector[platform];
 
+  const tag = (url: string) =>
+    options?.utmContent ? withOrderUtm(url, options.utmContent) : url;
+
   if (!platformStore) {
     return {
-      href: locationSelector,
-      fallbackHref: locationSelector,
+      href: tag(locationSelector),
+      fallbackHref: tag(locationSelector),
       usedLocationSelector: true,
     };
   }
 
   return {
-    href:
+    href: tag(
       options?.preferDeepLink && platformStore.appDeepLink
         ? platformStore.appDeepLink
-        : platformStore.webUrl,
-    fallbackHref: platformStore.webUrl || locationSelector,
+        : platformStore.webUrl
+    ),
+    fallbackHref: tag(platformStore.webUrl || locationSelector),
     usedStoreKey: storeKey,
     usedLocationSelector: false,
   };
@@ -124,10 +166,14 @@ export function getOrderLink(
 export function openOrderLink(
   platform: OrderPlatform,
   userLocation: UserLocation | null,
-  storeMap: StoreMap = defaultStoreMap
+  storeMap: StoreMap = defaultStoreMap,
+  options?: {
+    utmContent?: OrderLocation;
+  }
 ) {
   const destination = getOrderLink(platform, userLocation, storeMap, {
     preferDeepLink: true,
+    utmContent: options?.utmContent,
   });
 
   if (typeof window === "undefined") {

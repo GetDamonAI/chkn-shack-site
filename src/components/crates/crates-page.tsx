@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CRATE_TAGLINES } from "@/components/home/taglines";
+import { PlatformLink } from "@/components/analytics/platform-link";
+import type { OrderLocation, OrderPlatform } from "@/lib/ordering";
 import {
   crateOptions,
   dipOptions,
@@ -19,7 +21,8 @@ type SectionIntroProps = {
 };
 
 type OrderButtonProps = {
-  href: string;
+  platform: OrderPlatform;
+  location: OrderLocation;
   label: string;
   variant?: "primary" | "secondary";
   compact?: boolean;
@@ -30,16 +33,16 @@ function cn(...values: Array<string | false | null | undefined>) {
 }
 
 function OrderButton({
-  href,
+  platform,
+  location,
   label,
   variant = "primary",
   compact = false,
 }: OrderButtonProps) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+    <PlatformLink
+      platform={platform}
+      location={location}
       className={cn(
         "inline-flex items-center justify-center rounded-full border-2 border-brand-ink px-5 text-center font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
         compact ? "min-h-12 text-sm" : "min-h-14 text-base",
@@ -49,7 +52,7 @@ function OrderButton({
       )}
     >
       {label}
-    </a>
+    </PlatformLink>
   );
 }
 
@@ -325,9 +328,14 @@ export function CratesPage() {
                 Order now
               </p>
               <div className="grid gap-3 sm:max-w-md sm:grid-cols-2">
-                <OrderButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Uber Eats" />
                 <OrderButton
-                  href="https://order.online/business/wings-chkn-shack-13029476"
+                  platform="uber-eats"
+                  location="crates_hero"
+                  label="Uber Eats"
+                />
+                <OrderButton
+                  platform="doordash"
+                  location="crates_hero"
                   label="DoorDash"
                   variant="secondary"
                 />
@@ -500,9 +508,14 @@ export function CratesPage() {
               theme="dark"
             />
             <div className="grid gap-3 sm:grid-cols-2">
-              <OrderButton href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw" label="Uber Eats" />
               <OrderButton
-                href="https://order.online/business/wings-chkn-shack-13029476"
+                platform="uber-eats"
+                location="crates_final_cta"
+                label="Uber Eats"
+              />
+              <OrderButton
+                platform="doordash"
+                location="crates_final_cta"
                 label="DoorDash"
                 variant="secondary"
               />
@@ -518,12 +531,14 @@ export function CratesPage() {
           </p>
           <div className="grid grid-cols-2 gap-2">
             <OrderButton
-              href="https://www.order.store/store/wings-chkn-shack/P6HcLdBWWTOobb5RB31jJw"
+              platform="uber-eats"
+              location="crates_sticky_bar"
               label="Uber Eats"
               compact
             />
             <OrderButton
-              href="https://order.online/business/wings-chkn-shack-13029476"
+              platform="doordash"
+              location="crates_sticky_bar"
               label="DoorDash"
               variant="secondary"
               compact
