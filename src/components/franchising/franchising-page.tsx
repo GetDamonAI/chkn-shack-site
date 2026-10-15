@@ -389,7 +389,7 @@ export function FranchisingPage() {
             <div className="rounded-[2rem] border-2 border-brand-ink bg-[#fff9ef] p-5 shadow-[0_12px_0_0_#100800] sm:p-7">
             {/* TODO: Replace the mailto placeholder with the real email/CRM integration endpoint. */}
             <form
-              action="mailto:franchise@chknshack.example"
+              action="mailto:franchise@wingschknshack.com"
               method="post"
               encType="text/plain"
               className="grid gap-4"
