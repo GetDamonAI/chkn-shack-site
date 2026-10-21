@@ -3,7 +3,7 @@ import Link from "next/link";
 import PartyBuilder from "@/components/party-builder";
 import { PlatformLink } from "@/components/analytics/platform-link";
 import { locations, menuCategories } from "@/components/home/data";
-import { HeroOrderActions } from "@/components/home/hero-order-actions";
+import { LaunchHero } from "@/components/home/launch-hero";
 import { MenuAccordion } from "@/components/home/menu-accordion";
 import {
   SIGNATURE_FLAVOURS,
@@ -199,26 +199,7 @@ export function HomePage() {
         </div>
       </HomeSection>
 
-      <HomeSection>
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="rounded-[2.4rem] border-2 border-brand-ink bg-brand-ink px-5 py-6 text-[#fff7ed] shadow-[0_16px_0_0_#ef3d23] sm:px-7 sm:py-8">
-            <p className="w-fit rounded-full bg-brand-yellow px-3 py-1 text-xs font-black uppercase tracking-[0.24em] text-brand-ink">
-              Delivery-first. Sauce-forward.
-            </p>
-            <h1 className="mt-5 max-w-xl font-display text-6xl uppercase leading-[0.9] text-balance sm:text-7xl">
-              Big wing energy. Zero dining room small talk.
-            </h1>
-            <p className="mt-5 max-w-lg text-lg leading-8 text-[#fff7ed]/82">
-              Loaded wings. Crisp fries. Cold dips.
-              <br />
-              Enough dip to cause problems.
-            </p>
-            <HeroOrderActions />
-          </div>
-
-          <Image src="/menu/hero.webp" alt="Wings platter" width={1600} height={1067} priority className="w-full h-auto rounded-[2rem] border-2 border-brand-ink shadow-[0_14px_0_0_#100800]" />
-        </div>
-      </HomeSection>
+      <LaunchHero />
 
       <HomeSection id="menu">
         <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
