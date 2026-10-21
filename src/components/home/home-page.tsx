@@ -3,6 +3,7 @@ import Link from "next/link";
 import PartyBuilder from "@/components/party-builder";
 import { PlatformLink } from "@/components/analytics/platform-link";
 import { locations, menuCategories } from "@/components/home/data";
+import { HideWhileVisible } from "@/components/home/hide-while-visible";
 import { LaunchHero } from "@/components/home/launch-hero";
 import { MenuAccordion } from "@/components/home/menu-accordion";
 import {
@@ -448,7 +449,10 @@ export function HomePage() {
         </div>
       </HomeSection>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-brand-ink bg-brand-ink p-3 text-[#fff7ed] shadow-[0_-6px_0_0_#ef3d23] md:hidden">
+      <HideWhileVisible
+        targetId="launch-hero"
+        className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-brand-ink bg-brand-ink p-3 text-[#fff7ed] shadow-[0_-6px_0_0_#ef3d23] md:hidden"
+      >
         <div className="mx-auto flex max-w-6xl items-center gap-3">
           <div className="min-w-0 flex-1">
             <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-yellow">
@@ -475,7 +479,7 @@ export function HomePage() {
             </PlatformLink>
           </div>
         </div>
-      </div>
+      </HideWhileVisible>
     </main>
   );
 }

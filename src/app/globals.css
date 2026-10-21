@@ -91,7 +91,7 @@ button {
    display/sans stacks instead of Bebas Neue / Inter so the hero matches the
    rest of the page.
    ------------------------------------------------------------------------- */
-.chkn-hero-wrap { padding: 16px; background: #F5EDE0; box-sizing: border-box; }
+.chkn-hero-wrap { padding: 16px; background: #f6ead2; box-sizing: border-box; }
 .chkn-hero-wrap *, .chkn-hero-wrap *::before, .chkn-hero-wrap *::after { box-sizing: border-box; }
 @media (min-width: 820px) { .chkn-hero-wrap { padding: 24px; } }
 
@@ -125,6 +125,13 @@ button {
   background: linear-gradient(to bottom,
     rgba(10,10,10,0.45) 0%, rgba(10,10,10,0) 25%,
     rgba(10,10,10,0) 55%, rgba(10,10,10,0.9) 100%);
+}
+
+.chkn-hero__content {
+  position: relative; z-index: 2;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .chkn-hero__top { position: relative; z-index: 2; padding: 24px 20px 0; text-align: center; }
@@ -218,9 +225,74 @@ button {
 /* Keyboard users still need to see where focus is. */
 .chkn-cta:focus-visible { outline: 3px solid #FFC94B; outline-offset: 3px; }
 
+/* Tablet + desktop: split card. Left column is the video at its own 9:16
+   (so nothing is cropped, nothing blurred), right column is the offer + CTAs.
+   Card height follows the width (video ≈ 44% of the card at 768px) and caps
+   at 680px; the card caps at the header's 1152px so the columns stay balanced
+   on wide screens. */
+@media (min-width: 768px) {
+  .chkn-hero {
+    --chkn-hero-h: min(calc((100vw - 48px) * 0.8), 680px);
+    max-width: 1152px;
+    margin: 0 auto;
+    min-height: 0;
+    height: var(--chkn-hero-h);
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+  .chkn-hero__media { position: relative; inset: auto; height: 100%; aspect-ratio: 9 / 16; }
+  .chkn-hero__video--fill,
+  .chkn-hero__overlay,
+  .chkn-hero__spacer,
+  .chkn-hero__label-sep { display: none; }
+  .chkn-hero__video--main { object-fit: cover; }
+
+  .chkn-hero__content {
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    padding: 40px clamp(24px, 4vw, 64px);
+    background:
+      radial-gradient(circle at 85% 10%, rgba(217,37,28,0.22), transparent 55%),
+      #0a0a0a;
+  }
+  .chkn-hero__top, .chkn-hero__bottom { padding: 0; }
+  .chkn-hero__bottom { gap: 28px; max-width: 520px; }
+  .chkn-hero__badge {
+    padding: 10px 16px; gap: 8px;
+    font-size: 13px; letter-spacing: 0.08em; white-space: nowrap;
+  }
+
+  .chkn-hero__label {
+    display: block;
+    padding: 0;
+    background: none;
+    border: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    font-size: clamp(26px, 3.4vw, 52px);
+    letter-spacing: 0.06em;
+    line-height: 1.05;
+    text-align: center;
+  }
+  .chkn-hero__label-accent { display: block; margin-top: 6px; }
+
+  .chkn-hero__ctas { flex-direction: row; gap: 16px; }
+  .chkn-cta { min-width: 160px; }
+}
+@media (min-width: 1024px) {
+  .chkn-hero__badge { padding: 10px 20px; gap: 10px; font-size: 15px; letter-spacing: 0.12em; }
+  .chkn-hero__bottom { max-width: 640px; }
+  .chkn-cta { min-width: 200px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .chkn-hero__video { display: none; }
   @media (min-width: 480px) { .chkn-hero__video--fill { display: none; } }
+  /* Split layout: keep the video column filled with a still instead of empty. */
+  @media (min-width: 768px) {
+    .chkn-hero__media { background: url("/videos/chkn-launch-hero-poster.jpg") center / cover; }
+  }
   .chkn-hero__badge-dot { animation: none; }
   .chkn-hero { background: linear-gradient(135deg, #D9251C, #0a0a0a); }
 }
