@@ -84,3 +84,215 @@ button {
     scroll-behavior: auto;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Launch / BOGO hero (src/components/home/launch-hero.tsx)
+   Values come from the combined-bogo-hero.html brief. Fonts use the site's own
+   display/sans stacks instead of Bebas Neue / Inter so the hero matches the
+   rest of the page.
+   ------------------------------------------------------------------------- */
+.chkn-hero-wrap { padding: 16px; background: #f6ead2; box-sizing: border-box; }
+.chkn-hero-wrap *, .chkn-hero-wrap *::before, .chkn-hero-wrap *::after { box-sizing: border-box; }
+@media (min-width: 820px) { .chkn-hero-wrap { padding: 24px; } }
+
+.chkn-hero {
+  position: relative;
+  width: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: #fff;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 0 #D9251C;
+  font-family: "Trebuchet MS", "Avenir Next", "Segoe UI", sans-serif;
+}
+@media (min-width: 820px) { .chkn-hero { min-height: 640px; } }
+
+.chkn-hero__media { position: absolute; inset: 0; z-index: 0; }
+.chkn-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.chkn-hero__video--fill { display: none; }
+/* The video is 9:16. Once the card is wider than a phone, `cover` crops it to
+   a middle strip and cuts off the baked-in headline, so show it whole, centred
+   over a blurred, darkened copy of itself. */
+@media (min-width: 480px) {
+  .chkn-hero__video--fill { display: block; filter: blur(28px) brightness(0.55); transform: scale(1.15); }
+  .chkn-hero__video--main { object-fit: contain; }
+}
+.chkn-hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(10,10,10,0.45) 0%, rgba(10,10,10,0) 25%,
+    rgba(10,10,10,0) 55%, rgba(10,10,10,0.9) 100%);
+}
+
+.chkn-hero__content {
+  position: relative; z-index: 2;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chkn-hero__top { position: relative; z-index: 2; padding: 24px 20px 0; text-align: center; }
+.chkn-hero__badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #FFC94B; color: #000;
+  padding: 10px 20px; border-radius: 999px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 15px; letter-spacing: 0.12em; line-height: 1;
+}
+/* Impact is much wider than Bebas Neue, so on phones the badge needs to shrink
+   to keep the offer on one line. Desktop keeps the brief's 15px / 0.12em. */
+@media (max-width: 479px) {
+  .chkn-hero__badge {
+    gap: 8px; padding: 9px 14px;
+    font-size: clamp(10px, 3.2vw, 14px); letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+}
+.chkn-hero__badge-dot {
+  flex-shrink: 0;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #D9251C;
+  animation: chkn-pulse 1.6s ease-in-out infinite;
+}
+@keyframes chkn-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.chkn-hero__spacer { flex: 1 1 auto; }
+
+.chkn-hero__bottom {
+  position: relative; z-index: 2;
+  padding: 14px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  max-width: 560px;
+  margin: 0 auto;
+  width: 100%;
+}
+.chkn-hero__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(10,10,10,0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(14px, 3.4vw, 18px);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: #fff;
+  margin: 0;
+}
+.chkn-hero__label-accent { color: #FFC94B; }
+.chkn-hero__ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+@media (min-width: 480px) {
+  .chkn-hero__ctas { flex-direction: row; gap: 16px; }
+}
+
+.chkn-cta {
+  flex: 1; display: block;
+  padding: 18px 24px; border-radius: 999px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 18px; letter-spacing: 0.14em;
+  text-decoration: none; text-align: center;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  min-height: 56px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+}
+.chkn-cta--ue { background: #FFC94B; color: #0a0a0a; }
+.chkn-cta--dd { background: #F5EDE0; color: #0a0a0a; }
+.chkn-cta:hover, .chkn-cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+  outline: none;
+}
+.chkn-cta:active { transform: translateY(0); }
+/* Keyboard users still need to see where focus is. */
+.chkn-cta:focus-visible { outline: 3px solid #FFC94B; outline-offset: 3px; }
+
+/* Tablet + desktop: split card. Left column is the video at its own 9:16
+   (so nothing is cropped, nothing blurred), right column is the offer + CTAs.
+   Card height follows the width (video ≈ 44% of the card at 768px) and caps
+   at 680px; the card caps at the header's 1152px so the columns stay balanced
+   on wide screens. */
+@media (min-width: 768px) {
+  .chkn-hero {
+    --chkn-hero-h: min(calc((100vw - 48px) * 0.8), 680px);
+    max-width: 1152px;
+    margin: 0 auto;
+    min-height: 0;
+    height: var(--chkn-hero-h);
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+  .chkn-hero__media { position: relative; inset: auto; height: 100%; aspect-ratio: 9 / 16; }
+  .chkn-hero__video--fill,
+  .chkn-hero__overlay,
+  .chkn-hero__spacer,
+  .chkn-hero__label-sep { display: none; }
+  .chkn-hero__video--main { object-fit: cover; }
+
+  .chkn-hero__content {
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    padding: 40px clamp(24px, 4vw, 64px);
+    background:
+      radial-gradient(circle at 85% 10%, rgba(217,37,28,0.22), transparent 55%),
+      #0a0a0a;
+  }
+  .chkn-hero__top, .chkn-hero__bottom { padding: 0; }
+  .chkn-hero__bottom { gap: 28px; max-width: 520px; }
+  .chkn-hero__badge {
+    padding: 10px 16px; gap: 8px;
+    font-size: 13px; letter-spacing: 0.08em; white-space: nowrap;
+  }
+
+  .chkn-hero__label {
+    display: block;
+    padding: 0;
+    background: none;
+    border: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    font-size: clamp(26px, 3.4vw, 52px);
+    letter-spacing: 0.06em;
+    line-height: 1.05;
+    text-align: center;
+  }
+  .chkn-hero__label-accent { display: block; margin-top: 6px; }
+
+  .chkn-hero__ctas { flex-direction: row; gap: 16px; }
+  .chkn-cta { min-width: 160px; }
+}
+@media (min-width: 1024px) {
+  .chkn-hero__badge { padding: 10px 20px; gap: 10px; font-size: 15px; letter-spacing: 0.12em; }
+  .chkn-hero__bottom { max-width: 640px; }
+  .chkn-cta { min-width: 200px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chkn-hero__video { display: none; }
+  @media (min-width: 480px) { .chkn-hero__video--fill { display: none; } }
+  /* Split layout: keep the video column filled with a still instead of empty. */
+  @media (min-width: 768px) {
+    .chkn-hero__media { background: url("/videos/chkn-launch-hero-poster.jpg") center / cover; }
+  }
+  .chkn-hero__badge-dot { animation: none; }
+  .chkn-hero { background: linear-gradient(135deg, #D9251C, #0a0a0a); }
+}

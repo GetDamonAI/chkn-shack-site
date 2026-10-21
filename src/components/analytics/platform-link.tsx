@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import {
   defaultStoreMap,
   getOrderLink,
+  withOrderUtm,
   type OrderLocation,
   type OrderPlatform,
 } from "@/lib/ordering";
@@ -13,6 +14,8 @@ import { trackPlatformClick } from "@/lib/tracking";
 type PlatformLinkProps = {
   platform: OrderPlatform;
   location: OrderLocation;
+  /** Send somewhere other than the store map's storefront (e.g. a campaign's search URL). */
+  href?: string;
   className?: string;
   children: ReactNode;
 };
@@ -29,12 +32,15 @@ type PlatformLinkProps = {
 export function PlatformLink({
   platform,
   location,
+  href: hrefOverride,
   className,
   children,
 }: PlatformLinkProps) {
-  const { href } = getOrderLink(platform, null, defaultStoreMap, {
-    utmContent: location,
-  });
+  const href = hrefOverride
+    ? withOrderUtm(hrefOverride, location)
+    : getOrderLink(platform, null, defaultStoreMap, {
+        utmContent: location,
+      }).href;
 
   return (
     <a
