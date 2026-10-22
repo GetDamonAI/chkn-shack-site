@@ -133,8 +133,10 @@ export type Location = {
   city: string;
   area: string;
   availability?: string;
+  /** Street address, shown on live cards. */
+  address?: string;
   status: "live" | "coming-soon";
-  /** Sub-label under the Coming Soon badge, e.g. a launch date. */
+  /** Sub-label under the Live / Coming Soon badge, e.g. a launch date. */
   launchNote?: string;
 };
 
@@ -144,6 +146,20 @@ export const locations: Location[] = [
     area: "Vancouver",
     availability: "Late lunch to midnight",
     status: "live",
+  },
+  {
+    city: "Tsawwassen",
+    area: "Delta",
+    // TODO: street address (Tsawwassen Mills area) — pending from Damon.
+    status: "live",
+    launchNote: "Open since Oct 14",
+  },
+  {
+    city: "Langley",
+    area: "Fraser Valley",
+    address: "19696 Fraser Hwy, Langley BC",
+    status: "live",
+    launchNote: "Open since Oct 17",
   },
   {
     city: "Abbotsford",

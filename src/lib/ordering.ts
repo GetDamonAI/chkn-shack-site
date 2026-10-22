@@ -39,6 +39,7 @@ export type OrderDestination = {
 export type OrderLocation =
   | "homepage_hero"
   | "homepage_sticky_bar"
+  | "homepage_locations"
   | "crates_hero"
   | "crates_final_cta"
   | "crates_sticky_bar"
@@ -69,6 +70,11 @@ export function withOrderUtm(url: string, location: OrderLocation): string {
   tagged.searchParams.set("utm_content", location);
   return tagged.toString();
 }
+
+// Search URLs, not storefronts: each platform routes the visitor to their
+// nearest venue (Vancouver, Langley, Tsawwassen).
+export const UBER_EATS_SEARCH = "https://www.ubereats.com/ca/search?q=chkn+shack";
+export const DOORDASH_SEARCH = "https://www.doordash.com/search/store/chkn+shack/";
 
 export const defaultStoreMap: StoreMap = {
   defaultStoreKey: "vancouver",

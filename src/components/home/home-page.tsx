@@ -11,6 +11,7 @@ import {
   flavourTaglineFor,
 } from "@/components/home/taglines";
 import { crateOptions } from "@/components/crates/data";
+import { DOORDASH_SEARCH, UBER_EATS_SEARCH } from "@/lib/ordering";
 import { WING_FLAVOURS } from "@/lib/menu-constants";
 
 type SectionIntroProps = {
@@ -389,18 +390,52 @@ export function HomePage() {
                       )}
                     </span>
                   ) : (
-                    <span className="mt-3 inline-block rounded-full bg-brand-red px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#fff7ed]">
-                      Live
+                    <span className="mt-3 flex flex-col items-start gap-1">
+                      <span className="inline-block rounded-full bg-brand-red px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#fff7ed]">
+                        Live
+                      </span>
+                      {location.launchNote && (
+                        <span className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-yellow">
+                          {location.launchNote}
+                        </span>
+                      )}
                     </span>
                   )}
                   <p className="mt-3 text-sm font-black uppercase tracking-[0.18em] text-brand-yellow">
                     {location.area}
                   </p>
+                  {location.address ? (
+                    <p className="mt-3 text-sm leading-6 text-[#fff7ed]">
+                      {location.address}
+                    </p>
+                  ) : null}
                   {location.availability ? (
                     <p className="mt-4 text-sm leading-6 text-[#fff7ed]/82">
                       {location.availability}
                     </p>
                   ) : null}
+                  {!isComingSoon && (
+                    // Same search links as the hero: each platform routes the
+                    // visitor to their nearest venue, not this card's.
+                    <div className="mt-5 flex flex-col gap-2">
+                      <PlatformLink
+                        platform="uber-eats"
+                        location="homepage_locations"
+                        href={UBER_EATS_SEARCH}
+                        className="rounded-full bg-[#FFC94B] px-4 py-2.5 text-center font-display text-base tracking-[0.14em] text-[#0a0a0a] transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC94B]"
+                      >
+                        UBER EATS
+                      </PlatformLink>
+                      <PlatformLink
+                        platform="doordash"
+                        location="homepage_locations"
+                        href={DOORDASH_SEARCH}
+                        className="rounded-full bg-[#F5EDE0] px-4 py-2.5 text-center font-display text-base tracking-[0.14em] text-[#0a0a0a] transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC94B]"
+                      >
+                        DOORDASH
+                      </PlatformLink>
+                    </div>
+                  )}
                 </article>
               );
             })}

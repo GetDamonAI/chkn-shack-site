@@ -1,9 +1,5 @@
 import { PlatformLink } from "@/components/analytics/platform-link";
-
-// Search URLs, not storefronts: each platform routes the visitor to their
-// nearest venue (Vancouver, Langley, Tsawwassen).
-const UBER_EATS_SEARCH = "https://www.ubereats.com/ca/search?q=chkn+shack";
-const DOORDASH_SEARCH = "https://www.doordash.com/search/store/chkn+shack/";
+import { DOORDASH_SEARCH, UBER_EATS_SEARCH } from "@/lib/ordering";
 
 const VIDEO_SRC = "/videos/chkn-launch-hero.mp4";
 const POSTER_SRC = "/videos/chkn-launch-hero-poster.jpg";
