@@ -5,8 +5,10 @@ import { PlatformLink } from "@/components/analytics/platform-link";
 const UBER_EATS_SEARCH = "https://www.ubereats.com/ca/search?q=chkn+shack";
 const DOORDASH_SEARCH = "https://www.doordash.com/search/store/chkn+shack/";
 
+// Desktop/tablet cut ("Napkins"). Phones (under 768px) get their own cut,
+// picked once at load via <source media>. Both open on the same shot, so they
+// share one poster.
 const VIDEO_SRC = "/videos/chkn-launch-hero.mp4";
-// Phones (under 768px) get their own cut; picked once at load via <source media>.
 const MOBILE_VIDEO_SRC = "/videos/chkn-launch-hero-mobile.mp4";
 const MOBILE_MEDIA = "(max-width: 767px)";
 const POSTER_SRC = "/videos/chkn-launch-hero-poster.jpg";
