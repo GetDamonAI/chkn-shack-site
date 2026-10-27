@@ -8,8 +8,6 @@ import { LaunchHero } from "@/components/home/launch-hero";
 import { MenuAccordion } from "@/components/home/menu-accordion";
 import {
   DIP_TAGLINES,
-  SIGNATURE_DIPS,
-  SIGNATURE_FLAVOURS,
   flavourTaglineFor,
 } from "@/components/home/taglines";
 import { crateOptions } from "@/components/crates/data";
@@ -260,11 +258,6 @@ export function HomePage() {
                   <div className="flex items-start justify-between gap-3">
                     <p className="text-sm font-black uppercase tracking-[0.16em] sm:text-base">
                       {flavour}
-                      {SIGNATURE_FLAVOURS.has(flavour) && (
-                        <span aria-label="Signature flavour" title="Signature flavour">
-                          {" \u2605"}
-                        </span>
-                      )}
                     </p>
                     <span
                       className={cn(
@@ -304,11 +297,6 @@ export function HomePage() {
               >
                 <p className="text-sm font-black uppercase tracking-[0.16em] sm:text-base">
                   {dip}
-                  {SIGNATURE_DIPS.has(dip) && (
-                    <span aria-label="Signature dip" title="Signature dip">
-                      {" \u2605"}
-                    </span>
-                  )}
                 </p>
                 <p className="mt-1 text-xs font-normal leading-5 text-brand-ink/70">
                   {DIP_TAGLINES[dip]}
@@ -410,15 +398,8 @@ export function HomePage() {
                     {location.city}
                   </p>
                   {isComingSoon ? (
-                    <span className="mt-3 flex flex-col items-start gap-1">
-                      <span className="inline-block rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-brand-ink">
-                        Coming Soon
-                      </span>
-                      {location.launchNote && (
-                        <span className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-yellow">
-                          {location.launchNote}
-                        </span>
-                      )}
+                    <span className="mt-3 inline-block rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-brand-ink">
+                      Coming Soon
                     </span>
                   ) : (
                     <span className="mt-3 inline-block rounded-full bg-brand-red px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#fff7ed]">
@@ -428,11 +409,6 @@ export function HomePage() {
                   <p className="mt-3 text-sm font-black uppercase tracking-[0.18em] text-brand-yellow">
                     {location.area}
                   </p>
-                  {location.address ? (
-                    <p className="mt-3 text-sm leading-6 text-[#fff7ed]">
-                      {location.address}
-                    </p>
-                  ) : null}
                   {location.availability ? (
                     <p className="mt-4 text-sm leading-6 text-[#fff7ed]/82">
                       {location.availability}
@@ -456,7 +432,7 @@ export function HomePage() {
             More locations coming.
           </p>
           <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-brand-ink/70">
-            We’re rolling into more neighbourhoods across Metro Vancouver. Get on
+            We’re rolling into more neighbourhoods across Vancouver. Get on
             the list at{" "}
             <a
               href="mailto:damon@wingschknshack.com"

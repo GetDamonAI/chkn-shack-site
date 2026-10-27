@@ -2,7 +2,6 @@
 // FLAVOUR_TAGLINES -> homepage flavour chips + menu accordion lookup.
 // CRATE_TAGLINES   -> /crates + /group-orders crate cards + menu accordion lookup.
 // DIP_TAGLINES     -> homepage dips section + menu accordion lookup.
-// SIGNATURE_*      -> flags which flavours/dips get the "signature" pill.
 // ITEM_TAGLINES stays in menu-accordion.tsx (only consumed there).
 //
 // Keys here MUST match WING_FLAVOURS / DIP_FLAVOURS in src/lib/menu-constants.ts
@@ -23,12 +22,6 @@ export const FLAVOUR_TAGLINES: Record<string, string> = {
   "Honey Stinger": "Yes, it stings. Honey glaze up front, ghost pepper on the drop.",
 };
 
-export const SIGNATURE_FLAVOURS = new Set<string>([
-  "Buffalo",
-  "Salt and Pepper",
-  "Honey Garlic",
-]);
-
 export const CRATE_TAGLINES: Record<string, string> = {
   "CHKN Crate 50pc": "The group-order starter kit.",
   "CHKN Crate 100pc": "Medium mayhem.",
@@ -48,13 +41,6 @@ export const DIP_TAGLINES: Record<string, string> = {
   "Honey BBQ": "Sweet, smoky, and the one the whole table quietly agrees on.",
   "Sweet Thai": "Sweet, sticky, whisper of chili. Plays well with absolutely everything.",
 };
-
-export const SIGNATURE_DIPS = new Set<string>([
-  "Ranch",
-  "WOWY Ranch",
-  "House Fire Ranch",
-  "Hot Honey",
-]);
 
 // Flavour chips render straight from WING_FLAVOURS, so the label already matches
 // the tagline key. Kept as a helper so callers stay decoupled from the map shape.

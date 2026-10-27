@@ -117,11 +117,7 @@ export type Location = {
   city: string;
   area: string;
   availability?: string;
-  /** Street address, shown on live cards. */
-  address?: string;
   status: "live" | "coming-soon";
-  /** Sub-label under the Coming Soon badge, e.g. a launch date. */
-  launchNote?: string;
 };
 
 export const locations: Location[] = [
@@ -134,7 +130,6 @@ export const locations: Location[] = [
   {
     city: "Langley",
     area: "Fraser Valley",
-    address: "19696 Fraser Hwy, Langley BC",
     status: "live",
   },
   {
@@ -142,17 +137,9 @@ export const locations: Location[] = [
     area: "Delta",
     status: "live",
   },
-  {
-    city: "Abbotsford",
-    area: "Fraser Valley",
-    availability: "Late lunch to midnight",
-    status: "coming-soon",
-    launchNote: "Launching Sep 6",
-  },
-  {
-    city: "Burnaby",
-    area: "Metro Vancouver",
-    availability: "TBD",
-    status: "coming-soon",
-  },
+  { city: "Abbotsford", area: "Fraser Valley", status: "coming-soon" },
+  { city: "Burnaby", area: "Metro Vancouver", status: "coming-soon" },
+  { city: "Surrey", area: "Metro Vancouver", status: "coming-soon" },
+  { city: "Port Moody", area: "Tri-Cities", status: "coming-soon" },
+  { city: "Kelowna", area: "Okanagan", status: "coming-soon" },
 ];
