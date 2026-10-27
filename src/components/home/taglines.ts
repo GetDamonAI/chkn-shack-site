@@ -1,7 +1,7 @@
 // Shared brand-voice taglines surfaced across multiple render surfaces.
 // FLAVOUR_TAGLINES -> homepage flavour chips + menu accordion lookup.
 // CRATE_TAGLINES   -> /crates + /group-orders crate cards + menu accordion lookup.
-// DIP_TAGLINES     -> Dips-category chip grid + menu accordion lookup.
+// DIP_TAGLINES     -> homepage dips section + menu accordion lookup.
 // SIGNATURE_*      -> flags which flavours/dips get the "signature" pill.
 // ITEM_TAGLINES stays in menu-accordion.tsx (only consumed there).
 //
@@ -33,7 +33,6 @@ export const CRATE_TAGLINES: Record<string, string> = {
   "CHKN Crate 50pc": "The group-order starter kit.",
   "CHKN Crate 100pc": "Medium mayhem.",
   "CHKN Crate 200pc": "Full send.",
-  "The Tailgate Crate": "The game's already on.",
 };
 
 // Insertion order matches DIP_FLAVOURS; the chip grid renders from the constant.

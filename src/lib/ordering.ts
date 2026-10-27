@@ -4,6 +4,7 @@
 export type OrderLocation =
   | "homepage_hero"
   | "homepage_sticky_bar"
+  | "homepage_locations"
   | "crates_hero"
   | "crates_final_cta"
   | "crates_sticky_bar"

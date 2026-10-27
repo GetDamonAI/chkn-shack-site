@@ -42,10 +42,9 @@ export const POP_FLAVOURS = [
   "Ginger Ale",
 ] as const;
 
-/** The four fries, in menu order. Pricing lives in the ordering platform. */
+/** The three fries, in menu order. Pricing lives in the ordering platform. */
 export const FRY_CHOICE_NAMES = [
   "Shack Cut Seasoned Fries",
-  "Dirty Curly Fries",
   "Parm Bomb Garlic Fries",
   "Hot Honey Fries",
 ] as const;
@@ -54,19 +53,18 @@ export type WingFlavour = (typeof WING_FLAVOURS)[number];
 export type DipFlavour = (typeof DIP_FLAVOURS)[number];
 export type PopFlavour = (typeof POP_FLAVOURS)[number];
 
-/**
- * THE TAILGATE CRATE price. Rendered on the homepage tile and the /crates card,
- * and parsed into the Product schema — keep it here so a reprice is one edit.
- */
-export const TAILGATE_PRICE = "$89";
-
-/**
- * Seasonal gate for THE TAILGATE CRATE (Football Season, Sep 1 – Feb 28).
- * Defaults to on; set NEXT_PUBLIC_TAILGATE_ACTIVE=false to pull the card and
- * product copy without a code change.
- *
- * NEXT_PUBLIC_* values are inlined at build time, so flipping this needs a
- * redeploy (env change only — no code deploy).
- */
-export const TAILGATE_ACTIVE =
-  process.env.NEXT_PUBLIC_TAILGATE_ACTIVE !== "false";
+/** Whether each flavour is a sauce (wet) or a seasoning (dry). */
+export const WING_FLAVOUR_STYLE: Record<WingFlavour, "Wet" | "Dry"> = {
+  "Buffalo": "Wet",
+  "Honey Hot": "Wet",
+  "Jakarta Heat": "Wet",
+  "Chilean Chili": "Wet",
+  "Salt and Pepper": "Dry",
+  "Lemon Pepper": "Dry",
+  "Texas Dry Rub": "Dry",
+  "Honey Garlic": "Wet",
+  "Louisiana Sweet": "Wet",
+  "Korean Sticky Sesame": "Wet",
+  "Maple Bourbon": "Wet",
+  "Honey Stinger": "Wet",
+};

@@ -240,8 +240,8 @@ function PillList({
 // TODO: temporarily hidden — 10-gal ranch bucket. Restore by flipping BUCKET_HIDDEN to false.
 const BUCKET_HIDDEN = true;
 
-// Crate lineup as structured data. Built from crateOptions so the seasonal
-// Tailgate SKU drops out of the schema with the card when the flag is off.
+// Crate lineup as structured data, built from crateOptions so the schema always
+// matches the cards.
 const crateListJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",

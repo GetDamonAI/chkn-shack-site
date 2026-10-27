@@ -2,7 +2,6 @@ import Link from "next/link";
 import { OrderNowLink } from "@/components/analytics/order-now-link";
 import { CRATE_TAGLINES } from "@/components/home/taglines";
 import { crateOptions } from "@/components/crates/data";
-import { TAILGATE_ACTIVE } from "@/lib/menu-constants";
 import type { OrderLocation } from "@/lib/ordering";
 
 function cn(...values: Array<string | false | null | undefined>) {
@@ -89,16 +88,13 @@ const trays = [
   {
     name: "Perogy Tray",
     price: "$30",
-    copy: "Full perogy commitment. 25 pan-finished, sour cream + chili crisp on standby. Feeds 4-6.",
+    copy: "Full perogy commitment. 25 deep fried, sour cream + chili crisp on standby. Feeds 4-6.",
   },
 ];
 
 const steps = [
   "Hit Order now and check out online.",
-  // Lead-time line follows the seasonal gate so it can't name a pulled SKU.
-  TAILGATE_ACTIVE
-    ? "Same-day pickup or delivery for the 50pc and the Tailgate Crate. 100pc and 200pc need 24 hours."
-    : "Same-day pickup or delivery for the 50pc. 100pc and 200pc need 24 hours.",
+  "Same-day pickup or delivery for the 50pc. 100pc and 200pc need 24 hours.",
   "Custom orders? Email orders@wingschknshack.com.",
 ];
 

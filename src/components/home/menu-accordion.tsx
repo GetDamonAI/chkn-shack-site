@@ -6,9 +6,7 @@ import {
   CRATE_TAGLINES,
   DIP_TAGLINES,
   FLAVOUR_TAGLINES,
-  SIGNATURE_DIPS,
 } from "@/components/home/taglines";
-import { DIP_FLAVOURS } from "@/lib/menu-constants";
 
 // Canonical customer-facing descriptions. Copy is verbatim from the menu —
 // edit the menu, not these strings. Dips and Drinks carry their pick rules in
@@ -18,18 +16,17 @@ const ITEM_TAGLINES: Record<string, string> = {
   "20pc Wings": "The size that wins. Real weeknight energy.",
   "30pc Wings": "The 30. Feeds two \u2014 or one hungry one.",
   "Solo Combo": "The one-person plan.",
-  "The Drop": "The whole shack in one drop.",
+  "20 Piece Combo": "The whole shack in one box.",
   "Shack Cut Seasoned Fries": "Thick-cut russet, twice-fried, tossed in Texas Dry Rub + Grandpa J's seasoning. Pick your size.",
   "Parm Bomb Garlic Fries": "16oz fries tossed in parm + herbs, fresh parsley, and a Garlic Aioli ramekin on the side. No drizzle \u2014 dip on your terms.",
   "Hot Honey Fries": "Shack cut fries tossed in Nashville Hot seasoning, hot honey sauce in a side ramekin. Sweet meets scorched.",
-  "Dirty Curly Fries": "Curly-cut fries, seasoned, topped with pickled + green onions, Spicy Aioli ramekin on the side. Loud, messy, worth it.",
   "Mac and Cheese (Side)": "Personal-size mac. Alfredo base, marble cheese, panko top, green onion garnish.",
-  "Perogies (7pc Side)": "Seven perogies, pan-finished. Caramelized onions, bacon, sour cream ramekin on the side.",
+  "Perogies (7pc Side)": "Seven perogies, deep fried. Caramelized onions, bacon, sour cream ramekin on the side.",
   "Cauli Bites": "Battered cauliflower bites tossed in your choice of wing flavour. Vegetarian, ranch-ready.",
   "Gravy (Add-on)": "Beef gravy in a side ramekin. Because sometimes fries need a swim.",
   "Coleslaw (Add-on)": "Fresh coleslaw in a side ramekin. Crunch, tang, and something green.",
   "Mac and Cheese Tray": "The one that ends the argument about sides. Alfredo base, marble cheese, panko top. Feeds 4-6.",
-  "Perogy Tray": "Full perogy commitment. 25 pan-finished, sour cream + chili crisp on standby. Feeds 4-6.",
+  "Perogy Tray": "Full perogy commitment. 25 deep fried, sour cream + chili crisp on standby. Feeds 4-6.",
 };
 
 function taglineFor(name: string): string | undefined {
@@ -111,43 +108,6 @@ export function MenuAccordion({ categories }: { categories: MenuCategory[] }) {
                   </div>
                 ) : (
                   <p className="text-sm text-brand-ink/58">Coming soon.</p>
-                )}
-                {cat.name === "Dips" && (
-                  <div className="mt-4 border-t-2 border-brand-ink/12 pt-3">
-                    <p className="text-sm font-black uppercase tracking-wider text-brand-ink/55">
-                      Pick from all 10
-                    </p>
-                    <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                      {DIP_FLAVOURS.map((name) => {
-                        const tagline = DIP_TAGLINES[name];
-                        const isSignature = SIGNATURE_DIPS.has(name);
-                        return (
-                          <div
-                            key={name}
-                            className="relative rounded-[1.2rem] border-2 border-brand-ink bg-brand-yellow px-4 py-3 text-brand-ink transition-transform duration-150 hover:-translate-y-0.5"
-                          >
-                            {isSignature && (
-                              <span className="absolute right-3 top-3 rounded-full border-2 border-brand-ink bg-brand-ink px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#fff7ed]">
-                                Signature
-                              </span>
-                            )}
-                            <p
-                              className={
-                                isSignature
-                                  ? "pr-20 text-sm font-semibold uppercase tracking-[0.12em] sm:text-base"
-                                  : "text-sm font-semibold uppercase tracking-[0.12em] sm:text-base"
-                              }
-                            >
-                              {name}
-                            </p>
-                            <p className="mt-1 text-xs font-normal leading-5 text-brand-ink/70">
-                              {tagline}
-                            </p>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
                 )}
               </div>
             )}

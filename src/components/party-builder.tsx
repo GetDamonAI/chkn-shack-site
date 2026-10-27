@@ -85,10 +85,10 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   if (people <= 2) {
     items.push({ qty: 1, name: "Solo Combo", detail: "wings + fries + dip + pop", price: 22, kind: "wings" });
     if (people === 2)
-      items.push({ qty: 1, name: "The Drop", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
+      items.push({ qty: 1, name: "20 Piece Combo", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
   } else if (people <= 5) {
     const drops = Math.max(1, Math.round(targetWings / 20));
-    items.push({ qty: drops, name: "The Drop", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
+    items.push({ qty: drops, name: "20 Piece Combo", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
   } else {
     let remaining = targetWings;
     for (const c of CRATES) {
@@ -102,7 +102,7 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   }
 
   const hasCrate = items.some((i) => i.name.includes("Crate"));
-  const hasCombo = items.some((i) => i.name.includes("Combo") || i.name === "The Drop");
+  const hasCombo = items.some((i) => i.name.includes("Combo"));
 
   // ----- DIPS -----
   let dipSets = 0;

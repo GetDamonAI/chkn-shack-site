@@ -1,5 +1,3 @@
-import { TAILGATE_ACTIVE, TAILGATE_PRICE } from "@/lib/menu-constants";
-
 export type MenuItemV2 = {
   name: string;
   price?: string;
@@ -33,7 +31,7 @@ export const menuCategories: MenuCategory[] = [
     items: [
       { name: "Solo Combo", price: "$22", composition: "1 flavour · 1 dip · fries · pop" },
       {
-        name: "The Drop",
+        name: "20 Piece Combo",
         price: "$36",
         composition: "20 wings · 2 flavours · 2 dips · large fries · pop",
       },
@@ -64,18 +62,6 @@ export const menuCategories: MenuCategory[] = [
         note: "24hr notice",
         composition: "200 wings · up to 4 flavours · 8 dips · 4 party fries",
       },
-      // Seasonal SKU — gated on NEXT_PUBLIC_TAILGATE_ACTIVE (Football Season).
-      ...(TAILGATE_ACTIVE
-        ? [
-            {
-              name: "The Tailgate Crate",
-              price: TAILGATE_PRICE,
-              note: "Same-day · Seasonal",
-              composition:
-                "50 wings · up to 3 flavours · 4 dips · large fries · 3 pops",
-            },
-          ]
-        : []),
     ],
   },
   {
@@ -85,7 +71,6 @@ export const menuCategories: MenuCategory[] = [
       { name: "Shack Cut Seasoned Fries", price: "$6" },
       { name: "Parm Bomb Garlic Fries", price: "$11.75" },
       { name: "Hot Honey Fries", price: "$8" },
-      { name: "Dirty Curly Fries", price: "$7" },
       { name: "Mac and Cheese (Side)", price: "$8" },
       { name: "Perogies (7pc Side)", price: "$9" },
       { name: "Cauli Bites", price: "$10", note: "vegetarian" },
@@ -122,7 +107,6 @@ export const menuCategories: MenuCategory[] = [
         note: "355mL",
         composition: "Coke · Diet Coke · Sprite · Ginger Ale",
       },
-      { name: "Iced Tea", price: "$3.49", note: "20oz · Sweet only" },
       { name: "Bottled Water", price: "$2.49", note: "591mL" },
       { name: "Red Bull", price: "$6", note: "250mL" },
     ],
@@ -133,6 +117,8 @@ export type Location = {
   city: string;
   area: string;
   availability?: string;
+  /** Street address, shown on live cards. */
+  address?: string;
   status: "live" | "coming-soon";
   /** Sub-label under the Coming Soon badge, e.g. a launch date. */
   launchNote?: string;
@@ -143,6 +129,17 @@ export const locations: Location[] = [
     city: "Downtown Vancouver",
     area: "Vancouver",
     availability: "Late lunch to midnight",
+    status: "live",
+  },
+  {
+    city: "Langley",
+    area: "Fraser Valley",
+    address: "19696 Fraser Hwy, Langley BC",
+    status: "live",
+  },
+  {
+    city: "Tsawwassen",
+    area: "Delta",
     status: "live",
   },
   {

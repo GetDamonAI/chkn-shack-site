@@ -1,8 +1,6 @@
 import {
   DIP_FLAVOURS,
   FRY_CHOICE_NAMES,
-  TAILGATE_ACTIVE,
-  TAILGATE_PRICE,
   WING_FLAVOURS,
 } from "@/lib/menu-constants";
 
@@ -10,7 +8,7 @@ export type CrateOption = {
   name: string;
   price: string;
   badge?: string;
-  /** Seasonal ribbon copy. Only set on gated SKUs. */
+  /** Ribbon copy above the card, e.g. for a seasonal SKU. */
   ribbon?: string;
   /** Lead-time badge — "Same-day" or "24hr notice". */
   notice: string;
@@ -54,24 +52,6 @@ export const crateOptions: CrateOption[] = [
     feeds: "Feeds 20-30",
     composition: "200 wings · up to 4 flavours · 8 dips · 4 party fries",
   },
-  // Seasonal SKU — Football Season, Sep 1 – Feb 28. Gated on
-  // NEXT_PUBLIC_TAILGATE_ACTIVE so it can be pulled without a code deploy.
-  ...(TAILGATE_ACTIVE
-    ? [
-        {
-          name: "The Tailgate Crate",
-          price: TAILGATE_PRICE,
-          ribbon: "For Football SZN",
-          notice: "Same-day",
-          feeds: "Feeds the crew (5–7)",
-          composition: "50 wings · up to 3 flavours · 4 dips · large fries · 3 pops",
-          image: {
-            src: "/menu/crates-hero.webp",
-            alt: "The Tailgate Crate — 50 wings, fries, dips, pops.",
-          },
-        } satisfies CrateOption,
-      ]
-    : []),
 ];
 
 /** Wing flavour + dip pill lists render straight off the canonical constants. */
