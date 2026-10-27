@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useRef } from "react";
-import { PlatformLink } from "@/components/analytics/platform-link";
+import { OrderNowLink } from "@/components/analytics/order-now-link";
 import { DIP_FLAVOURS, WING_FLAVOURS } from "@/lib/menu-constants";
 
 /**
@@ -9,13 +9,13 @@ import { DIP_FLAVOURS, WING_FLAVOURS } from "@/lib/menu-constants";
  * Visual modal wizard that recommends an order from the V2 menu based on
  * event, headcount, spice tolerance, dip attitude, and veg count.
  *
- * Ordering routes through Uber Eats / DoorDash, so the output gives a
- * copyable order list + buttons that open your store on each platform.
+ * Ordering happens on our online-ordering page, so the output gives a
+ * copyable order list + an ORDER NOW button that opens it.
  */
-// Ordering routes through the Uber Eats / DoorDash web stores. The storefront
-// URLs now live in src/lib/ordering.ts and reach the buttons via <PlatformLink>,
+// Ordering routes through our DoorDash online-ordering page. Its URL lives in
+// src/lib/ordering.ts and reaches the button via <OrderNowLink>,
 // which also tags them with UTMs and reports the click. Set ORDERING_LIVE to
-// false to swap the buttons back out for plain "order it on…" text.
+// false to swap the button back out for plain "order it online" text.
 const ORDERING_LIVE = true;
 
 /* ---------- TYPES ---------- */
@@ -85,10 +85,10 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   if (people <= 2) {
     items.push({ qty: 1, name: "Solo Combo", detail: "wings + fries + dip + pop", price: 22, kind: "wings" });
     if (people === 2)
-      items.push({ qty: 1, name: "The Drop", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
+      items.push({ qty: 1, name: "20 Piece Combo", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
   } else if (people <= 5) {
     const drops = Math.max(1, Math.round(targetWings / 20));
-    items.push({ qty: drops, name: "The Drop", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
+    items.push({ qty: drops, name: "20 Piece Combo", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
   } else {
     let remaining = targetWings;
     for (const c of CRATES) {
@@ -102,7 +102,7 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   }
 
   const hasCrate = items.some((i) => i.name.includes("Crate"));
-  const hasCombo = items.some((i) => i.name.includes("Combo") || i.name === "The Drop");
+  const hasCombo = items.some((i) => i.name.includes("Combo"));
 
   // ----- DIPS -----
   let dipSets = 0;
@@ -210,7 +210,7 @@ export default function PartyBuilder({
     const lines = [`CHKN SHACK — ${EVENTS[event].label} (${people} people)`, ""];
     order.items.forEach((i) => lines.push(`${i.qty}× ${i.name}${i.detail ? `  — ${i.detail}` : ""}`));
     lines.push("", `Flavours: ${order.wingFlavors.join(", ")}`);
-    lines.push(`~$${order.subtotal} total  ·  ~$${order.perPerson.toFixed(0)}/person`, "", "Order on Uber Eats or DoorDash 🍗");
+    lines.push(`~$${order.subtotal} total  ·  ~$${order.perPerson.toFixed(0)}/person`, "", "Order online at wingschknshack.com 🍗");
     return lines.join("\n");
   }, [order, event, people]);
 
@@ -352,15 +352,14 @@ export default function PartyBuilder({
 
                   <div className="pb-note">Crates &amp; combos already include fries + dips. Final pricing shows at checkout.</div>
 
-                  <button className="pb-copy primary" onClick={copy}>{copied ? "✓ Copied — now paste it on Uber Eats or DoorDash" : "Copy my order list"}</button>
+                  <button className="pb-copy primary" onClick={copy}>{copied ? "✓ Copied — now hit Order now" : "Copy my order list"}</button>
 
                   {ORDERING_LIVE ? (
                     <div className="pb-order-actions">
-                      <PlatformLink className="pb-order-btn ue" platform="uber-eats" location="party_builder">Order on Uber Eats</PlatformLink>
-                      <PlatformLink className="pb-order-btn dd" platform="doordash" location="party_builder">Order on DoorDash</PlatformLink>
+                      <OrderNowLink className="pb-order-btn" location="party_builder">Order now</OrderNowLink>
                     </div>
                   ) : (
-                    <div className="pb-platforms">Order it on <span>Uber Eats</span> or <span>DoorDash</span></div>
+                    <div className="pb-platforms">Order it <span>online</span></div>
                   )}
                   <textarea ref={copyRef} className="pb-hidden-ta" value={orderText} readOnly />
                 </div>
@@ -455,9 +454,7 @@ const css = `
 .pb-chip{background:#241f17;border:1px solid rgba(245,195,59,.3);color:var(--gold);font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;}
 .pb-note{font-size:11.5px;color:var(--muted);line-height:1.45;margin:12px 0 16px;text-align:center;}
 .pb-order-actions{display:flex;gap:10px;margin-bottom:10px;}
-.pb-order-btn{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:14px;padding:14px;border-radius:11px;transition:.15s;}
-.pb-order-btn.ue{background:#06c167;color:#04130b;}
-.pb-order-btn.dd{background:#ff3008;color:#fff;}
+.pb-order-btn{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:14px;padding:14px;border-radius:11px;transition:.15s;background:var(--red);color:#fff;text-transform:uppercase;letter-spacing:.12em;}
 .pb-order-btn:hover{transform:translateY(-2px);filter:brightness(1.05);}
 .pb-copy{width:100%;background:none;border:1.5px dashed var(--line);color:var(--cream);padding:13px;border-radius:11px;cursor:pointer;font-size:13.5px;font-weight:600;transition:.15s;}
 .pb-copy:hover{border-color:var(--gold);color:var(--gold);}

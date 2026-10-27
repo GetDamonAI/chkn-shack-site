@@ -1,17 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import PartyBuilder from "@/components/party-builder";
-import { PlatformLink } from "@/components/analytics/platform-link";
+import { OrderNowLink } from "@/components/analytics/order-now-link";
 import { locations, menuCategories } from "@/components/home/data";
 import { HideWhileVisible } from "@/components/home/hide-while-visible";
 import { LaunchHero } from "@/components/home/launch-hero";
 import { MenuAccordion } from "@/components/home/menu-accordion";
 import {
-  SIGNATURE_FLAVOURS,
+  DIP_TAGLINES,
   flavourTaglineFor,
 } from "@/components/home/taglines";
 import { crateOptions } from "@/components/crates/data";
-import { WING_FLAVOURS } from "@/lib/menu-constants";
+import {
+  DIP_FLAVOURS,
+  WING_FLAVOUR_STYLE,
+  WING_FLAVOURS,
+} from "@/lib/menu-constants";
 
 type SectionIntroProps = {
   eyebrow: string;
@@ -251,14 +255,21 @@ export function HomePage() {
                   key={flavour}
                   className="rounded-[1.2rem] border-2 border-brand-ink bg-brand-yellow px-4 py-3 text-brand-ink"
                 >
-                  <p className="text-sm font-black uppercase tracking-[0.16em] sm:text-base">
-                    {flavour}
-                    {SIGNATURE_FLAVOURS.has(flavour) && (
-                      <span aria-label="Signature flavour" title="Signature flavour">
-                        {" \u2605"}
-                      </span>
-                    )}
-                  </p>
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="text-sm font-black uppercase tracking-[0.16em] sm:text-base">
+                      {flavour}
+                    </p>
+                    <span
+                      className={cn(
+                        "mt-0.5 shrink-0 rounded-full border-2 border-brand-ink px-2 py-0.5 text-[10px] font-black uppercase tracking-[0.14em]",
+                        WING_FLAVOUR_STYLE[flavour] === "Wet"
+                          ? "bg-brand-ink text-[#fff7ed]"
+                          : "bg-[#fff7ed] text-brand-ink"
+                      )}
+                    >
+                      {WING_FLAVOUR_STYLE[flavour]}
+                    </span>
+                  </div>
                   {tagline && (
                     <p className="mt-1 text-xs font-normal leading-5 text-brand-ink/70">
                       {tagline}
@@ -272,17 +283,26 @@ export function HomePage() {
       </HomeSection>
 
       <HomeSection id="dips">
-        <div className="space-y-6">
-          <div className="max-w-2xl space-y-3">
-            <p className="text-sm font-black uppercase tracking-[0.28em] text-brand-red">
-              THE DIPS
-            </p>
-            <h2 className="font-display text-4xl leading-none text-brand-ink sm:text-5xl">
-              Not just sides. The whole system.
-            </h2>
-            <p className="text-base leading-7 text-brand-ink/78 sm:text-lg">
-              10 dips. Almost nobody orders just one. Not a coincidence.
-            </p>
+        <div className="rounded-[2.2rem] border-2 border-brand-ink bg-[#fff8ea] p-5 shadow-[0_14px_0_0_#100800] sm:p-7">
+          <SectionIntro
+            eyebrow="The dips"
+            title="Not just sides. The whole system."
+            body="10 dips. Almost nobody orders just one. Not a coincidence."
+          />
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {DIP_FLAVOURS.map((dip) => (
+              <div
+                key={dip}
+                className="rounded-[1.2rem] border-2 border-brand-ink bg-brand-yellow px-4 py-3 text-brand-ink"
+              >
+                <p className="text-sm font-black uppercase tracking-[0.16em] sm:text-base">
+                  {dip}
+                </p>
+                <p className="mt-1 text-xs font-normal leading-5 text-brand-ink/70">
+                  {DIP_TAGLINES[dip]}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </HomeSection>
@@ -378,15 +398,8 @@ export function HomePage() {
                     {location.city}
                   </p>
                   {isComingSoon ? (
-                    <span className="mt-3 flex flex-col items-start gap-1">
-                      <span className="inline-block rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-brand-ink">
-                        Coming Soon
-                      </span>
-                      {location.launchNote && (
-                        <span className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-yellow">
-                          {location.launchNote}
-                        </span>
-                      )}
+                    <span className="mt-3 inline-block rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-brand-ink">
+                      Coming Soon
                     </span>
                   ) : (
                     <span className="mt-3 inline-block rounded-full bg-brand-red px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#fff7ed]">
@@ -401,6 +414,14 @@ export function HomePage() {
                       {location.availability}
                     </p>
                   ) : null}
+                  {!isComingSoon && (
+                    <OrderNowLink
+                      location="homepage_locations"
+                      className="mt-5 flex min-h-12 items-center justify-center rounded-full bg-brand-yellow px-4 text-center font-display text-base tracking-[0.14em] text-brand-ink transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-yellow"
+                    >
+                      ORDER NOW
+                    </OrderNowLink>
+                  )}
                 </article>
               );
             })}
@@ -411,7 +432,7 @@ export function HomePage() {
             More locations coming.
           </p>
           <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-brand-ink/70">
-            We’re rolling into more neighbourhoods across Metro Vancouver. Get on
+            We’re rolling into more neighbourhoods across BC. Get on
             the list at{" "}
             <a
               href="mailto:damon@wingschknshack.com"
@@ -453,32 +474,12 @@ export function HomePage() {
         targetId="launch-hero"
         className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-brand-ink bg-brand-ink p-3 text-[#fff7ed] shadow-[0_-6px_0_0_#ef3d23] md:hidden"
       >
-        <div className="mx-auto flex max-w-6xl items-center gap-3">
-          <div className="min-w-0 flex-1">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-yellow">
-              Order now
-            </p>
-            <p className="truncate text-sm text-[#fff7ed]/82">
-              Wings, fries, dips, and crate-level decisions.
-            </p>
-          </div>
-          <div className="grid shrink-0 grid-cols-2 gap-2">
-            <PlatformLink
-              platform="uber-eats"
-              location="homepage_sticky_bar"
-              className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow px-5 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_10px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
-            >
-              Uber Eats
-            </PlatformLink>
-            <PlatformLink
-              platform="doordash"
-              location="homepage_sticky_bar"
-              className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-brand-ink bg-[#fff7ed] px-5 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
-            >
-              DoorDash
-            </PlatformLink>
-          </div>
-        </div>
+        <OrderNowLink
+          location="homepage_sticky_bar"
+          className="flex min-h-12 w-full items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow px-6 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink transition-transform duration-150 hover:-translate-y-0.5"
+        >
+          Order now
+        </OrderNowLink>
       </HideWhileVisible>
     </main>
   );

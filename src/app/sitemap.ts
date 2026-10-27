@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = "https://wingschknshack.com";
 
-// The Tailgate Crate is a card on /crates, not its own route — this site has no
+// Crates are cards on /crates, not their own routes — this site has no
 // per-product pages, so /crates is the canonical URL for every crate SKU.
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-08-21");

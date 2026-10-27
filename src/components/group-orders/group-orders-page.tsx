@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { PlatformLink } from "@/components/analytics/platform-link";
+import { OrderNowLink } from "@/components/analytics/order-now-link";
 import { CRATE_TAGLINES } from "@/components/home/taglines";
 import { crateOptions } from "@/components/crates/data";
-import { TAILGATE_ACTIVE } from "@/lib/menu-constants";
-import type { OrderLocation, OrderPlatform } from "@/lib/ordering";
+import type { OrderLocation } from "@/lib/ordering";
 
 function cn(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
@@ -18,10 +17,9 @@ type ActionButtonProps = {
   external?: boolean;
 };
 
-type PlatformActionButtonProps = {
-  platform: OrderPlatform;
+type OrderActionButtonProps = {
   location: OrderLocation;
-  label: string;
+  label?: string;
   variant?: ActionButtonVariant;
 };
 
@@ -51,21 +49,16 @@ function ActionButton({
   );
 }
 
-/** Same button, but pointed at a delivery platform so the click is tracked. */
-function PlatformActionButton({
-  platform,
+/** Same button, but it's ORDER NOW: our online-ordering page, click tracked. */
+function OrderActionButton({
   location,
-  label,
+  label = "Order now",
   variant = "primary",
-}: PlatformActionButtonProps) {
+}: OrderActionButtonProps) {
   return (
-    <PlatformLink
-      platform={platform}
-      location={location}
-      className={actionButtonClass(variant)}
-    >
+    <OrderNowLink location={location} className={actionButtonClass(variant)}>
       {label}
-    </PlatformLink>
+    </OrderNowLink>
   );
 }
 
@@ -95,16 +88,13 @@ const trays = [
   {
     name: "Perogy Tray",
     price: "$30",
-    copy: "Full perogy commitment. 25 pan-finished, sour cream + chili crisp on standby. Feeds 4-6.",
+    copy: "Full perogy commitment. 25 deep fried, sour cream + chili crisp on standby. Feeds 4-6.",
   },
 ];
 
 const steps = [
-  "Order online — Uber Eats or DoorDash.",
-  // Lead-time line follows the seasonal gate so it can't name a pulled SKU.
-  TAILGATE_ACTIVE
-    ? "Same-day pickup or delivery for the 50pc and the Tailgate Crate. 100pc and 200pc need 24 hours."
-    : "Same-day pickup or delivery for the 50pc. 100pc and 200pc need 24 hours.",
+  "Hit Order now and check out online.",
+  "Same-day pickup or delivery for the 50pc. 100pc and 200pc need 24 hours.",
   "Custom orders? Email orders@wingschknshack.com.",
 ];
 
@@ -146,17 +136,7 @@ export function GroupOrdersPage() {
             Pick your dips. Show up with the box. Everybody wins.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <PlatformActionButton
-              platform="uber-eats"
-              location="group_orders_hero"
-              label="Order on Uber Eats"
-            />
-            <PlatformActionButton
-              platform="doordash"
-              location="group_orders_hero"
-              label="Order on DoorDash"
-              variant="secondary"
-            />
+            <OrderActionButton location="group_orders_hero" />
             <ActionButton
               href="mailto:orders@wingschknshack.com"
               label="Email for custom orders"
@@ -261,17 +241,7 @@ export function GroupOrdersPage() {
               </h2>
             </div>
             <div className="flex flex-wrap gap-3">
-              <PlatformActionButton
-                platform="uber-eats"
-                location="group_orders_final_cta"
-                label="Uber Eats"
-              />
-              <PlatformActionButton
-                platform="doordash"
-                location="group_orders_final_cta"
-                label="DoorDash"
-                variant="secondary"
-              />
+              <OrderActionButton location="group_orders_final_cta" />
               <ActionButton
                 href="mailto:orders@wingschknshack.com"
                 label="Email us"

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import { Analytics } from "@/components/analytics/analytics";
+import { DoorDashStorefront } from "@/components/analytics/doordash-storefront";
 import { RouteTracker } from "@/components/analytics/route-tracker";
 import "./globals.css";
 
@@ -41,6 +42,7 @@ export default function RootLayout({
           }}
         />
         <Analytics />
+        <DoorDashStorefront />
         {/* useSearchParams opts its subtree into client rendering, so the
             boundary keeps the rest of the page prerenderable. */}
         <Suspense fallback={null}>

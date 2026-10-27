@@ -1,4 +1,4 @@
-import type { OrderLocation, OrderPlatform } from "@/lib/ordering";
+import type { OrderLocation } from "@/lib/ordering";
 
 declare global {
   interface Window {
@@ -17,28 +17,23 @@ export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 export const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
 
 // The site doesn't take payment — the conversion we can actually see is someone
-// leaving for Uber Eats / DoorDash. `uber-eats` is the internal platform key;
-// analytics wants snake_case, so map once here rather than at every call site.
-const PLATFORM_EVENT_VALUE: Record<OrderPlatform, string> = {
-  "uber-eats": "uber_eats",
-  doordash: "doordash",
-};
+// leaving for the online-ordering page. Earlier clicks were split by delivery
+// platform (`uber_eats` / `doordash`); every ORDER NOW now reports one value.
+const PLATFORM_VALUE = "order_online";
 
 /**
- * Fire the outbound-click conversion into all three pixels.
+ * Fire the ORDER NOW click conversion into all three pixels.
  *
- * Meta has no "left for a delivery partner" standard event, so this reports
- * `Lead`; TikTok's closest is `CompleteRegistration`. Both are the events the
- * ad campaigns optimise against — renaming them means re-pointing the
- * campaigns, so keep them in sync with Events Manager.
+ * Meta has no "left to order" standard event, so this reports `Lead`; TikTok's
+ * closest is `CompleteRegistration`. Both are the events the ad campaigns
+ * optimise against — renaming them means re-pointing the campaigns, so keep
+ * them in sync with Events Manager. The GA4 event keeps its `platform_click`
+ * name so reports carry on from the per-platform era.
  */
-export function trackPlatformClick(
-  platform: OrderPlatform,
-  location: OrderLocation
-) {
+export function trackOrderClick(location: OrderLocation) {
   if (typeof window === "undefined") return;
 
-  const platformValue = PLATFORM_EVENT_VALUE[platform];
+  const platformValue = PLATFORM_VALUE;
 
   window.gtag?.("event", "platform_click", {
     platform: platformValue,
