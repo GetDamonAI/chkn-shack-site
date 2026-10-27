@@ -301,3 +301,14 @@ button {
   .chkn-hero__badge-dot { animation: none; }
   .chkn-hero { background: linear-gradient(135deg, #D9251C, #0a0a0a); }
 }
+
+/* DoorDash's "Order Online" floating bar (doordash-storefront.tsx). It must stay
+   in the page, since our ORDER NOW buttons click it to keep DoorDash's tracking,
+   but it's never shown: our own branded buttons and sticky bars replace it.
+   Hide the SDK's full-width fixed wrapper too, or its empty 72px strip would
+   swallow taps on our sticky bar. !important because the SDK styles its own
+   elements. */
+body > div:has(> #sf-floating-button-container),
+#sf-floating-button-container {
+  display: none !important;
+}

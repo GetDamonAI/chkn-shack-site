@@ -11,9 +11,12 @@ export type OrderLocation =
   | "group_orders_final_cta"
   | "party_builder";
 
-// Our commission-free online-ordering page: where every ORDER NOW sends people.
+// Our commission-free DoorDash online-ordering page: where every ORDER NOW
+// sends people. Normally the click goes through DoorDash's SDK button (see
+// <OrderNowLink />); this URL is the fallback when the SDK hasn't loaded.
 export const ORDER_ONLINE_URL =
   "https://order.online/business/wings-chkn-shack-13029476";
+export const DOORDASH_BUSINESS_ID = 13029476;
 
 const UTM_PARAMS = {
   utm_source: "wingschknshack.com",
