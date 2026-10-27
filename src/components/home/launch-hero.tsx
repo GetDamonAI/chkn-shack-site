@@ -6,6 +6,9 @@ const UBER_EATS_SEARCH = "https://www.ubereats.com/ca/search?q=chkn+shack";
 const DOORDASH_SEARCH = "https://www.doordash.com/search/store/chkn+shack/";
 
 const VIDEO_SRC = "/videos/chkn-launch-hero.mp4";
+// Phones (under 768px) get their own cut; picked once at load via <source media>.
+const MOBILE_VIDEO_SRC = "/videos/chkn-launch-hero-mobile.mp4";
+const MOBILE_MEDIA = "(max-width: 767px)";
 const POSTER_SRC = "/videos/chkn-launch-hero-poster.jpg";
 
 /**
@@ -33,7 +36,6 @@ export function LaunchHero() {
               one download. From 768px the hero splits into columns instead. */}
           <video
             className="chkn-hero__video chkn-hero__video--fill"
-            src={VIDEO_SRC}
             poster={POSTER_SRC}
             autoPlay
             muted
@@ -41,10 +43,12 @@ export function LaunchHero() {
             playsInline
             preload="auto"
             aria-hidden="true"
-          />
+          >
+            <source src={MOBILE_VIDEO_SRC} media={MOBILE_MEDIA} type="video/mp4" />
+            <source src={VIDEO_SRC} type="video/mp4" />
+          </video>
           <video
             className="chkn-hero__video chkn-hero__video--main"
-            src={VIDEO_SRC}
             poster={POSTER_SRC}
             autoPlay
             muted
@@ -52,7 +56,10 @@ export function LaunchHero() {
             playsInline
             preload="auto"
             aria-hidden="true"
-          />
+          >
+            <source src={MOBILE_VIDEO_SRC} media={MOBILE_MEDIA} type="video/mp4" />
+            <source src={VIDEO_SRC} type="video/mp4" />
+          </video>
           <div className="chkn-hero__overlay" />
         </div>
 
