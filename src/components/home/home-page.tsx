@@ -432,7 +432,7 @@ export function HomePage() {
             More locations coming.
           </p>
           <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-brand-ink/70">
-            We’re rolling into more neighbourhoods across Vancouver. Get on
+            We’re rolling into more neighbourhoods across BC. Get on
             the list at{" "}
             <a
               href="mailto:damon@wingschknshack.com"
