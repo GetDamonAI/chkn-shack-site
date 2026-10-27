@@ -113,6 +113,12 @@ button {
 .chkn-hero__media { position: absolute; inset: 0; z-index: 0; }
 .chkn-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .chkn-hero__video--fill { display: none; }
+/* Phones: the card is a fixed height, so wider phones crop more off the 9:16
+   video. Centred, that pushes the mobile cut's lowest text (BIG WING ENERGY)
+   into the NOW OPEN pill; anchoring above centre keeps it clear. */
+@media (max-width: 479px) {
+  .chkn-hero__video--main { object-position: 50% 80%; }
+}
 /* The video is 9:16. Once the card is wider than a phone, `cover` crops it to
    a middle strip and cuts off the baked-in headline, so show it whole, centred
    over a blurred, darkened copy of itself. */

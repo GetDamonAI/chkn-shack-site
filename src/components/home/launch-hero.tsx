@@ -1,11 +1,16 @@
 import { PlatformLink } from "@/components/analytics/platform-link";
+import { HeroVideo } from "@/components/home/hero-video";
 
 // Search URLs, not storefronts: each platform routes the visitor to their
 // nearest venue (Vancouver, Langley, Tsawwassen).
 const UBER_EATS_SEARCH = "https://www.ubereats.com/ca/search?q=chkn+shack";
 const DOORDASH_SEARCH = "https://www.doordash.com/search/store/chkn+shack/";
 
+// Desktop/tablet cut ("Napkins"). Phones (under 768px) get their own cut, whose
+// text sits mid-frame clear of the overlay; HeroVideo picks between them. Both
+// open on the same shot, so they share one poster.
 const VIDEO_SRC = "/videos/chkn-launch-hero.mp4";
+const MOBILE_VIDEO_SRC = "/videos/chkn-launch-hero-mobile.mp4";
 const POSTER_SRC = "/videos/chkn-launch-hero-poster.jpg";
 
 /**
@@ -31,27 +36,17 @@ export function LaunchHero() {
               vertical, so it's shown uncropped over a blurred copy of itself
               instead of cropping off the baked-in headline. Same URL, so it's
               one download. From 768px the hero splits into columns instead. */}
-          <video
+          <HeroVideo
             className="chkn-hero__video chkn-hero__video--fill"
             src={VIDEO_SRC}
+            mobileSrc={MOBILE_VIDEO_SRC}
             poster={POSTER_SRC}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
           />
-          <video
+          <HeroVideo
             className="chkn-hero__video chkn-hero__video--main"
             src={VIDEO_SRC}
+            mobileSrc={MOBILE_VIDEO_SRC}
             poster={POSTER_SRC}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
           />
           <div className="chkn-hero__overlay" />
         </div>
