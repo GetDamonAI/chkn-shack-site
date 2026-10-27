@@ -38,13 +38,18 @@ export type OrderDestination = {
 // `utm_content` value can never drift apart or pick up a typo at a call site.
 export type OrderLocation =
   | "homepage_hero"
-  | "homepage_sticky_bar"
   | "crates_hero"
   | "crates_final_cta"
-  | "crates_sticky_bar"
   | "group_orders_hero"
   | "group_orders_final_cta"
-  | "party_builder";
+  | "party_builder"
+  | "doordash_floating_bar";
+
+// Our own DoorDash online-ordering storefront (DCP): commission-free, and the one
+// place every ORDER NOW button and DoorDash's floating bar send people.
+export const ORDER_ONLINE_URL =
+  "https://order.online/business/wings-chkn-shack-13029476";
+export const DOORDASH_BUSINESS_ID = 13029476;
 
 const UTM_PARAMS = {
   utm_source: "wingschknshack.com",

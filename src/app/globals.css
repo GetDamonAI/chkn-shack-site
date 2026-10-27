@@ -220,8 +220,7 @@ button {
   min-height: 56px;
   box-shadow: 0 4px 14px rgba(0,0,0,0.35);
 }
-.chkn-cta--ue { background: #FFC94B; color: #0a0a0a; }
-.chkn-cta--dd { background: #F5EDE0; color: #0a0a0a; }
+.chkn-cta--order { background: #FFC94B; color: #0a0a0a; }
 .chkn-cta:hover, .chkn-cta:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(0,0,0,0.45);
@@ -301,4 +300,16 @@ button {
   }
   .chkn-hero__badge-dot { animation: none; }
   .chkn-hero { background: linear-gradient(135deg, #D9251C, #0a0a0a); }
+}
+
+/* DoorDash's "Order Online" floating bar (see doordash-storefront.tsx). Hidden
+   while the homepage hero, with its own ORDER NOW, is on screen. !important
+   because the SDK styles its own elements. */
+#sf-floating-button-container {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+html[data-dd-bar-hidden] #sf-floating-button-container {
+  transform: translateY(150%) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }

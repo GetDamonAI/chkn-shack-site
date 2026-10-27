@@ -17,11 +17,15 @@ export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 export const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
 
 // The site doesn't take payment — the conversion we can actually see is someone
-// leaving for Uber Eats / DoorDash. `uber-eats` is the internal platform key;
-// analytics wants snake_case, so map once here rather than at every call site.
-const PLATFORM_EVENT_VALUE: Record<OrderPlatform, string> = {
+// leaving to order. `order-online` is our own DoorDash storefront (ORDER NOW);
+// the marketplace keys remain for older links. Analytics wants snake_case, so
+// map once here rather than at every call site.
+export type TrackedPlatform = OrderPlatform | "order-online";
+
+const PLATFORM_EVENT_VALUE: Record<TrackedPlatform, string> = {
   "uber-eats": "uber_eats",
   doordash: "doordash",
+  "order-online": "order_online",
 };
 
 /**
@@ -33,7 +37,7 @@ const PLATFORM_EVENT_VALUE: Record<OrderPlatform, string> = {
  * campaigns, so keep them in sync with Events Manager.
  */
 export function trackPlatformClick(
-  platform: OrderPlatform,
+  platform: TrackedPlatform,
   location: OrderLocation
 ) {
   if (typeof window === "undefined") return;

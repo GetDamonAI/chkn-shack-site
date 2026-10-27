@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import PartyBuilder from "@/components/party-builder";
-import { PlatformLink } from "@/components/analytics/platform-link";
 import { locations, menuCategories } from "@/components/home/data";
-import { HideWhileVisible } from "@/components/home/hide-while-visible";
 import { LaunchHero } from "@/components/home/launch-hero";
 import { MenuAccordion } from "@/components/home/menu-accordion";
 import {
@@ -138,7 +136,7 @@ const BUCKET_HIDDEN = true;
 
 export function HomePage() {
   return (
-    <main className="bg-background pb-28 text-foreground md:pb-12">
+    <main className="bg-background pb-28 text-foreground">
       <HomeSection className="pt-4 sm:pt-6">
         <div className="brand-grid rounded-[2rem] border-2 border-brand-ink bg-surface px-4 py-4 shadow-[0_12px_0_0_#100800] sm:px-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -448,38 +446,6 @@ export function HomePage() {
           </div>
         </div>
       </HomeSection>
-
-      <HideWhileVisible
-        targetId="launch-hero"
-        className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-brand-ink bg-brand-ink p-3 text-[#fff7ed] shadow-[0_-6px_0_0_#ef3d23] md:hidden"
-      >
-        <div className="mx-auto flex max-w-6xl items-center gap-3">
-          <div className="min-w-0 flex-1">
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-brand-yellow">
-              Order now
-            </p>
-            <p className="truncate text-sm text-[#fff7ed]/82">
-              Wings, fries, dips, and crate-level decisions.
-            </p>
-          </div>
-          <div className="grid shrink-0 grid-cols-2 gap-2">
-            <PlatformLink
-              platform="uber-eats"
-              location="homepage_sticky_bar"
-              className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow px-5 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_10px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
-            >
-              Uber Eats
-            </PlatformLink>
-            <PlatformLink
-              platform="doordash"
-              location="homepage_sticky_bar"
-              className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-brand-ink bg-[#fff7ed] px-5 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
-            >
-              DoorDash
-            </PlatformLink>
-          </div>
-        </div>
-      </HideWhileVisible>
     </main>
   );
 }

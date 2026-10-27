@@ -1,10 +1,5 @@
-import { PlatformLink } from "@/components/analytics/platform-link";
+import { OrderNowLink } from "@/components/analytics/order-now-link";
 import { HeroVideo } from "@/components/home/hero-video";
-
-// Search URLs, not storefronts: each platform routes the visitor to their
-// nearest venue (Vancouver, Langley, Tsawwassen).
-const UBER_EATS_SEARCH = "https://www.ubereats.com/ca/search?q=chkn+shack";
-const DOORDASH_SEARCH = "https://www.doordash.com/search/store/chkn+shack/";
 
 // Desktop/tablet cut ("Napkins"). Phones (under 768px) get their own cut, whose
 // text sits mid-frame clear of the overlay; HeroVideo picks between them. Both
@@ -69,22 +64,9 @@ export function LaunchHero() {
               <span className="chkn-hero__label-accent">LANGLEY + TSAWWASSEN</span>
             </h1>
             <div className="chkn-hero__ctas">
-              <PlatformLink
-                platform="uber-eats"
-                location="homepage_hero"
-                href={UBER_EATS_SEARCH}
-                className="chkn-cta chkn-cta--ue"
-              >
-                UBER EATS
-              </PlatformLink>
-              <PlatformLink
-                platform="doordash"
-                location="homepage_hero"
-                href={DOORDASH_SEARCH}
-                className="chkn-cta chkn-cta--dd"
-              >
-                DOORDASH
-              </PlatformLink>
+              <OrderNowLink location="homepage_hero" className="chkn-cta chkn-cta--order">
+                ORDER NOW
+              </OrderNowLink>
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CRATE_TAGLINES } from "@/components/home/taglines";
-import { PlatformLink } from "@/components/analytics/platform-link";
-import type { OrderLocation, OrderPlatform } from "@/lib/ordering";
+import { OrderNowLink } from "@/components/analytics/order-now-link";
+import type { OrderLocation } from "@/lib/ordering";
 import {
   crateOptions,
   dipOptions,
@@ -21,38 +21,22 @@ type SectionIntroProps = {
 };
 
 type OrderButtonProps = {
-  platform: OrderPlatform;
   location: OrderLocation;
-  label: string;
-  variant?: "primary" | "secondary";
-  compact?: boolean;
+  label?: string;
 };
 
 function cn(...values: Array<string | false | null | undefined>) {
   return values.filter(Boolean).join(" ");
 }
 
-function OrderButton({
-  platform,
-  location,
-  label,
-  variant = "primary",
-  compact = false,
-}: OrderButtonProps) {
+function OrderButton({ location, label = "Order now" }: OrderButtonProps) {
   return (
-    <PlatformLink
-      platform={platform}
+    <OrderNowLink
       location={location}
-      className={cn(
-        "inline-flex items-center justify-center rounded-full border-2 border-brand-ink px-5 text-center font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
-        compact ? "min-h-12 text-sm" : "min-h-14 text-base",
-        variant === "primary"
-          ? "bg-brand-red text-[#fff7ed] shadow-[0_8px_0_0_#100800]"
-          : "bg-brand-yellow text-brand-ink shadow-[0_8px_0_0_#100800]"
-      )}
+      className="inline-flex min-h-14 items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow px-5 text-center text-base font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
     >
       {label}
-    </PlatformLink>
+    </OrderNowLink>
   );
 }
 
@@ -283,7 +267,7 @@ const crateListJsonLd = {
 
 export function CratesPage() {
   return (
-    <main className="bg-background pb-28 text-foreground md:pb-12">
+    <main className="bg-background pb-28 text-foreground">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -327,18 +311,8 @@ export function CratesPage() {
               <p className="text-xs font-black uppercase tracking-[0.24em] text-brand-yellow">
                 Order now
               </p>
-              <div className="grid gap-3 sm:max-w-md sm:grid-cols-2">
-                <OrderButton
-                  platform="uber-eats"
-                  location="crates_hero"
-                  label="Uber Eats"
-                />
-                <OrderButton
-                  platform="doordash"
-                  location="crates_hero"
-                  label="DoorDash"
-                  variant="secondary"
-                />
+              <div className="grid sm:max-w-md">
+                <OrderButton location="crates_hero" />
               </div>
             </div>
             <a
@@ -507,45 +481,12 @@ export function CratesPage() {
               body="Crates are built for speed. Skip the chaos."
               theme="dark"
             />
-            <div className="grid gap-3 sm:grid-cols-2">
-              <OrderButton
-                platform="uber-eats"
-                location="crates_final_cta"
-                label="Uber Eats"
-              />
-              <OrderButton
-                platform="doordash"
-                location="crates_final_cta"
-                label="DoorDash"
-                variant="secondary"
-              />
+            <div className="grid">
+              <OrderButton location="crates_final_cta" />
             </div>
           </div>
         </div>
       </PageSection>
-
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-brand-ink bg-brand-ink p-3 text-[#fff7ed] shadow-[0_-10px_24px_rgba(16,8,0,0.38)] md:hidden">
-        <div className="mx-auto max-w-6xl rounded-[1.4rem] border-2 border-brand-yellow bg-brand-ink/95 p-3">
-          <p className="mb-3 text-center text-sm font-black uppercase tracking-[0.18em] text-brand-yellow">
-            Ordering for a group? Start here.
-          </p>
-          <div className="grid grid-cols-2 gap-2">
-            <OrderButton
-              platform="uber-eats"
-              location="crates_sticky_bar"
-              label="Uber Eats"
-              compact
-            />
-            <OrderButton
-              platform="doordash"
-              location="crates_sticky_bar"
-              label="DoorDash"
-              variant="secondary"
-              compact
-            />
-          </div>
-        </div>
-      </div>
     </main>
   );
 }

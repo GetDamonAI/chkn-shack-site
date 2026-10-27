@@ -108,6 +108,6 @@ export const occasions: Occasion[] = [
 export const howItWorks = [
   "Choose your crate size.",
   "Pick the wing flavours and dips.",
-  "Order through Uber Eats or DoorDash.",
+  "Hit Order now and check out online.",
   "Open box. Feed crew. Accept praise.",
 ];
