@@ -104,7 +104,7 @@ const steps = [
 
 export function GroupOrdersPage() {
   return (
-    <main className="bg-background pb-28 text-foreground">
+    <main className="bg-background pb-28 text-foreground md:pb-12">
       <PageSection className="pt-4 sm:pt-6">
         <div className="brand-grid rounded-[2rem] border-2 border-brand-ink bg-surface px-4 py-4 shadow-[0_12px_0_0_#100800] sm:px-6">
           <div className="flex items-center justify-between gap-4">

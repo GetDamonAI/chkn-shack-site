@@ -12,7 +12,7 @@ import { DIP_FLAVOURS, WING_FLAVOURS } from "@/lib/menu-constants";
  * Ordering happens on our online-ordering page, so the output gives a
  * copyable order list + an ORDER NOW button that opens it.
  */
-// Ordering routes through our DoorDash online-ordering page. Its URL lives in
+// Ordering routes through our online-ordering page. Its URL lives in
 // src/lib/ordering.ts and reaches the button via <OrderNowLink>,
 // which also tags them with UTMs and reports the click. Set ORDERING_LIVE to
 // false to swap the button back out for plain "order it online" text.

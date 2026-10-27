@@ -267,7 +267,7 @@ const crateListJsonLd = {
 
 export function CratesPage() {
   return (
-    <main className="bg-background pb-28 text-foreground">
+    <main className="bg-background pb-28 text-foreground md:pb-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -487,6 +487,17 @@ export function CratesPage() {
           </div>
         </div>
       </PageSection>
+
+      <div className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-brand-ink bg-brand-ink p-3 text-[#fff7ed] shadow-[0_-10px_24px_rgba(16,8,0,0.38)] md:hidden">
+        <div className="mx-auto max-w-6xl rounded-[1.4rem] border-2 border-brand-yellow bg-brand-ink/95 p-3">
+          <p className="mb-3 text-center text-sm font-black uppercase tracking-[0.18em] text-brand-yellow">
+            Ordering for a group? Start here.
+          </p>
+          <div className="grid">
+            <OrderButton location="crates_sticky_bar" />
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
