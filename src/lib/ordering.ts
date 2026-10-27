@@ -44,7 +44,10 @@ export type OrderLocation =
   | "crates_sticky_bar"
   | "group_orders_hero"
   | "group_orders_final_cta"
-  | "party_builder";
+  | "party_builder"
+  | "location_page_downtown_vancouver"
+  | "location_page_langley"
+  | "location_page_tsawwassen";
 
 const UTM_PARAMS = {
   utm_source: "wingschknshack.com",

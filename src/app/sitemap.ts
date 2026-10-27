@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
+import { venueUrl, venues } from "@/components/locations/data";
 
 const SITE_URL = "https://wingschknshack.com";
 
 // The Tailgate Crate is a card on /crates, not its own route — this site has no
 // per-product pages, so /crates is the canonical URL for every crate SKU.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-08-21");
+  const lastModified = new Date("2026-10-27");
 
   return [
     {
@@ -38,5 +39,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    ...venues.map((venue) => ({
+      url: venueUrl(venue),
+      lastModified,
+      changeFrequency: venue.status === "live" ? ("weekly" as const) : ("monthly" as const),
+      priority: venue.status === "live" ? 0.9 : 0.7,
+    })),
   ];
 }

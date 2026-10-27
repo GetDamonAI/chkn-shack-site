@@ -133,9 +133,9 @@ export type Location = {
   city: string;
   area: string;
   availability?: string;
-  status: "live" | "coming-soon";
-  /** Sub-label under the Coming Soon badge, e.g. a launch date. */
-  launchNote?: string;
+  status: "live" | "opening-soon" | "coming-soon";
+  /** Venue landing page, for venues that have one. */
+  href?: string;
 };
 
 export const locations: Location[] = [
@@ -144,18 +144,34 @@ export const locations: Location[] = [
     area: "Vancouver",
     availability: "Late lunch to midnight",
     status: "live",
+    href: "/locations/downtown-vancouver",
+  },
+  {
+    city: "Langley",
+    area: "Fraser Valley",
+    status: "live",
+    href: "/locations/langley",
+  },
+  {
+    city: "Tsawwassen",
+    area: "Delta",
+    status: "live",
+    href: "/locations/tsawwassen",
   },
   {
     city: "Abbotsford",
     area: "Fraser Valley",
-    availability: "Late lunch to midnight",
-    status: "coming-soon",
-    launchNote: "Launching Sep 6",
+    status: "opening-soon",
+    href: "/locations/abbotsford",
   },
   {
     city: "Burnaby",
     area: "Metro Vancouver",
-    availability: "TBD",
+    status: "coming-soon",
+  },
+  {
+    city: "Surrey",
+    area: "Metro Vancouver",
     status: "coming-soon",
   },
 ];

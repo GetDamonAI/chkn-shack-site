@@ -362,14 +362,16 @@ export function HomePage() {
           />
           <div className="grid gap-4 sm:grid-cols-3">
             {locations.map((location) => {
-              const isComingSoon = location.status === "coming-soon";
-              return (
-                <article
-                  key={location.city}
-                  className={`rounded-[1.7rem] border-2 border-brand-ink bg-brand-ink p-5 text-[#fff7ed] shadow-[0_10px_0_0_#ef3d23]${
-                    isComingSoon ? " opacity-65" : ""
-                  }`}
-                >
+              const isLive = location.status === "live";
+              const cardClass = `block rounded-[1.7rem] border-2 border-brand-ink bg-brand-ink p-5 text-[#fff7ed] shadow-[0_10px_0_0_#ef3d23]${
+                isLive ? "" : " opacity-65"
+              }${
+                location.href
+                  ? " transition-transform duration-150 hover:-translate-y-0.5"
+                  : ""
+              }`;
+              const body = (
+                <>
                   {/* 30px fits the full-width mobile card; from sm up the
                       3-column grid leaves ~143px of text, which a single long
                       name like ABBOTSFORD (155px at 30px) would break mid-word.
@@ -377,20 +379,13 @@ export function HomePage() {
                   <p className="font-display text-3xl uppercase leading-none break-words sm:text-2xl">
                     {location.city}
                   </p>
-                  {isComingSoon ? (
-                    <span className="mt-3 flex flex-col items-start gap-1">
-                      <span className="inline-block rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-brand-ink">
-                        Coming Soon
-                      </span>
-                      {location.launchNote && (
-                        <span className="text-[11px] font-black uppercase tracking-[0.16em] text-brand-yellow">
-                          {location.launchNote}
-                        </span>
-                      )}
-                    </span>
-                  ) : (
+                  {isLive ? (
                     <span className="mt-3 inline-block rounded-full bg-brand-red px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#fff7ed]">
                       Live
+                    </span>
+                  ) : (
+                    <span className="mt-3 inline-block rounded-full bg-brand-yellow px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-brand-ink">
+                      {location.status === "opening-soon" ? "Opening Soon" : "Coming Soon"}
                     </span>
                   )}
                   <p className="mt-3 text-sm font-black uppercase tracking-[0.18em] text-brand-yellow">
@@ -401,6 +396,15 @@ export function HomePage() {
                       {location.availability}
                     </p>
                   ) : null}
+                </>
+              );
+              return location.href ? (
+                <Link key={location.city} href={location.href} className={cardClass}>
+                  {body}
+                </Link>
+              ) : (
+                <article key={location.city} className={cardClass}>
+                  {body}
                 </article>
               );
             })}
