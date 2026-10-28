@@ -1,4 +1,5 @@
 import { OrderNowLink } from "@/components/analytics/order-now-link";
+import { HeroSoundToggle } from "@/components/home/hero-sound-toggle";
 import { HeroVideo } from "@/components/home/hero-video";
 
 // v2 ("Only Canadian Chickens") is one cut for every screen size, so phones and
@@ -45,6 +46,10 @@ export function LaunchHero() {
           />
           <div className="chkn-hero__overlay" />
         </div>
+
+        {/* Outside the media layer: on phones the content layer sits on top of
+            the video and would swallow taps. */}
+        <HeroSoundToggle />
 
         <div className="chkn-hero__content">
           <div className="chkn-hero__top">
