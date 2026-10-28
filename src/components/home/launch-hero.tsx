@@ -1,12 +1,13 @@
 import { OrderNowLink } from "@/components/analytics/order-now-link";
+import { HeroSoundToggle } from "@/components/home/hero-sound-toggle";
 import { HeroVideo } from "@/components/home/hero-video";
 
-// Desktop/tablet cut ("Napkins"). Phones (under 768px) get their own cut, whose
-// text sits mid-frame clear of the overlay; HeroVideo picks between them. Both
-// open on the same shot, so they share one poster.
-const VIDEO_SRC = "/videos/chkn-launch-hero.mp4";
-const MOBILE_VIDEO_SRC = "/videos/chkn-launch-hero-mobile.mp4";
-const POSTER_SRC = "/videos/chkn-launch-hero-poster.jpg";
+// v2 ("Only Canadian Chickens") is one cut for every screen size, so phones and
+// desktop get the same file. The v1 cuts (chkn-launch-hero.mp4 / -mobile.mp4 /
+// -poster.jpg) stay in /public/videos as a rollback until 2026-11-04.
+const VIDEO_SRC = "/videos/chkn-launch-hero-v2.mp4";
+const MOBILE_VIDEO_SRC = VIDEO_SRC;
+const POSTER_SRC = "/videos/chkn-launch-hero-v2-poster.jpg";
 
 /**
  * Langley + Tsawwassen launch / BOGO hero. The video carries the headline, so
@@ -45,6 +46,10 @@ export function LaunchHero() {
           />
           <div className="chkn-hero__overlay" />
         </div>
+
+        {/* Outside the media layer: on phones the content layer sits on top of
+            the video and would swallow taps. */}
+        <HeroSoundToggle />
 
         <div className="chkn-hero__content">
           <div className="chkn-hero__top">
