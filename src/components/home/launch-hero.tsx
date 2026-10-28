@@ -5,7 +5,9 @@ import { HeroVideo } from "@/components/home/hero-video";
 // v2 ("Only Canadian Chickens") is one cut for every screen size, so phones and
 // desktop get the same file. The v1 cuts (chkn-launch-hero.mp4 / -mobile.mp4 /
 // -poster.jpg) stay in /public/videos as a rollback until 2026-11-04.
-const VIDEO_SRC = "/videos/chkn-launch-hero-v2.mp4";
+// "v2b" is v2 re-encoded (libx264, AAC-LC, video track first, faststart): the
+// original export wouldn't autoplay on iPhones.
+const VIDEO_SRC = "/videos/chkn-launch-hero-v2b.mp4";
 const MOBILE_VIDEO_SRC = VIDEO_SRC;
 const POSTER_SRC = "/videos/chkn-launch-hero-v2-poster.jpg";
 

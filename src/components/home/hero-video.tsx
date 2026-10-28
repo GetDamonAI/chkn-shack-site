@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 
 const MOBILE_QUERY = "(max-width: 767px)";
 
@@ -33,24 +33,9 @@ export function HeroVideo({
 }>) {
   const isMobile = useSyncExternalStore(subscribe, isMobileNow, isMobileOnServer);
   const current = isMobile === null ? undefined : isMobile ? mobileSrc : src;
-  const ref = useRef<HTMLVideoElement>(null);
-
-  // React sets `muted` as a property but never writes the attribute, and iOS
-  // only autoplays a video that has an audio track when the attribute is there.
-  // So set it ourselves and start playback once the src is in.
-  useEffect(() => {
-    const video = ref.current;
-    if (!video || !current) return;
-    video.muted = true;
-    video.setAttribute("muted", "");
-    video.play().catch(() => {
-      // Autoplay refused (e.g. Low Power Mode): the poster stays up.
-    });
-  }, [current]);
 
   return (
     <video
-      ref={ref}
       className={className}
       src={current}
       poster={poster}
