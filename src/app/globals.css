@@ -296,7 +296,7 @@ button {
   @media (min-width: 480px) { .chkn-hero__video--fill { display: none; } }
   /* Split layout: keep the video column filled with a still instead of empty. */
   @media (min-width: 768px) {
-    .chkn-hero__media { background: url("/videos/chkn-launch-hero-poster.jpg") center / cover; }
+    .chkn-hero__media { background: url("/videos/chkn-launch-hero-v2-poster.jpg") center / cover; }
   }
   .chkn-hero__badge-dot { animation: none; }
   .chkn-hero { background: linear-gradient(135deg, #D9251C, #0a0a0a); }

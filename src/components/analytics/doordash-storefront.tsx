@@ -36,7 +36,7 @@ StorefrontSDK.executeCommand('renderFloatingButton', {
   buttonBackgroundColor: '#D92128',
   borderColor: 'transparent',
   buttonText: 'Order Online',
-  showModal: true
+  showModal: false
 });
 `;
 

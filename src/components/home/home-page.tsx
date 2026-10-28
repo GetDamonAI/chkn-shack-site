@@ -3,9 +3,9 @@ import Link from "next/link";
 import PartyBuilder from "@/components/party-builder";
 import { OrderNowLink } from "@/components/analytics/order-now-link";
 import { locations, menuCategories } from "@/components/home/data";
-import { HideWhileVisible } from "@/components/home/hide-while-visible";
 import { LaunchHero } from "@/components/home/launch-hero";
 import { MenuAccordion } from "@/components/home/menu-accordion";
+import { StickyOrderBar } from "@/components/home/sticky-order-bar";
 import {
   DIP_TAGLINES,
   flavourTaglineFor,
@@ -470,17 +470,7 @@ export function HomePage() {
         </div>
       </HomeSection>
 
-      <HideWhileVisible
-        targetId="launch-hero"
-        className="fixed inset-x-0 bottom-0 z-50 border-t-2 border-brand-ink bg-brand-ink p-3 text-[#fff7ed] shadow-[0_-6px_0_0_#ef3d23] md:hidden"
-      >
-        <OrderNowLink
-          location="homepage_sticky_bar"
-          className="flex min-h-12 w-full items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow px-6 text-center text-sm font-black uppercase tracking-[0.2em] text-brand-ink transition-transform duration-150 hover:-translate-y-0.5"
-        >
-          Order now
-        </OrderNowLink>
-      </HideWhileVisible>
+      <StickyOrderBar heroId="launch-hero" />
     </main>
   );
 }
