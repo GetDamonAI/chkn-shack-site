@@ -414,9 +414,9 @@ export function HomePage() {
                       {location.availability}
                     </p>
                   ) : null}
-                  {!isComingSoon && (
+                  {location.status === "live" && (
                     <OrderNowLink
-                      location="homepage_locations"
+                      location={location.store}
                       className="mt-5 flex min-h-12 items-center justify-center rounded-full bg-brand-yellow px-4 text-center font-display text-base tracking-[0.14em] text-brand-ink transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-yellow"
                     >
                       ORDER NOW

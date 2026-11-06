@@ -2,11 +2,7 @@
 
 import type { MouseEvent, ReactNode } from "react";
 
-import {
-  ORDER_ONLINE_URL,
-  withOrderUtm,
-  type OrderLocation,
-} from "@/lib/ordering";
+import { orderNowHref, type OrderLocation } from "@/lib/ordering";
 import { trackOrderClick } from "@/lib/tracking";
 
 // DoorDash's own (hidden) order button, rendered by <DoorDashStorefront />.
@@ -19,7 +15,8 @@ const DOORDASH_BUTTON_SELECTOR = "#sf-floating-button";
  * Once DoorDash's SDK has loaded, the click is handed to DoorDash's own hidden
  * button, so the order leaves through their link with all of their tracking
  * (`utm_source=sdk` + their visitor ID). Until then, or if the SDK is blocked,
- * the plain href is the fallback: the same order page with our UTMs.
+ * the plain href is the fallback: /go/dd with our UTMs, which logs the hit and
+ * redirects to the same order page.
  *
  * Opens in a new tab, which keeps this document alive long enough for the
  * pixel beacons to leave. The programmatic click happens inside the user's tap,
@@ -50,7 +47,7 @@ export function OrderNowLink({
 
   return (
     <a
-      href={withOrderUtm(ORDER_ONLINE_URL, location)}
+      href={orderNowHref(location)}
       target="_blank"
       rel="noopener noreferrer"
       className={className}
