@@ -1,3 +1,5 @@
+import type { OrderStore } from "@/lib/ordering";
+
 export type MenuItemV2 = {
   name: string;
   price?: string;
@@ -117,8 +119,10 @@ export type Location = {
   city: string;
   area: string;
   availability?: string;
-  status: "live" | "coming-soon";
-};
+} & (
+  // A live store carries the slug its ORDER NOW click reports as `location`.
+  { status: "live"; store: OrderStore } | { status: "coming-soon" }
+);
 
 export const locations: Location[] = [
   {
@@ -126,16 +130,19 @@ export const locations: Location[] = [
     area: "Vancouver",
     availability: "Late lunch to midnight",
     status: "live",
+    store: "downtown",
   },
   {
     city: "Langley",
     area: "Fraser Valley",
     status: "live",
+    store: "langley",
   },
   {
     city: "Tsawwassen",
     area: "Delta",
     status: "live",
+    store: "tsawwassen",
   },
   { city: "Abbotsford", area: "Fraser Valley", status: "coming-soon" },
   { city: "Burnaby", area: "Metro Vancouver", status: "coming-soon" },

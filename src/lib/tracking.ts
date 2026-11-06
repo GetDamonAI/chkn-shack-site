@@ -21,6 +21,11 @@ export const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
 // platform (`uber_eats` / `doordash`); every ORDER NOW now reports one value.
 const PLATFORM_VALUE = "order_online";
 
+// The site can't see the real cart (orders finish on DoorDash), so every click
+// reports this estimated order value, for value-based bidding and ROAS.
+const ORDER_VALUE = 42;
+const ORDER_CURRENCY = "CAD";
+
 /**
  * Fire the ORDER NOW click conversion into all three pixels.
  *
@@ -38,12 +43,16 @@ export function trackOrderClick(location: OrderLocation) {
   window.gtag?.("event", "platform_click", {
     platform: platformValue,
     location,
+    value: ORDER_VALUE,
+    currency: ORDER_CURRENCY,
   });
 
   window.fbq?.("track", "Lead", {
     content_name: `${platformValue}_click`,
     content_category: "platform_redirect",
     location,
+    value: ORDER_VALUE,
+    currency: ORDER_CURRENCY,
   });
 
   // content_type is a closed vocabulary for TikTok — anything outside
