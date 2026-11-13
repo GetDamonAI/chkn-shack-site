@@ -86,7 +86,7 @@ button {
 }
 
 /* ---------------------------------------------------------------------------
-   Launch / BOGO hero (src/components/home/launch-hero.tsx)
+   Launch hero (src/components/home/launch-hero.tsx)
    Values come from the combined-bogo-hero.html brief. Fonts use the site's own
    display/sans stacks instead of Bebas Neue / Inter so the hero matches the
    rest of the page.
@@ -114,10 +114,10 @@ button {
 .chkn-hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .chkn-hero__video--fill { display: none; }
 /* Phones: the card is a fixed height, so wider phones crop more off the 9:16
-   video. Centred, that pushes the mobile cut's lowest text (BIG WING ENERGY)
-   into the NOW OPEN pill; anchoring above centre keeps it clear. */
+   video. The Flavours cut puts its headlines at the top of the frame, so crop
+   from the bottom, which sits under the NOW OPEN pill and ORDER NOW anyway. */
 @media (max-width: 479px) {
-  .chkn-hero__video--main { object-position: 50% 80%; }
+  .chkn-hero__video--main { object-position: 50% 0%; }
 }
 /* The video is 9:16. Once the card is wider than a phone, `cover` crops it to
    a middle strip and cuts off the baked-in headline, so show it whole, centred
@@ -138,34 +138,6 @@ button {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-}
-
-.chkn-hero__top { position: relative; z-index: 2; padding: 24px 20px 0; text-align: center; }
-.chkn-hero__badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: #FFC94B; color: #000;
-  padding: 10px 20px; border-radius: 999px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 15px; letter-spacing: 0.12em; line-height: 1;
-}
-/* Impact is much wider than Bebas Neue, so on phones the badge needs to shrink
-   to keep the offer on one line. Desktop keeps the brief's 15px / 0.12em. */
-@media (max-width: 479px) {
-  .chkn-hero__badge {
-    gap: 8px; padding: 9px 14px;
-    font-size: clamp(10px, 3.2vw, 14px); letter-spacing: 0.06em;
-    white-space: nowrap;
-  }
-}
-.chkn-hero__badge-dot {
-  flex-shrink: 0;
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #D9251C;
-  animation: chkn-pulse 1.6s ease-in-out infinite;
-}
-@keyframes chkn-pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.7); }
 }
 
 .chkn-hero__spacer { flex: 1 1 auto; }
@@ -230,29 +202,6 @@ button {
 /* Keyboard users still need to see where focus is. */
 .chkn-cta:focus-visible { outline: 3px solid #FFC94B; outline-offset: 3px; }
 
-/* Sound toggle: same smoked-glass pill as the NOW OPEN label. Phones: top
-   right, under the BOGO badge. */
-.chkn-hero__sound {
-  position: absolute; z-index: 3;
-  top: 68px; right: 14px;
-  width: 40px; height: 40px; padding: 10px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 999px;
-  background: rgba(10,10,10,0.6);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: #fff;
-  cursor: pointer;
-}
-.chkn-hero__sound svg { width: 100%; height: 100%; }
-.chkn-hero__sound[aria-pressed="true"] { color: #FFC94B; }
-.chkn-hero__sound:focus-visible { outline: 3px solid #FFC94B; outline-offset: 3px; }
-/* Split layout: bottom-right corner of the video column (width = height × 9/16). */
-@media (min-width: 768px) {
-  .chkn-hero__sound { top: auto; right: auto; bottom: 16px; left: calc(var(--chkn-hero-h) * 9 / 16 - 56px); }
-}
-
 /* Tablet + desktop: split card. Left column is the video at its own 9:16
    (so nothing is cropped, nothing blurred), right column is the offer + CTAs.
    Card height follows the width (video ≈ 44% of the card at 768px) and caps
@@ -284,12 +233,8 @@ button {
       radial-gradient(circle at 85% 10%, rgba(217,37,28,0.22), transparent 55%),
       #0a0a0a;
   }
-  .chkn-hero__top, .chkn-hero__bottom { padding: 0; }
+  .chkn-hero__bottom { padding: 0; }
   .chkn-hero__bottom { gap: 28px; max-width: 520px; }
-  .chkn-hero__badge {
-    padding: 10px 16px; gap: 8px;
-    font-size: 13px; letter-spacing: 0.08em; white-space: nowrap;
-  }
 
   .chkn-hero__label {
     display: block;
@@ -309,7 +254,6 @@ button {
   .chkn-cta { min-width: 160px; }
 }
 @media (min-width: 1024px) {
-  .chkn-hero__badge { padding: 10px 20px; gap: 10px; font-size: 15px; letter-spacing: 0.12em; }
   .chkn-hero__bottom { max-width: 640px; }
   .chkn-cta { min-width: 200px; }
 }
@@ -319,10 +263,8 @@ button {
   @media (min-width: 480px) { .chkn-hero__video--fill { display: none; } }
   /* Split layout: keep the video column filled with a still instead of empty. */
   @media (min-width: 768px) {
-    .chkn-hero__media { background: url("/videos/chkn-launch-hero-v2-poster.jpg") center / cover; }
+    .chkn-hero__media { background: url("/videos/chkn-hero-flavours-poster.jpg") center / cover; }
   }
-  .chkn-hero__badge-dot { animation: none; }
-  .chkn-hero__sound { display: none; }
   .chkn-hero { background: linear-gradient(135deg, #D9251C, #0a0a0a); }
 }
 
