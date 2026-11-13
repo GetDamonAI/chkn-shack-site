@@ -1,23 +1,18 @@
 import { OrderNowLink } from "@/components/analytics/order-now-link";
-import { HeroSoundToggle } from "@/components/home/hero-sound-toggle";
 import { HeroVideo } from "@/components/home/hero-video";
 
-// v2 ("Only Canadian Chickens") is one cut for every screen size, so phones and
-// desktop get the same file. The v1 cuts (chkn-launch-hero.mp4 / -mobile.mp4 /
-// -poster.jpg) stay in /public/videos as a rollback until 2026-11-04.
-const VIDEO_SRC = "/videos/chkn-launch-hero-v2.mp4";
+// Evergreen "Flavours" promo, one cut for every screen size. It has no audio
+// track, and the poster is taken 1s in (the cut fades up from black).
+const VIDEO_SRC = "/videos/chkn-hero-flavours.mp4";
 const MOBILE_VIDEO_SRC = VIDEO_SRC;
-const POSTER_SRC = "/videos/chkn-launch-hero-v2-poster.jpg";
+const POSTER_SRC = "/videos/chkn-hero-flavours-poster.jpg";
 
 /**
- * Langley + Tsawwassen launch / BOGO hero. The video carries the headline, so
+ * Langley + Tsawwassen homepage hero. The video carries the headline, so
  * the overlay stays deliberately minimal. Under 768px the content overlays a
  * full-bleed video; from 768px the card splits into a 9:16 video column and a
  * content column. Styles live in globals.css under
  * `.chkn-hero*` / `.chkn-cta*`.
- *
- * Temporary: the previous hero is on the `hero/pre-bogo-backup` branch —
- * revert this commit when the BOGO window ends.
  */
 export function LaunchHero() {
   return (
@@ -47,18 +42,7 @@ export function LaunchHero() {
           <div className="chkn-hero__overlay" />
         </div>
 
-        {/* Outside the media layer: on phones the content layer sits on top of
-            the video and would swallow taps. */}
-        <HeroSoundToggle />
-
         <div className="chkn-hero__content">
-          <div className="chkn-hero__top">
-            <div className="chkn-hero__badge">
-              <span className="chkn-hero__badge-dot" aria-hidden="true" />
-              <span>BUY 1 GET 1 · 10PC WINGS · 2 WEEKS ONLY</span>
-            </div>
-          </div>
-
           <div className="chkn-hero__spacer" aria-hidden="true" />
 
           <div className="chkn-hero__bottom">
