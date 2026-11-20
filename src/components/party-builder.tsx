@@ -47,9 +47,9 @@ interface BuildArgs {
 
 /* ---------- MENU DATA (V2) ---------- */
 const CRATES: { pc: number; price: number; name: string }[] = [
-  { pc: 200, price: 245, name: "CHKN Crate 200pc" },
-  { pc: 100, price: 135, name: "CHKN Crate 100pc" },
-  { pc: 50, price: 75, name: "CHKN Crate 50pc" },
+  { pc: 200, price: 339, name: "CHKN Crate 200pc" },
+  { pc: 100, price: 179, name: "CHKN Crate 100pc" },
+  { pc: 50, price: 95, name: "CHKN Crate 50pc" },
 ];
 
 const EVENTS: Record<EventKey, { label: string; blurb: string; per: number }> = {
@@ -83,12 +83,12 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   // ----- WINGS -----
   const wingFlavors = pickFlavors(spice, people);
   if (people <= 2) {
-    items.push({ qty: 1, name: "Solo Combo", detail: "wings + fries + dip + pop", price: 22, kind: "wings" });
+    items.push({ qty: 1, name: "Solo Combo", detail: "wings + fries + dip + pop", price: 27, kind: "wings" });
     if (people === 2)
-      items.push({ qty: 1, name: "20 Piece Combo", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
+      items.push({ qty: 1, name: "20 Piece Combo", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 44, kind: "wings" });
   } else if (people <= 5) {
     const drops = Math.max(1, Math.round(targetWings / 20));
-    items.push({ qty: drops, name: "20 Piece Combo", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 36, kind: "wings" });
+    items.push({ qty: drops, name: "20 Piece Combo", detail: "20 wings, 2 flavours, 2 dips, big fries, pop", price: 44, kind: "wings" });
   } else {
     let remaining = targetWings;
     for (const c of CRATES) {
@@ -97,8 +97,8 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
         remaining -= c.pc;
       }
     }
-    if (remaining > 12) items.push({ qty: 1, name: "20pc Wings", detail: "top-up", price: 28, kind: "wings" });
-    else if (remaining > 0) items.push({ qty: 1, name: "10pc Wings", detail: "top-up", price: 18, kind: "wings" });
+    if (remaining > 12) items.push({ qty: 1, name: "20pc Wings", detail: "top-up", price: 35, kind: "wings" });
+    else if (remaining > 0) items.push({ qty: 1, name: "10pc Wings", detail: "top-up", price: 22, kind: "wings" });
   }
 
   const hasCrate = items.some((i) => i.name.includes("Crate"));
@@ -114,18 +114,18 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
     dipSets = Math.ceil(people / 5);
   }
   const dipPicks = pickDips(spice);
-  if (bottles > 0) items.push({ qty: bottles, name: "12oz Dip Tub", detail: dipPicks.slice(0, 2).join(" / "), price: 9, kind: "dips" });
-  if (dipSets > 0) items.push({ qty: dipSets, name: "3 Dips (mix or match)", detail: dipPicks.join(" · "), price: 4, kind: "dips" });
+  if (bottles > 0) items.push({ qty: bottles, name: "12oz Dip Tub", detail: dipPicks.slice(0, 2).join(" / "), price: 10, kind: "dips" });
+  if (dipSets > 0) items.push({ qty: dipSets, name: "3 Dips (mix or match)", detail: dipPicks.join(" · "), price: 4.25, kind: "dips" });
 
   // ----- FRIES / SIDES -----
-  if (!hasCrate || people > 8) items.push({ qty: 1, name: "Hot Honey Fries", detail: "the move", price: 8, kind: "sides" });
-  if (people >= 8) items.push({ qty: 1, name: "Mac and Cheese Tray", detail: "feeds 4-6", price: 29, kind: "sides" });
+  if (!hasCrate || people > 8) items.push({ qty: 1, name: "Hot Honey Fries", detail: "the move", price: 9, kind: "sides" });
+  if (people >= 8) items.push({ qty: 1, name: "Mac and Cheese Tray", detail: "feeds 4-6", price: 32, kind: "sides" });
 
   // ----- VEGETARIAN -----
   if (veg > 0) {
     const cauli = Math.max(1, Math.ceil(veg / 3));
     items.push({ qty: cauli, name: "Cauli Bites (veg)", detail: `for your ${veg} plant-based guest${veg > 1 ? "s" : ""}`, price: 10, kind: "veg" });
-    items.push({ qty: 1, name: "Shack Cut Seasoned Fries", detail: "veg-friendly side", price: 6, kind: "veg" });
+    items.push({ qty: 1, name: "Shack Cut Seasoned Fries", detail: "veg-friendly side", price: 7, kind: "veg" });
   }
 
   const subtotal = items.reduce((s, i) => s + i.qty * i.price, 0);
