@@ -124,7 +124,7 @@ export const locations: Location[] = [
   {
     city: "Downtown Vancouver",
     area: "Vancouver",
-    availability: "Late lunch to midnight",
+    availability: "Lunch til late",
     status: "live",
   },
   {

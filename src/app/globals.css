@@ -155,19 +155,21 @@ button {
 }
 .chkn-hero__label {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: 5px;
+  padding: 9px 18px;
+  text-align: center;
   background: rgba(10,10,10,0.6);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 999px;
+  border-radius: 18px;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: clamp(14px, 3.4vw, 18px);
   font-weight: 400;
   letter-spacing: 0.1em;
-  line-height: 1;
+  line-height: 1.1;
   color: #fff;
   margin: 0;
 }
@@ -220,8 +222,7 @@ button {
   .chkn-hero__media { position: relative; inset: auto; height: 100%; aspect-ratio: 9 / 16; }
   .chkn-hero__video--fill,
   .chkn-hero__overlay,
-  .chkn-hero__spacer,
-  .chkn-hero__label-sep { display: none; }
+  .chkn-hero__spacer { display: none; }
   .chkn-hero__video--main { object-fit: cover; }
 
   .chkn-hero__content {
