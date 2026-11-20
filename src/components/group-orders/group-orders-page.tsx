@@ -82,12 +82,12 @@ function PageSection({
 const trays = [
   {
     name: "Mac and Cheese Tray",
-    price: "$29",
+    price: "$32",
     copy: "The one that ends the argument about sides. Alfredo base, marble cheese, panko top. Feeds 4-6.",
   },
   {
     name: "Perogy Tray",
-    price: "$30",
+    price: "$33",
     copy: "Full perogy commitment. 25 deep fried, sour cream + chili crisp on standby. Feeds 4-6.",
   },
 ];

@@ -30,7 +30,7 @@ export type Occasion = {
 export const crateOptions: CrateOption[] = [
   {
     name: "CHKN Crate 50pc",
-    price: "$75",
+    price: "$95",
     badge: "Small chaos",
     notice: "Same-day",
     feeds: "Feeds 5-7",
@@ -38,7 +38,7 @@ export const crateOptions: CrateOption[] = [
   },
   {
     name: "CHKN Crate 100pc",
-    price: "$135",
+    price: "$179",
     badge: "Medium mayhem",
     notice: "24hr notice",
     feeds: "Feeds 10-15",
@@ -46,7 +46,7 @@ export const crateOptions: CrateOption[] = [
   },
   {
     name: "CHKN Crate 200pc",
-    price: "$245",
+    price: "$339",
     badge: "Full send",
     notice: "24hr notice",
     feeds: "Feeds 20-30",
