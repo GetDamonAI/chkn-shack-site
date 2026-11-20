@@ -8,7 +8,7 @@ const MOBILE_VIDEO_SRC = VIDEO_SRC;
 const POSTER_SRC = "/videos/chkn-hero-flavours-poster.jpg";
 
 /**
- * Langley + Tsawwassen homepage hero. The video carries the headline, so
+ * Vancouver + Langley + Tsawwassen homepage hero. The video carries the headline, so
  * the overlay stays deliberately minimal. Under 768px the content overlays a
  * full-bleed video; from 768px the card splits into a 9:16 video column and a
  * content column. Styles live in globals.css under
@@ -20,7 +20,7 @@ export function LaunchHero() {
       <section
         id="launch-hero"
         className="chkn-hero"
-        aria-label="Now open in Langley and Tsawwassen"
+        aria-label="Now open in Vancouver, Langley and Tsawwassen"
       >
         <div className="chkn-hero__media">
           {/* Large phones / small tablets (480–767px) only: the video is
@@ -47,10 +47,8 @@ export function LaunchHero() {
 
           <div className="chkn-hero__bottom">
             <h1 className="chkn-hero__label">
-              <span>
-                NOW OPEN<span className="chkn-hero__label-sep"> ·</span>
-              </span>
-              <span className="chkn-hero__label-accent">LANGLEY + TSAWWASSEN</span>
+              <span>NOW OPEN</span>
+              <span className="chkn-hero__label-accent">VANCOUVER + LANGLEY + TSAWWASSEN</span>
             </h1>
             <div className="chkn-hero__ctas">
               <OrderNowLink location="homepage_hero" className="chkn-cta chkn-cta--order">
