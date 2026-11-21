@@ -97,7 +97,7 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
         remaining -= c.pc;
       }
     }
-    if (remaining > 12) items.push({ qty: 1, name: "20pc Wings", detail: "top-up", price: 35, kind: "wings" });
+    if (remaining > 12) items.push({ qty: 1, name: "20pc Wings", detail: "top-up", price: 36, kind: "wings" });
     else if (remaining > 0) items.push({ qty: 1, name: "10pc Wings", detail: "top-up", price: 22, kind: "wings" });
   }
 
