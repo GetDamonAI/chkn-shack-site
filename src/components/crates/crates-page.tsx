@@ -245,7 +245,7 @@ const BUCKET_HIDDEN = true;
 const crateListJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "CHKN Crates",
+  name: "CHKN Crate",
   itemListElement: crateOptions.map((crate, index) => ({
     "@type": "ListItem",
     position: index + 1,
@@ -279,7 +279,7 @@ export function CratesPage() {
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-display text-3xl uppercase leading-none text-brand-ink sm:text-4xl">
-                CHKN Crates
+                CHKN Crate
               </p>
               <p className="mt-1 text-sm font-semibold uppercase tracking-[0.2em] text-brand-red">
                 Big box energy for hungry groups
@@ -299,11 +299,11 @@ export function CratesPage() {
         <div className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
           <div className="rounded-[2.5rem] border-2 border-brand-ink bg-brand-ink px-5 py-6 text-[#fff7ed] shadow-[0_16px_0_0_#ef3d23] sm:px-7 sm:py-8">
             <p className="w-fit rounded-full bg-brand-yellow px-3 py-1 text-xs font-black uppercase tracking-[0.24em] text-brand-ink">
-              Crates only
+              50 piece crate
             </p>
             <SectionIntro
               title="Feed the Crew."
-              body="Wings, fries, dips, and everything you need — built for groups. Big boxes, fast decisions, no weak portions."
+              body="Our 50 piece crate: wings, fries, dips, and everything you need — built for groups. One big box, fast decisions, no weak portions."
               theme="dark"
               level="h1"
             />
@@ -343,24 +343,13 @@ export function CratesPage() {
         </div>
       </PageSection>
 
-      <PageSection className="pt-0">
-        <div className="mx-auto max-w-3xl rounded-[1.8rem] border-2 border-brand-ink/15 bg-[#fff9ef] px-5 py-6 text-center shadow-[0_6px_0_0_rgba(16,8,0,0.08)]">
-          <p className="text-lg font-black text-brand-ink sm:text-xl">
-            The move when the group chat gets real.
-          </p>
-          <p className="mt-2 text-sm leading-6 text-brand-ink/68 sm:text-base">
-            Used for game days, office lunches, and last-minute saves.
-          </p>
-        </div>
-      </PageSection>
-
       <PageSection id="crate-options">
         <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <SectionIntro
-              eyebrow="Crate options"
-              title="Pick your level of hunger denial."
-              body="Every crate is built to move fast, split cleanly, and keep the group from falling apart at the first empty tray."
+              eyebrow="The crate"
+              title="50 pieces of hunger denial."
+              body="The crate is built to move fast, split cleanly, and keep the group from falling apart at the first empty tray."
             />
             <p className="mt-4 text-sm leading-6 text-brand-ink/76">
               Lock in flavours, add whatever extra damage feels
@@ -380,7 +369,7 @@ export function CratesPage() {
           <SectionIntro
             eyebrow="What’s inside"
             title="The parts that actually matter."
-            body="Crates are not mystery boxes. You get flavour options, dip range, proper sides, and add-ons that keep the order from feeling thin."
+            body="The crate is not a mystery box. You get flavour options, dip range, proper sides, and add-ons that keep the order from feeling thin."
           />
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             <article className="rounded-[1.6rem] border-2 border-brand-ink bg-[#fff9ef] p-5">
@@ -451,7 +440,7 @@ export function CratesPage() {
           <SectionIntro
             eyebrow="How it works"
             title="Easy enough to do hungry."
-            body="No spreadsheets. No awkward forms. Just choose the box, pick the flavours, hit the app, and let the food do the heavy lifting."
+            body="No spreadsheets. No awkward forms. Just grab the crate, pick the flavours, hit the app, and let the food do the heavy lifting."
             theme="dark"
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -478,7 +467,7 @@ export function CratesPage() {
             <SectionIntro
               eyebrow="Final move"
               title="Feeding 8+? Don’t wing it."
-              body="Crates are built for speed. Skip the chaos."
+              body="The crate is built for speed. Skip the chaos."
               theme="dark"
             />
             <div className="grid">
