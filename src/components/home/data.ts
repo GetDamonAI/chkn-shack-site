@@ -42,7 +42,7 @@ export const menuCategories: MenuCategory[] = [
     // src/components/crates/data.ts stays the source of truth for /crates +
     // /group-orders. Taglines resolve from shared CRATE_TAGLINES via taglineFor.
     name: "Crates",
-    tagline: "Group orders that actually feed the room. 50, 100, 200.",
+    tagline: "Group orders that actually feed the room.",
     items: [
       {
         name: "CHKN Crate 50pc",
@@ -50,18 +50,19 @@ export const menuCategories: MenuCategory[] = [
         note: "Same-day",
         composition: "50 wings · up to 2 flavours · 3 dips · 1 large fries",
       },
-      {
-        name: "CHKN Crate 100pc",
-        price: "$179",
-        note: "24hr notice",
-        composition: "100 wings · up to 3 flavours · 5 dips · 2 party fries",
-      },
-      {
-        name: "CHKN Crate 200pc",
-        price: "$339",
-        note: "24hr notice",
-        composition: "200 wings · up to 4 flavours · 8 dips · 4 party fries",
-      },
+      // HIDDEN (Nov 2026): 100pc + 200pc crates aren't live yet. Uncomment to restore.
+      // {
+      //   name: "CHKN Crate 100pc",
+      //   price: "$179",
+      //   note: "24hr notice",
+      //   composition: "100 wings · up to 3 flavours · 5 dips · 2 party fries",
+      // },
+      // {
+      //   name: "CHKN Crate 200pc",
+      //   price: "$339",
+      //   note: "24hr notice",
+      //   composition: "200 wings · up to 4 flavours · 8 dips · 4 party fries",
+      // },
     ],
   },
   {

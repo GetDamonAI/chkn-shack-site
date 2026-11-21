@@ -47,8 +47,9 @@ interface BuildArgs {
 
 /* ---------- MENU DATA (V2) ---------- */
 const CRATES: { pc: number; price: number; name: string }[] = [
-  { pc: 200, price: 339, name: "CHKN Crate 200pc" },
-  { pc: 100, price: 179, name: "CHKN Crate 100pc" },
+  // HIDDEN (Nov 2026): 100pc + 200pc crates aren't live yet. Uncomment to restore.
+  // { pc: 200, price: 339, name: "CHKN Crate 200pc" },
+  // { pc: 100, price: 179, name: "CHKN Crate 100pc" },
   { pc: 50, price: 95, name: "CHKN Crate 50pc" },
 ];
 

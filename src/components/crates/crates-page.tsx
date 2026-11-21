@@ -319,7 +319,7 @@ export function CratesPage() {
               href="#crate-options"
               className="mt-4 inline-block text-sm font-black uppercase tracking-[0.16em] text-brand-yellow underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fff7ed]"
             >
-              Or compare the crate sizes ↓
+              Or see what’s in the crate ↓
             </a>
             <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 border-t-2 border-[#fff7ed]/15 pt-5 text-sm font-semibold text-[#fff7ed]/78">
               <li>Office lunch sorted.</li>
@@ -363,7 +363,7 @@ export function CratesPage() {
               body="Every crate is built to move fast, split cleanly, and keep the group from falling apart at the first empty tray."
             />
             <p className="mt-4 text-sm leading-6 text-brand-ink/76">
-              Choose the size, lock in flavours, add whatever extra damage feels
+              Lock in flavours, add whatever extra damage feels
               responsible, then send it.
             </p>
           </div>

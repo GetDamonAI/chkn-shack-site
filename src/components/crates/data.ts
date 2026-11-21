@@ -36,22 +36,23 @@ export const crateOptions: CrateOption[] = [
     feeds: "Feeds 5-7",
     composition: "50 wings · up to 2 flavours · 3 dips · 1 large fries",
   },
-  {
-    name: "CHKN Crate 100pc",
-    price: "$179",
-    badge: "Medium mayhem",
-    notice: "24hr notice",
-    feeds: "Feeds 10-15",
-    composition: "100 wings · up to 3 flavours · 5 dips · 2 party fries",
-  },
-  {
-    name: "CHKN Crate 200pc",
-    price: "$339",
-    badge: "Full send",
-    notice: "24hr notice",
-    feeds: "Feeds 20-30",
-    composition: "200 wings · up to 4 flavours · 8 dips · 4 party fries",
-  },
+  // HIDDEN (Nov 2026): 100pc + 200pc crates aren't live yet. Uncomment to restore.
+  // {
+  //   name: "CHKN Crate 100pc",
+  //   price: "$179",
+  //   badge: "Medium mayhem",
+  //   notice: "24hr notice",
+  //   feeds: "Feeds 10-15",
+  //   composition: "100 wings · up to 3 flavours · 5 dips · 2 party fries",
+  // },
+  // {
+  //   name: "CHKN Crate 200pc",
+  //   price: "$339",
+  //   badge: "Full send",
+  //   notice: "24hr notice",
+  //   feeds: "Feeds 20-30",
+  //   composition: "200 wings · up to 4 flavours · 8 dips · 4 party fries",
+  // },
 ];
 
 /** Wing flavour + dip pill lists render straight off the canonical constants. */
