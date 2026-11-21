@@ -78,7 +78,7 @@ export const occasions: Occasion[] = [
   },
   {
     name: "Parties",
-    detail: "Big boxes. Fast decisions. Zero tragic snack tables.",
+    detail: "One big box. Fast decisions. Zero tragic snack tables.",
   },
   {
     name: "Late night",
@@ -87,7 +87,7 @@ export const occasions: Occasion[] = [
 ];
 
 export const howItWorks = [
-  "Choose your crate size.",
+  "Grab the 50 piece crate.",
   "Pick the wing flavours and dips.",
   "Hit Order now and check out online.",
   "Open box. Feed crew. Accept praise.",
