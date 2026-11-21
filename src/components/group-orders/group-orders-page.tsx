@@ -94,7 +94,7 @@ const trays = [
 
 const steps = [
   "Hit Order now and check out online.",
-  "Same-day pickup or delivery for the 50pc. 100pc and 200pc need 24 hours.",
+  "Same-day pickup or delivery for the 50pc crate.",
   "Custom orders? Email orders@wingschknshack.com.",
 ];
 
