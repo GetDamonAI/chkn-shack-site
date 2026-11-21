@@ -71,7 +71,7 @@ export function StickyOrderBar({ heroId }: Readonly<{ heroId: string }>) {
     >
       <OrderNowLink
         location="homepage_sticky_bar"
-        className="flex min-h-10 flex-1 items-center justify-center rounded-full bg-[#FFC94B] px-5 text-center font-display text-base uppercase tracking-[0.14em] text-[#0a0a0a] shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#FFC94B]"
+        className="flex min-h-10 flex-1 items-center justify-center rounded-full bg-[#FFC94B]! px-5 text-center font-display text-base uppercase tracking-[0.14em] text-[#0a0a0a] shadow-[0_4px_14px_rgba(0,0,0,0.35)] transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#FFC94B]"
       >
         Order now
       </OrderNowLink>

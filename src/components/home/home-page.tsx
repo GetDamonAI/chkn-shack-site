@@ -51,8 +51,8 @@ function LinkButton({
       className={cn(
         "inline-flex min-h-12 items-center justify-center rounded-full border-2 px-5 text-center text-sm font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
         variant === "dark"
-          ? "border-[#fff7ed] bg-transparent text-[#fff7ed]"
-          : "border-brand-ink bg-[#fff7ed] text-brand-ink shadow-[0_8px_0_0_#100800]"
+          ? "border-[#fff7ed] bg-transparent! text-[#fff7ed]"
+          : "border-brand-ink bg-[#fff7ed]! text-brand-ink shadow-[0_8px_0_0_#100800]"
       )}
     >
       {label}
@@ -170,31 +170,31 @@ export function HomePage() {
               >
                 <a
                   href="#menu"
-                  className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-3 py-2"
+                  className="rounded-full border-2 border-brand-ink bg-[#fff7ed]! px-3 py-2"
                 >
                   Menu
                 </a>
                 <a
                   href="#flavours"
-                  className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-3 py-2"
+                  className="rounded-full border-2 border-brand-ink bg-[#fff7ed]! px-3 py-2"
                 >
                   Flavours
                 </a>
                 <Link
                   href="/crates"
-                  className="rounded-full border-2 border-brand-ink bg-brand-yellow px-3 py-2"
+                  className="rounded-full border-2 border-brand-ink bg-brand-yellow! px-3 py-2"
                 >
                   Crates
                 </Link>
                 <Link
                   href="/franchising"
-                  className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-3 py-2"
+                  className="rounded-full border-2 border-brand-ink bg-[#fff7ed]! px-3 py-2"
                 >
                   Franchising
                 </Link>
                 <a
                   href="#locations"
-                  className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-3 py-2"
+                  className="rounded-full border-2 border-brand-ink bg-[#fff7ed]! px-3 py-2"
                 >
                   Locations
                 </a>
@@ -417,7 +417,7 @@ export function HomePage() {
                   {!isComingSoon && (
                     <OrderNowLink
                       location="homepage_locations"
-                      className="mt-5 flex min-h-12 items-center justify-center rounded-full bg-brand-yellow px-4 text-center font-display text-base tracking-[0.14em] text-brand-ink transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-yellow"
+                      className="mt-5 flex min-h-12 items-center justify-center rounded-full bg-brand-yellow! px-4 text-center font-display text-base tracking-[0.14em] text-brand-ink transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-yellow"
                     >
                       ORDER NOW
                     </OrderNowLink>
@@ -461,7 +461,7 @@ export function HomePage() {
               </p>
               <Link
                 href="/franchising"
-                className="mt-5 inline-flex rounded-full border-2 border-brand-yellow bg-brand-yellow px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#fff7ed] transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fff7ed]"
+                className="mt-5 inline-flex rounded-full border-2 border-brand-yellow bg-brand-yellow! px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#fff7ed] transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#fff7ed]"
               >
                 Explore Franchising
               </Link>

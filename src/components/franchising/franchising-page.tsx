@@ -92,8 +92,8 @@ function ActionButton({
       className={cn(
         "inline-flex min-h-14 items-center justify-center rounded-full border-2 px-5 text-center font-black uppercase tracking-[0.2em] transition-transform duration-150 hover:-translate-y-0.5",
         variant === "primary"
-          ? "border-brand-ink bg-brand-yellow text-brand-ink shadow-[0_10px_0_0_#100800]"
-          : "border-[#fff7ed] bg-transparent text-[#fff7ed]"
+          ? "border-brand-ink bg-brand-yellow! text-brand-ink shadow-[0_10px_0_0_#100800]"
+          : "border-[#fff7ed] bg-transparent! text-[#fff7ed]"
       )}
     >
       {label}
@@ -170,7 +170,7 @@ export function FranchisingPage() {
             </div>
             <Link
               href="/"
-              className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-4 py-2 text-sm font-black uppercase tracking-[0.2em] text-brand-ink"
+              className="rounded-full border-2 border-brand-ink bg-[#fff7ed]! px-4 py-2 text-sm font-black uppercase tracking-[0.2em] text-brand-ink"
             >
               Home
             </Link>

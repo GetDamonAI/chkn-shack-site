@@ -455,7 +455,7 @@ const css = `
 .pb-chip{background:#241f17;border:1px solid rgba(245,195,59,.3);color:var(--gold);font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;}
 .pb-note{font-size:11.5px;color:var(--muted);line-height:1.45;margin:12px 0 16px;text-align:center;}
 .pb-order-actions{display:flex;gap:10px;margin-bottom:10px;}
-.pb-order-btn{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:14px;padding:14px;border-radius:11px;transition:.15s;background:var(--red);color:#fff;text-transform:uppercase;letter-spacing:.12em;}
+.pb-order-btn{flex:1;text-align:center;text-decoration:none;font-weight:700;font-size:14px;padding:14px;border-radius:11px;transition:.15s;background:var(--red)!important;color:#fff;text-transform:uppercase;letter-spacing:.12em;}
 .pb-order-btn:hover{transform:translateY(-2px);filter:brightness(1.05);}
 .pb-copy{width:100%;background:none;border:1.5px dashed var(--line);color:var(--cream);padding:13px;border-radius:11px;cursor:pointer;font-size:13.5px;font-weight:600;transition:.15s;}
 .pb-copy:hover{border-color:var(--gold);color:var(--gold);}
