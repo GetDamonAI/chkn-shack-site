@@ -131,11 +131,13 @@ export const locations: Location[] = [
   {
     city: "Langley",
     area: "Fraser Valley",
+    availability: "Lunch til late",
     status: "live",
   },
   {
     city: "Tsawwassen",
     area: "Delta",
+    availability: "Lunch til late",
     status: "live",
   },
   { city: "Abbotsford", area: "Fraser Valley", status: "coming-soon" },
