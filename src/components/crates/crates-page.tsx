@@ -33,7 +33,7 @@ function OrderButton({ location, label = "Order now" }: OrderButtonProps) {
   return (
     <OrderNowLink
       location={location}
-      className="inline-flex min-h-14 items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow px-5 text-center text-base font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
+      className="inline-flex min-h-14 items-center justify-center rounded-full border-2 border-brand-ink bg-brand-yellow! px-5 text-center text-base font-black uppercase tracking-[0.2em] text-brand-ink shadow-[0_8px_0_0_#100800] transition-transform duration-150 hover:-translate-y-0.5"
     >
       {label}
     </OrderNowLink>
@@ -287,7 +287,7 @@ export function CratesPage() {
             </div>
             <Link
               href="/"
-              className="rounded-full border-2 border-brand-ink bg-[#fff7ed] px-4 py-2 text-sm font-black uppercase tracking-[0.2em] text-brand-ink"
+              className="rounded-full border-2 border-brand-ink bg-[#fff7ed]! px-4 py-2 text-sm font-black uppercase tracking-[0.2em] text-brand-ink"
             >
               Home
             </Link>
