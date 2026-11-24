@@ -21,8 +21,8 @@ export const menuCategories: MenuCategory[] = [
     tagline: "Bone-in wings tossed in your flavour. Twelve to pick from.",
     items: [
       { name: "10pc Wings", price: "$22", composition: "10 wings · 1 flavour · 1 dip" },
-      { name: "20pc Wings", price: "$36", composition: "20 wings · up to 2 flavours · 3 dips" },
-      { name: "30pc Wings", price: "$49", composition: "30 wings · up to 3 flavours · 4 dips" },
+      { name: "20pc Wings", price: "$36", composition: "20 wings · up to 2 flavours · 2 dips" },
+      { name: "30pc Wings", price: "$49", composition: "30 wings · up to 3 flavours · 3 dips" },
     ],
   },
   {
