@@ -70,6 +70,7 @@ export const menuCategories: MenuCategory[] = [
     tagline: "Seasoned, crispy, and built to drag through sauce.",
     items: [
       { name: "Shack Cut Seasoned Fries", price: "$7" },
+      { name: "Shack Cut Seasoned Fries (Large)", price: "$12" },
       { name: "Parm Bomb Garlic Fries", price: "$13" },
       { name: "Hot Honey Fries", price: "$9" },
       { name: "Mac and Cheese (Side)", price: "$9" },
