@@ -65,6 +65,6 @@ export const WING_FLAVOUR_STYLE: Record<WingFlavour, "Wet" | "Dry"> = {
   "Honey Garlic": "Wet",
   "Louisiana Sweet": "Wet",
   "Korean Sticky Sesame": "Wet",
-  "Maple Bourbon": "Wet",
+  "Maple Bourbon": "Dry",
   "Honey Stinger": "Wet",
 };
