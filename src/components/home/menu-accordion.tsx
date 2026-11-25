@@ -27,7 +27,7 @@ const ITEM_TAGLINES: Record<string, string> = {
   "Gravy (Add-on)": "Beef gravy in a side ramekin. Because sometimes fries need a swim.",
   "Coleslaw (Add-on)": "Fresh coleslaw in a side ramekin. Crunch, tang, and something green.",
   "Mac and Cheese Tray": "The one that ends the argument about sides. Alfredo base, marble cheese, panko top. Feeds 4-6.",
-  "Perogy Tray": "Full perogy commitment. 25 deep fried, sour cream + chili crisp on standby. Feeds 4-6.",
+  "Perogy Tray": "Full perogy commitment. 25 deep fried, with sour cream and garnish. Feeds 4-6.",
 };
 
 function taglineFor(name: string): string | undefined {
