@@ -88,7 +88,7 @@ const trays = [
   {
     name: "Perogy Tray",
     price: "$33",
-    copy: "Full perogy commitment. 25 deep fried, sour cream + chili crisp on standby. Feeds 4-6.",
+    copy: "Full perogy commitment. 25 deep fried, with sour cream and garnish. Feeds 4-6.",
   },
 ];
 
