@@ -75,7 +75,7 @@ export const menuCategories: MenuCategory[] = [
       { name: "Hot Honey Fries", price: "$9" },
       { name: "Mac and Cheese (Side)", price: "$9" },
       { name: "Perogies (7pc Side)", price: "$10" },
-      { name: "Cauli Bites", price: "$10", note: "vegetarian" },
+      { name: "Cauli Bites", price: "$12", note: "vegetarian" },
       { name: "Gravy (Add-on)", price: "$2" },
       { name: "Coleslaw (Add-on)", price: "$3" },
     ],
