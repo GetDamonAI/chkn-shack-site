@@ -125,7 +125,7 @@ function buildOrder({ event, people, spice, dipStyle, veg }: BuildArgs): Order {
   // ----- VEGETARIAN -----
   if (veg > 0) {
     const cauli = Math.max(1, Math.ceil(veg / 3));
-    items.push({ qty: cauli, name: "Cauli Bites (veg)", detail: `for your ${veg} plant-based guest${veg > 1 ? "s" : ""}`, price: 10, kind: "veg" });
+    items.push({ qty: cauli, name: "Cauli Bites (veg)", detail: `for your ${veg} plant-based guest${veg > 1 ? "s" : ""}`, price: 12, kind: "veg" });
     items.push({ qty: 1, name: "Shack Cut Seasoned Fries", detail: "veg-friendly side", price: 7, kind: "veg" });
   }
 
